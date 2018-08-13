@@ -24,10 +24,12 @@ app.use(session({
 }))
 // app.use(express.static(`${__dirname}/../build`))
 
-app.get('/api/quotes', qc.getAllQuotes);
-app.get('/api/images', qc.getAllImages);
-app.get('/api/quote/:id', qc.getQuote);
-app.get('/api/image/:id', qc.getImage);
+// app.get('/api/quotes', qc.getAllQuotes);
+// app.get('/api/images', qc.getAllImages);
+// app.get('/api/quotes/:id', qc.getQuote);
+// app.post(`/api/quotes`, qc.postQuote);
+// app.get('/api/images/:id', qc.getImage);
+// app.post('/api/images', qc.postImage);
 app.get('/api/combo', qc.displayCombo);
 app.post('/api/combo', qc.commentCombo);
 app.put('/api/combo', qc.rateCombo);
