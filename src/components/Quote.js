@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Quote = function(props) {
+const Quote = function() {
   return (
     <div>
       Individual quote
