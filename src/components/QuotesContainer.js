@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import LandingQuote from './LandingQuote';
 import AllQuotes from './AllQuotes';
+import { getAllQuotes, getAllImages } from '../redux/reducer';
 
 class QuotesContainer extends Component {
   constructor() {
     super()
     this.state = {
-      quotesList: [],
-      imagesList: [],
       landingQuote: '',
       quoteIds: [],
       imageIds: [],
@@ -30,56 +30,40 @@ class QuotesContainer extends Component {
     })
   }
 
-  getAllQuotes = () => {
-    axios.get(`/api/quotes`).then(result => {
-      this.setState({
-        quotesList: [...this.state.quotesList, ...result.data]
-      })
-    })
-  }
-
-  getAllImages = () => {
-    axios.get(`/api/images`).then(result => {
-      this.setState({
-        imagesList: [...this.state.imagesList, ...result.data]
-      })
-    })
-  }
-
   componentDidMount = () => {
-    this.getAllQuotes();
-    this.getAllImages();
     this.getRandomIds();
+    this.props.getAllQuotes();
+    this.props.getAllImages();
   }
 
   render() {
     // console.log('random IDs', this.state.quoteIds, this.state.imageIds)
     // console.log('quotes List', this.state.quotesList)
     // console.log('images List', this.state.imagesList)
-    console.log(window.location)
-    // let pageQuotes = this.state.quotesList.map((e, i) => {
-    //   if (i < 8) {
-    //     return (
-    //       <Quote key={i}>
-    //         <div>
-    //           image // from random image id
-    //           {e.text}
-    //           comment button
-    //           edit button
-    //           delete button
-    //           rate button
-    //         </div>
-    //       </Quote>
-    //     )
-    //   }
-    // })
-    // let landingQuote = this.state.quotesList[0] 
+    // console.log('find the quoteslist', this.props)
+
     return (
       <div>
-        {window.location.href === "http://localhost:3000/#/quotes" ? <AllQuotes/> : <LandingQuote/>}
+        {window.location.href === "http://localhost:3000/#/quotes" ? 
+        <div>
+          <AllQuotes />
+        </div>
+        : 
+        <div>
+          <LandingQuote quote={this.props.quotesList[0]}/>
+          <Link to="/quotes"><button> Get Inspired </button></Link>
+        </div>
+        }
       </div>
     )
   }
 }
 
-export default QuotesContainer;
+const mapStateToProps = state => {
+  return {
+    quotesList: state.quotesList,
+    imagesList: state.imagesList
+  }
+}
+
+export default connect(mapStateToProps, { getAllQuotes, getAllImages })(QuotesContainer);
