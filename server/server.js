@@ -30,7 +30,7 @@ app.get('/api/quote/:id', qc.getQuote);
 app.post(`/api/quote`, qc.postQuote);
 app.get('/api/image/:id', qc.getImage);
 app.post('/api/image', qc.postImage);
-// app.get('/api/combo', qc.displayCombo);
+app.get('/api/combo', qc.getAllCombo);
 // app.post('/api/combo', qc.commentCombo);
 // app.put('/api/combo', qc.rateCombo);
 // app.delete('/api/combo', qc.deleteCombo);
