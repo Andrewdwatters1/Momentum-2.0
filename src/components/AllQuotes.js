@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Quote = function() {
+const AllQuotes = function() {
   return (
     <div>
-      Individual quote
+      all quotes
     </div>
   )
 }
 
 // prob redux
 
-export default Quote;
+export default AllQuotes;
