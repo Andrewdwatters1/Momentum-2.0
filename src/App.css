@@ -1,28 +1,36 @@
-.App {
-  text-align: center;
+/* ALL COMPONENT STYLES */
+
+
+/* LANDING PAGE STYLES */
+
+
+/* QUOTES STYLES */
+
+.quotes-grid-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  /* display: block;
+  width: 1250px; */
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.quotes-items-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.quotes-grid-image {
+  /* display: block; */
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
 }
+/* MEDIA QUERIES */
 
-.App-title {
-  font-size: 1.5em;
-}
 
-.App-intro {
-  font-size: large;
-}
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+
+
+

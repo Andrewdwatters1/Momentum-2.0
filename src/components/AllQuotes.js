@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getRandomIds } from '../redux/reducer';
+
 
 import AddPhoto from './AddPhoto';
 import AddQuote from './AddQuote';
@@ -10,26 +12,28 @@ const AllQuotes = function (props) {
   let b = props.photosList.length
   let c = a < b ? a : b
 
+  let itemsPerPage = 9;
   let combos = []
-  for (let i = 0; i < c; i++) {
+  for (let i = 0; i < itemsPerPage; i++) {
     combos.push({
-      quote: props.quotesList[i],
-      photo: props.photosList[i]
+      quote: props.quotesList[props.randomIds[i]],
+      photo: props.photosList[props.randomIds[i]]
     })
   }
-  console.log(combos[0], combos[1], combos[2])
-  combos.length = 9; // this sets the number of items returned
   let allCombos = combos.map((e, i) => {
     return (
-      <div key={i}>
-        <img src={e.photo.url} alt="Oops, something went wrong :("/>
+      <div key={i} className="quotes-grid-item">
+        <img src={e.photo.url} alt="Oops, something went wrong :(" className="quotes-grid-image"/>
         <p>{e.quote.quote}</p>
       </div>
     )
   })
+
     return (
-      <div>
-        {allCombos}<br/><br/> 
+      <div className="quotes-grid-container">
+        <div className="quotes-items-row">{allCombos[0]}{allCombos[1]}{allCombos[2]}</div>
+        <div className="quotes-items-row">{allCombos[3]}{allCombos[4]}{allCombos[5]}</div>
+        <div className="quotes-items-row">{allCombos[6]}{allCombos[7]}{allCombos[8]}</div>
         <AddPhoto/>
         <AddQuote/>
       </div>
@@ -42,8 +46,9 @@ const AllQuotes = function (props) {
 const mapStateToProps = state => {
   return {
     quotesList: state.quotesList,
-    photosList: state.photosList
+    photosList: state.photosList,
+    randomIds: state.randomIds
   }
 }
 
-export default connect(mapStateToProps)(AllQuotes);
+export default connect(mapStateToProps, {getRandomIds})(AllQuotes);
