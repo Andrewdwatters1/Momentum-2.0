@@ -7,8 +7,7 @@ const session = require('express-session');
 
 const app = express();
 const serverPort = process.env.SERVER_PORT;
-const qc = require('./quotesController');
-const wc = require('./weatherController');
+const controller = require('./controller');
 
 
 massive(process.env.CONNECTION_STRING).then(db => {
@@ -24,13 +23,13 @@ app.use(session({
 }))
 // app.use(express.static(`${__dirname}/../build`))
 
-app.get('/api/quotes', qc.getAllQuotes);
-app.get('/api/images', qc.getAllImages);
-app.get('/api/quote/:id', qc.getQuote);
-app.post(`/api/quote`, qc.postQuote);
-app.get('/api/image/:id', qc.getImage);
-app.post('/api/image', qc.postImage);
-app.get('/api/combo', qc.getAllCombo);
+app.get('/api/quotes', controller.getAllQuotes); //
+app.get('/api/photos', controller.getAllPhotos); //
+app.get('/api/quote/:id', controller.getQuote); //
+app.post(`/api/quote`, controller.postQuote); //
+app.get('/api/photo/:id', controller.getPhoto); //
+app.post('/api/photo', controller.postPhoto); //
+app.get('/api/combo', controller.getAllCombo);
 // app.post('/api/combo', qc.commentCombo);
 // app.put('/api/combo', qc.rateCombo);
 // app.delete('/api/combo', qc.deleteCombo);

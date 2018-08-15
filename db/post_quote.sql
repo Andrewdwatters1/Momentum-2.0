@@ -1,4 +1,4 @@
-INSERT INTO quotes(quote, author, submitted_by, rating)
-VALUES($1, $2, $3, null);
+INSERT INTO quotes(author, quote, category, liked, admin_approved)
+VALUES($1, $2, $3, false, false);
 
 SELECT * FROM quotes;

@@ -5,11 +5,11 @@ module.exports = {
       res.status(200).send(result)
     }).catch(error => console.log('Error originating from qc.getAllQuotes', error))
   },
-  getAllImages: (req, res, next) => {
+  getAllPhotos: (req, res, next) => {
     let db = req.app.get('db')
-    db.get_all_images().then(result => {
+    db.get_all_photos().then(result => {
       res.status(200).send(result)
-    }).catch(error => console.log('Error originating from qc.getAllImages', error))
+    }).catch(error => console.log('Error originating from qc.getAllPhotos', error))
   },
   getQuote: (req, res, next) => {
     let db = req.app.get('db')
@@ -20,26 +20,26 @@ module.exports = {
   },
   postQuote: (req, res, next) => {
     let db = req.app.get('db')
-    let { quote, author } = req.body;
     let { user } = req.body; // THIS WILL BE REQ.SESSION.USER
-    db.post_quote(quote, author, user).then(result => {
+    let { author, quote, category } = req.body;
+    db.post_quote([author, quote, category]).then(result => {
       res.status(200).send(result)
     }).catch(error => console.log('Error originating from qc.postQuote', error))
   },
-  getImage: (req, res, next) => {
+  getPhoto: (req, res, next) => {
     let db = req.app.get('db')
     let { id } = req.params;
-    db.get_image(id).then(result => {
+    db.get_photo(id).then(result => {
       res.status(200).send(result)
-    }).catch(error => console.log('Error originating from qc.getImage', error))
+    }).catch(error => console.log('Error originating from qc.getPhoto', error))
   },
-  postImage: (req, res, next) => {
+  postPhoto: (req, res, next) => {
     let db = req.app.get('db')
-    let { img, author } = req.body;
+    let { url, photographer, portfolio, location, views } = req.body;
     let { user } = req.body; // THIS WILL BE REQ.SESSION.USER
-    db.post_image(img, author, user).then(result => {
+    db.post_photo([url, photographer, portfolio, location, views]).then(result => {
       res.status(200).send(result)
-    }).catch(error => console.log('Error originating from qc.postImage', error))
+    }).catch(error => console.log('Error originating from qc.postPhoto', error))
   },
   getAllCombo: (req, res, next) => {
     let db = req.app.get('db')

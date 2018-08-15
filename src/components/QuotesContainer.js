@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import LandingQuote from './LandingQuote';
 import AllQuotes from './AllQuotes';
-import { getAllQuotes, getAllImages } from '../redux/reducer';
+import { getAllQuotes, getAllPhotos } from '../redux/reducer';
 
 class QuotesContainer extends Component {
   constructor() {
@@ -12,34 +12,34 @@ class QuotesContainer extends Component {
     this.state = {
       landingQuote: '',
       quoteIds: [],
-      imageIds: [],
+      photoIds: [],
       quoteMax: 3,
-      imageMax: 3,
+      photoMax: 3,
       min: 1 // max = last quote/img in DB, min always = 1. Once DB is complete this can be hard coded
     }
   }
 
-  getRandomIds = () => { // quote and image RANDOMS should probably merged into one for loop
+  getRandomIds = () => { // quote and photo RANDOMS should probably merged into one for loop
     let quoteRandoms = [];
-    let imageRandoms = [];
+    let photoRandoms = [];
     for (let i = 0; i < 9; i++) { quoteRandoms.push(Math.floor(Math.random() * (this.state.quoteMax - this.state.min + 1)) + this.state.min) };
-    for (let i = 0; i < 9; i++) { imageRandoms.push(Math.floor(Math.random() * (this.state.imageMax - this.state.min + 1)) + this.state.min) };
+    for (let i = 0; i < 9; i++) { photoRandoms.push(Math.floor(Math.random() * (this.state.photoMax - this.state.min + 1)) + this.state.min) };
     this.setState({
       quoteIds: [...this.state.quoteIds, ...quoteRandoms],
-      imageIds: [...this.state.imageIds, ...imageRandoms]
+      photoIds: [...this.state.photoIds, ...photoRandoms]
     })
   }
 
   componentDidMount = () => {
     this.getRandomIds();
     this.props.getAllQuotes();
-    this.props.getAllImages();
+    this.props.getAllPhotos();
   }
 
   render() {
-    // console.log('random IDs', this.state.quoteIds, this.state.imageIds)
+    // console.log('random IDs', this.state.quoteIds, this.state.photoIds)
     // console.log('quotes List', this.state.quotesList)
-    // console.log('images List', this.state.imagesList)
+    // console.log('photos List', this.state.photosList)
     // console.log('find the quoteslist', this.props)
 
     return (
@@ -62,8 +62,8 @@ class QuotesContainer extends Component {
 const mapStateToProps = state => {
   return {
     quotesList: state.quotesList,
-    imagesList: state.imagesList
+    photosList: state.photosList
   }
 }
 
-export default connect(mapStateToProps, { getAllQuotes, getAllImages })(QuotesContainer);
+export default connect(mapStateToProps, { getAllQuotes, getAllPhotos })(QuotesContainer);

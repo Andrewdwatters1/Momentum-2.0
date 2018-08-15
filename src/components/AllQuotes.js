@@ -1,33 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import AddPhoto from './AddPhoto';
+import AddQuote from './AddQuote';
+
 const AllQuotes = function (props) {
-  if (props.quotesList.length && props.imagesList.length) {
+  if (props.quotesList.length && props.photosList.length) {
   let a = props.quotesList.length
-  let b = props.imagesList.length
+  let b = props.photosList.length
   let c = a < b ? a : b
 
   let combos = []
   for (let i = 0; i < c; i++) {
     combos.push({
       quote: props.quotesList[i],
-      image: props.imagesList[i]
+      photo: props.photosList[i]
     })
   }
-  console.log(combos)
+
   combos.length = 9; // this sets the number of items returned
   let allCombos = combos.map((e, i) => {
     return (
       <div key={i}>
-        {e.image.img}
-        {e.quote.quote}
+        <img src={e.photo.img} alt="Oops, something went wrong :("/>
+        <p>{e.quote.quote}</p>
       </div>
     )
   })
-  console.log(allCombos)
     return (
       <div>
-        {allCombos}<br/><br/>
+        {allCombos}<br/><br/> 
+        <AddPhoto/>
+        <AddQuote/>
       </div>
     )
   } else {
@@ -38,7 +42,7 @@ const AllQuotes = function (props) {
 const mapStateToProps = state => {
   return {
     quotesList: state.quotesList,
-    imagesList: state.imagesList
+    photosList: state.photosList
   }
 }
 
