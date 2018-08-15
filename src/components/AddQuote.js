@@ -26,7 +26,7 @@ class AddQuote extends Component {
       category: e.target.value
     })
   }
-  submitPhoto = (e) => {
+  submitQuote = (e) => {
     e.preventDefault();
     // console.log(this.state)
     // needs to call post and add to DB
@@ -36,34 +36,18 @@ class AddQuote extends Component {
     //  USE THIS THIS ONLY TO POPULATE DB WITH QUOTES, DELETE THIS ONCE DONE
     // ***********************************************
     axios.get('https://talaikis.com/api/quotes/').then(result => {
-      setTimeout(function() {
-        for(let i = 0; i < 50; i++) {
+      setTimeout(function () {
+        for (let i = 0; i < 50; i++) {
           let quoteObj = {
             author: result.data[i].author,
             quote: result.data[i].quote,
-            category: result.data[i].category
-          } 
-          axios.post('/api/quote', {quoteObj}).then(result => {
+            category: result.data[i].cat
+          }
+          axios.post('/api/quote', { quoteObj }).then(result => {
             console.log('added quote', result.data)
           })
         }
       }, 100)
-    })
-    
-    let search = 'sunset';
-    axios.get(`https://api.unsplash.com/photos/random?client_id=5ed61707f778d0b6915e1cb34046b4a57e1c445bc003d5d11218f347770c3ae4&query=${search}&orientation=squarish&count=10`).then(result => {
-      console.log(result.data)
-      for (let i = 0; i < result.data.length; i++) {
-        let photoObj = {
-          url: result.data[i].urls.regular,
-          photographer: result.data[i].user.name,
-          portfolio: result.data[i].user.portfolio_url,
-          location: result.data[i].location.title
-        }
-        axios.post('/api/photo', { photoObj }).then(result => {
-          console.log('added to db', result.data)
-        })
-      }
     })
     // ***********************************************
     //  USE THIS THIS ONLY TO POPULATE DB WITH QUOTES, DELETE THIS ONCE DONE

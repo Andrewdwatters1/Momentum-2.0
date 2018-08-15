@@ -5,6 +5,7 @@ import AddPhoto from './AddPhoto';
 import AddQuote from './AddQuote';
 
 const AllQuotes = function (props) {
+  console.log(props)
   if (props.quotesList.length && props.photosList.length) {
   let a = props.quotesList.length
   let b = props.photosList.length
