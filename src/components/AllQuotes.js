@@ -5,7 +5,6 @@ import AddPhoto from './AddPhoto';
 import AddQuote from './AddQuote';
 
 const AllQuotes = function (props) {
-  console.log(props)
   if (props.quotesList.length && props.photosList.length) {
   let a = props.quotesList.length
   let b = props.photosList.length
@@ -18,12 +17,12 @@ const AllQuotes = function (props) {
       photo: props.photosList[i]
     })
   }
-
+  console.log(combos[0], combos[1], combos[2])
   combos.length = 9; // this sets the number of items returned
   let allCombos = combos.map((e, i) => {
     return (
       <div key={i}>
-        <img src={e.photo.img} alt="Oops, something went wrong :("/>
+        <img src={e.photo.url} alt="Oops, something went wrong :("/>
         <p>{e.quote.quote}</p>
       </div>
     )
