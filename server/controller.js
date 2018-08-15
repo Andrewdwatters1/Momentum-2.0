@@ -21,7 +21,7 @@ module.exports = {
   postQuote: (req, res, next) => {
     let db = req.app.get('db')
     let { user } = req.body; // THIS WILL BE REQ.SESSION.USER
-    let { author, quote, category } = req.body;
+    let { author, quote, category } = req.body.quoteObj;
     db.post_quote([author, quote, category]).then(result => {
       res.status(200).send(result)
     }).catch(error => console.log('Error originating from qc.postQuote', error))
@@ -35,7 +35,7 @@ module.exports = {
   },
   postPhoto: (req, res, next) => {
     let db = req.app.get('db')
-    let { url, photographer, portfolio, location, views } = req.body;
+    let { url, photographer, portfolio, location, views } = req.body.photoObj;
     let { user } = req.body; // THIS WILL BE REQ.SESSION.USER
     db.post_photo([url, photographer, portfolio, location, views]).then(result => {
       res.status(200).send(result)
