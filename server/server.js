@@ -29,7 +29,7 @@ app.get('/api/quote/:id', controller.getQuote); //
 app.post(`/api/quote`, controller.postQuote); //
 app.get('/api/photo/:id', controller.getPhoto); //
 app.post('/api/photo', controller.postPhoto); //
-app.get('/api/combo', controller.getAllCombo);
+app.get('/api/combo', controller.getAllCombos);
 // app.post('/api/combo', qc.commentCombo);
 // app.put('/api/combo', qc.rateCombo);
 // app.delete('/api/combo', qc.deleteCombo);

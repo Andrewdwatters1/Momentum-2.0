@@ -7,35 +7,26 @@ import AddPhoto from './AddPhoto';
 import AddQuote from './AddQuote';
 
 const AllQuotes = function (props) {
-  if (props.quotesList.length && props.photosList.length) {
-  let a = props.quotesList.length
-  let b = props.photosList.length
-  let c = a < b ? a : b
-
-  let itemsPerPage = 9;
-  let combos = []
-  for (let i = 0; i < itemsPerPage; i++) {
-    combos.push({
-      quote: props.quotesList[props.randomIds[i]],
-      photo: props.photosList[props.randomIds[i]]
+  if (props.comboList.length) {
+    console.log(props)
+    let allCombos = props.comboList.map((e, i) => {
+      return (
+        <div key={i} className="quotes-grid-item">
+          <img src={e.url} alt="Oops, something went wrong :(" className="quotes-grid-image" />
+          <p>{e.quote}</p>
+        </div>
+      )
+      let itemsPerPage = 9;
+      allCombos.length = itemsPerPage;
     })
-  }
-  let allCombos = combos.map((e, i) => {
-    return (
-      <div key={i} className="quotes-grid-item">
-        <img src={e.photo.url} alt="Oops, something went wrong :(" className="quotes-grid-image"/>
-        <p>{e.quote.quote}</p>
-      </div>
-    )
-  })
-
+    console.log(allCombos[0], allCombos[1], allCombos[2], allCombos[3], allCombos[4], allCombos[5], allCombos[6], allCombos[7], allCombos[8],)
     return (
       <div className="quotes-grid-container">
         <div className="quotes-items-row">{allCombos[0]}{allCombos[1]}{allCombos[2]}</div>
         <div className="quotes-items-row">{allCombos[3]}{allCombos[4]}{allCombos[5]}</div>
         <div className="quotes-items-row">{allCombos[6]}{allCombos[7]}{allCombos[8]}</div>
-        <AddPhoto/>
-        <AddQuote/>
+        <AddPhoto />
+        <AddQuote />
       </div>
     )
   } else {
@@ -45,10 +36,11 @@ const AllQuotes = function (props) {
 
 const mapStateToProps = state => {
   return {
+    comboList: state.comboList,
     quotesList: state.quotesList,
     photosList: state.photosList,
     randomIds: state.randomIds
   }
 }
 
-export default connect(mapStateToProps, {getRandomIds})(AllQuotes);
+export default connect(mapStateToProps, { getRandomIds })(AllQuotes);

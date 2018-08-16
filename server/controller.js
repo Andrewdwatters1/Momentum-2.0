@@ -41,11 +41,11 @@ module.exports = {
       res.status(200).send(result)
     }).catch(error => console.log('Error originating from qc.postPhoto', error))
   },
-  getAllCombo: (req, res, next) => {
+  getAllCombos: (req, res, next) => {
     let db = req.app.get('db')
-    db.get_all_combo([quote_id, image_id]).then(result => {
+    db.get_all_combo().then(result => {
       res.status(200).send(result)
-    }).catch(error => console.log('Error originating from qs.displayCombo', error))
+    }).catch(error => console.log('Error originating from qs.getAllCombo', error))
   },
   commentCombo: (req, res, next) => {
     let db = req.app.get('db')

@@ -1,25 +1,58 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { changeTimezone, changeTimeformat } from '../redux/reducer';
 
 class Dropdown extends Component {
+  constructor() {
+    super()
+    this.state = {
+      displayMenu: false,
+    }
+  }
+
+  toggleMenu = (e) => {
+    e.target.classList.toggle("fa-bars-open")
+  }
+  handleTimeZoneChange = (e) => {
+    this.props.changeTimezone(e.target.value)
+  }
+  handleTimeFormatChange = (e) => {
+    this.props.changeTimeformat(e.target.value)
+  }
+
   render() {
     return (
-      <div className="nav-items">
-        <div className="nav-links-desktop">
-          <span>Item 1 </span>
-          <span>Item 2 </span>
-          <span>Item 3 </span>
-          <button class="fas fa-bars" aria-hidden="true" onClick={this.toggleDropdown}>Dropdown</button>
-        </div>
-
-        <div hidden="true" className="nav-links-mobile">
-          <button>Item 1</button>
-          <button>Item 2</button>
-          <button>Item 3</button>
-        </div>
-
+      <div>
+        <span>
+          <button onClick={this.toggleMenu} className="fas fa-bars-closed">Dropdown</button>
+          <select name="timezone" onChange={this.handleTimeZoneChange} defaultValue="Mountain" preventDefault="true">
+            <option value="Hawaii">Hawaii</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Pacific">Pacific</option>
+            <option value="Mountain" >Mountain</option>
+            <option value="Central">Central</option>
+            <option value="Eastern">Eastern</option>
+            <option value="GMT">GMT-Universal</option>
+          </select>
+          <select name="timeformat" onChange={this.handleTimeFormatChange}>
+            <option value="HH:mm:ss - zz">HHH:mm:ss - 24hr + TimeZone</option>
+            <option value="h:mm:ss A - zz">HH:mm:ss - 12hr + TimeZone</option>
+            <option value="HH:mm:ss" selected="selected">HH:mm:ss - 24hr</option>
+            <option value="h:mm:ss A">HH:mm:ss 12hr</option>
+            <option value="HH:mm">HH:mm - 24hr</option>
+            <option value="h:mm A">HH:mm - 12hr</option>
+          </select>
+        </span>
       </div>
     )
   }
 }
 
-export default Dropdown;
+const mapStateToProps = state => {
+  return {
+    timezone: state.timezone,
+    timeformat: state.timeformat
+  }
+}
+
+export default connect(mapStateToProps, { changeTimezone, changeTimeformat })(Dropdown)
