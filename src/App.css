@@ -9,6 +9,12 @@
 
 /* LANDING PAGE STYLES */
 
+.landing-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 /* QUOTES STYLES */
 

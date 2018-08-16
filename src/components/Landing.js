@@ -8,7 +8,7 @@ import LandingImage from './LandingImage';
 
 const Landing = function() {
   return (
-    <div>
+    <div className="landing-main">
       <Greeting/>
       <Time/>
       <ToDo/>

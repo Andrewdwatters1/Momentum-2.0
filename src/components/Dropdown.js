@@ -32,6 +32,7 @@ class Dropdown extends Component {
             <option value="Mountain" >Mountain</option>
             <option value="Central">Central</option>
             <option value="Eastern">Eastern</option>
+            <option value="gmt">GMT</option>
           </select>
           <select name="timeformat" onChange={this.handleTimeFormatChange}>
             <option value="HH:mm:ss - zz">HHH:mm:ss - 24hr + TimeZone</option>
