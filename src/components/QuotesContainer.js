@@ -26,7 +26,6 @@ class QuotesContainer extends Component {
   }
 
   render() {
-    console.log(this.props.comboList)
     return (
       <div>
         {window.location.href === "http://localhost:3000/#/quotes" ?

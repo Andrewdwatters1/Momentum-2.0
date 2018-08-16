@@ -1,0 +1,223 @@
+App.CSS
+/* ALL COMPONENT STYLES */
+
+
+/* NAVBAR STYLES */
+
+.fa-bars-open {
+  background-color: red;
+}
+
+/* LANDING PAGE STYLES */
+
+.landing-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* QUOTES STYLES */
+
+.quotes-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 95vw;   /* flex-wrap causing this to show 2 images wide when window width compressed */
+  height: 46vh; /* CHANGE THIS IF NAVBAR/HEADER */
+  margin-left: auto;
+  margin-right: auto;
+}
+.quotes-grid-item {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  max-height: 100%;
+  width: 33%;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid black 2px; /* remove */
+  position: relative;
+}
+.quotes-grid-image {
+  display: flex;
+  width: 80%;
+  height: 80%;
+  border: solid black 5px;
+  border-radius: 280px;
+}
+.quotes-grid-content {
+  position: absolute;
+  bottom: 0;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+}
+
+/* MEDIA QUERIES */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AllQuotes.js 
+
+
+
+
+import React from 'react';
+import { connect } from 'react-redux';
+import Modal from 'react-responsive-modal';
+
+import AddPhoto from './AddPhoto';
+import AddQuote from './AddQuote';
+import ComboItem from './ComboItem';
+
+const AllQuotes = function (props) {
+  if (props.comboList.length) {
+    console.log(props.comboList)
+    let randomList = [];
+    for (let i = 0; i < 18; i++) {
+      randomList.push(props.comboList[Math.floor(Math.random() * 99) + 1])
+    }
+    let allCombos = randomList.map((e, i) => {
+      return <ComboItem key={i} imgsrc={e.url} quote={e.quote} id={i+1}/>
+      let itemsPerPage = 30;
+      allCombos.length = itemsPerPage;
+    })
+    console.log(allCombos)
+    return (
+      <div className="quotes-grid-container">
+        {allCombos}
+        <AddPhoto />
+        <AddQuote />
+      </div>
+    )
+  } else {
+    return null
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    comboList: state.comboList,
+    quotesList: state.quotesList,
+    photosList: state.photosList,
+  }
+}
+
+export default connect(mapStateToProps)(AllQuotes);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ComboItem.js 
+
+import React, { Component } from 'react';
+
+class ComboItem extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      displayModal: false,
+    }
+  }
+
+  render() {
+    return (
+      <div className="quotes-grid-item">
+        <img src={this.props.imgsrc} alt="Oops, something went wrong :(" className="quotes-grid-image" />
+        <p className="quotes-grid-content">{this.props.quote}</p>
+      </div>
+    )
+  }
+}
+
+export default ComboItem;
