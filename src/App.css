@@ -45,17 +45,6 @@
   border: solid black 5px;
   border-radius: 100px;
 }
-.quotes-grid-modal-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  z-index: 1;
-  opacity: .50;
-  height: 30%;
-  width: 45%;
-  border-radius: 10px;
-}
 .quotes-grid-text {
   /* display: flex; */
   position: absolute;
@@ -66,6 +55,9 @@
   text-align: center;
   z-index: 1;
   color: red;
+}
+.magnify {
+  cursor: zoom-in;
 }
 /* MEDIA QUERIES */
 
