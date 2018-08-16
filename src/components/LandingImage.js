@@ -1,6 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import hawaii from '../images/hawaii.jpg';
+import alaska from '../images/alaska.jpg';
+import pacific from '../images/pacific.jpg';
+import mountain from '../images/mountain.jpg';
+import central from '../images/central.jpg';
+import eastern from '../images/eastern.jpg';
+import gmt from '../images/gmt.jpg';
+
 const LandingImage = function(props) {
   if(props.timezone === 'Hawaii') {
     return <div style={styles.hawaii}> testing </div>
@@ -14,9 +22,7 @@ const LandingImage = function(props) {
     return <div style={styles.central}> testing </div>
   } else if(props.timezone === 'Eastern') {
     return <div style={styles.eastern}> testing </div>
-  } else if (props.timezone === 'GMT') {
-    return <div style={styles.default}> testing </div>
-  } else return null
+  } else return <div style={styles.default}></div>
 }
 
 const mapStateToProps = state => {
@@ -29,24 +35,31 @@ export default connect(mapStateToProps)(LandingImage);
 
 let styles = {
   hawaii: {
-    backgroundColor: 'red',
+    backgroundImage: `url(${hawaii}`,
+    height: 800
   }, 
   alaska: {
-    backgroundColor: 'blue',
+    backgroundImage: `url(${alaska}`,
+    height: 800
   }, 
   pacific: {
-    backgroundColor: 'green',
+    backgroundImage: `url(${pacific}`,
+    height: 800
   }, 
   mountain: {
-    backgroundColor: 'yellow',
+    backgroundImage: `url(${mountain}`,
+    height: 800
   }, 
   central: {
-    backgroundColor: 'pink',
+    backgroundImage: `url(${central}`,
+    height: 800
   }, 
   eastern: {
-    backgroundColor: 'aqua',
+    backgroundImage: `url(${eastern}`,
+    height: 800
   }, 
   default: {
-    backgroundColor: 'black',
+    backgroundImage: `url(${gmt}`,
+    height: 800
   }, 
 }

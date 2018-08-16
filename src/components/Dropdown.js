@@ -25,14 +25,13 @@ class Dropdown extends Component {
       <div>
         <span>
           <button onClick={this.toggleMenu} className="fas fa-bars-closed">Dropdown</button>
-          <select name="timezone" onChange={this.handleTimeZoneChange} defaultValue="Mountain" preventDefault="true">
+          <select name="timezone" onChange={this.handleTimeZoneChange} defaultValue="Mountain">
             <option value="Hawaii">Hawaii</option>
             <option value="Alaska">Alaska</option>
             <option value="Pacific">Pacific</option>
             <option value="Mountain" >Mountain</option>
             <option value="Central">Central</option>
             <option value="Eastern">Eastern</option>
-            <option value="GMT">GMT-Universal</option>
           </select>
           <select name="timeformat" onChange={this.handleTimeFormatChange}>
             <option value="HH:mm:ss - zz">HHH:mm:ss - 24hr + TimeZone</option>
