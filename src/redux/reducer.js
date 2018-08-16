@@ -29,7 +29,7 @@ export default function reducer(state = initialState, action) {
     case GET_ALL_COMBOS_FULFILLED:
       return { ...state, comboList: action.payload.data }
     case GET_RANDOM_IDS:
-      return { ...state, randomIds: [...action.payload] }
+      return { randomIds: [...action.payload], ...state }
     case CHANGE_TIMEZONE:
       return { ...state, timezone: action.payload}
     case CHANGE_TIME_FORMAT:

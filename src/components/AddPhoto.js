@@ -37,7 +37,7 @@ class AddPhoto extends Component {
 
   submitPhoto = (e) => {
     e.preventDefault();
-    let search = 'tropical'
+    let search = 'snow'
     axios.get(`https://api.unsplash.com/photos/random?client_id=5ed61707f778d0b6915e1cb34046b4a57e1c445bc003d5d11218f347770c3ae4&query=${search}&orientation=squarish&count=30`).then(result => {
       setTimeout(function () {
         for (let i = 0; i < 10; i++) {
