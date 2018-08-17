@@ -19,7 +19,7 @@ class QuotesContainer extends Component {
     this.setState({
       randomIds: randomIds
     })
-  } 
+  }
   componentDidMount = () => {
     this.getRandomIds();
     this.props.getAllCombos();
@@ -32,8 +32,7 @@ class QuotesContainer extends Component {
           <div><AllQuotes /></div>
           :
           <div>
-            <LandingQuote quote={this.props.comboList[this.state.randomIds[0]]} /> CHANGE THIS BASED ON TIME/DATE
-          <Link to="/quotes"><button> Get Inspired </button></Link>
+            <Link to="/quotes"><button> Get Inspired </button></Link>
           </div>
         }
       </div>

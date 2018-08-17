@@ -8,6 +8,7 @@ class ComboItem extends Component {
       open: false,
       modalButtonActive: false,
       cursorSelect: false,
+      userCanEditQuote: false,
     }
   }
 
@@ -18,10 +19,17 @@ class ComboItem extends Component {
     this.setState({ open: false });
   };
   toggleStyle = () => {
-    document.getElementById(`combo-id-${this.props.id}`).classList.toggle('magnify')
+    document.getElementById(`combo-id-${this.props.id}-img`).classList.toggle('magnify')
   }
   editButtonActive = (e) => {
     e.target.classList.toggle('fas')
+    e.target.disabled = 'false'; 
+  }
+  commentQuote = (e) => {
+    this.setState({
+      userCanEditQuote: !this.state.userCanEditQuote
+    })
+    document.getElementById(`combo-id-${this.props.id}-txt`).contentEditable = this.state.userCanEditQuote;
   }
   render() {
     const { open } = this.state;
@@ -36,17 +44,16 @@ class ComboItem extends Component {
           onMouseEnter={this.toggleStyle}
           onMouseLeave={this.toggleStyle}
           onMouseDown={this.onOpenModal}
-          id={`combo-id-${this.props.id}`}
+          id={`combo-id-${this.props.id}-img`}
         />
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="modal-image-cont">
-            <img src={this.props.imgsrc} className="modal-image" />
+            <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`}/>
             <div>
-              <i className="far fa-edit" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
-              <i class="far fa-heart" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
-              <i class="far fa-trash-alt" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
-              {/* <i class="far fa-plus-square" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>  */} 
-              {/* USER CAN ALREADY SUBMIT PHOTOS/QUOTES */}
+              <p>{this.props.quote}</p>
+              <i className="far fa-edit" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive} disabled="disabled" onMouseDown={this.commentQuote}></i>
+              <i class="far fa-heart" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive} disabled="disabled"></i>
+              <i class="far fa-trash-alt" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive} disabled="disabled"></i>
             </div>
           </div>
         </Modal>
@@ -56,6 +63,7 @@ class ComboItem extends Component {
           onMouseLeave={() => this.setState({ modalButtonActive: false })}
           onMouseEnter={this.toggleStyle}
           onMouseLeave={this.toggleStyle}
+          id={`combo-id-${this.props.id}-txt`}
         >{this.props.quote}</div>
       </div>
     )

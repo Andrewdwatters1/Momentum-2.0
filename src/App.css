@@ -15,6 +15,20 @@
   justify-content: center;
   align-items: center;
 }
+.landing-quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0;
+  width: 100vw;
+  height: 25vh;
+  color: white;
+  /* background: radial-gradient(rgba(0, 0, 0, .8), transparent 70%); */
+  background: linear-gradient(transparent, rgb(10, 10, 10))
+  /* border-radius: 15px 15px 80px 80px; */
+}
 
 /* QUOTES STYLES */
 
@@ -43,7 +57,7 @@
   width: 90%;
   height: 90%;
   border: solid black 5px;
-  border-radius: 100px;
+  border-radius: 80px;
 }
 .quotes-grid-text {
   /* display: flex; */

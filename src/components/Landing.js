@@ -5,6 +5,7 @@ import ToDo from './ToDo';
 import Greeting from './Greeting';
 import QuotesContainer from './QuotesContainer';
 import LandingImage from './LandingImage';
+import LandingQuote from './LandingQuote';
 
 const Landing = function() {
   return (
@@ -14,6 +15,7 @@ const Landing = function() {
       <ToDo/>
       <QuotesContainer/>
       <LandingImage/>
+      <LandingQuote/>
     </div>
   )
 }
