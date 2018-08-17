@@ -60,8 +60,52 @@
 }
 .magnify {
   cursor: zoom-in;
-  opacity: .70;
+  opacity: .70; 
+  /* would like to add vignette or gradient to black at bottom here */
 }
+
+/***********   MODAL STYLES ***********/
+
+.modal-image-cont {
+  display: flex;
+  justify-content: flex-start;
+  height: 90vh;
+  position: relative;
+}
+.modal-image {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/********** FONT-AWESOME BUTTONS **********/
+
+.far {
+  font-size: 3em;
+}
+.fas {
+  font-size: 3em;
+}
+.fa-heart {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.fa-trash-alt {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.fa-plus-square {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.fa-edit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 /* MEDIA QUERIES */
 
 

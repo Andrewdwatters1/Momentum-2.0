@@ -20,14 +20,16 @@ class ComboItem extends Component {
   toggleStyle = () => {
     document.getElementById(`combo-id-${this.props.id}`).classList.toggle('magnify')
   }
-
+  editButtonActive = (e) => {
+    e.target.classList.toggle('fas')
+  }
   render() {
     const { open } = this.state;
     return (
       <div className="quotes-grid-item">
         <img
           src={this.props.imgsrc}
-          alt="Oops, something went wrong :("
+          alt={"Oops, something went wrong :("}
           className="quotes-grid-image"
           onMouseEnter={() => this.setState({ modalButtonActive: true })}
           onMouseLeave={() => this.setState({ modalButtonActive: false })}
@@ -37,7 +39,15 @@ class ComboItem extends Component {
           id={`combo-id-${this.props.id}`}
         />
         <Modal open={open} onClose={this.onCloseModal} center>
-          Testing
+          <div className="modal-image-cont">
+            <img src={this.props.imgsrc} className="modal-image" />
+            <div>
+              <i className="far fa-edit" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
+              <i class="far fa-heart" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
+              <i class="far fa-trash-alt" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
+              <i class="far fa-plus-square" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
+            </div>
+          </div>
         </Modal>
         <div
           className="quotes-grid-text"
