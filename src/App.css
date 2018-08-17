@@ -81,9 +81,11 @@
 
 .far {
   font-size: 3em;
+  color: blue;
 }
 .fas {
   font-size: 3em;
+  color: red;
 }
 .fa-heart {
   position: absolute;

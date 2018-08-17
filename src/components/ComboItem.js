@@ -45,7 +45,8 @@ class ComboItem extends Component {
               <i className="far fa-edit" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
               <i class="far fa-heart" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
               <i class="far fa-trash-alt" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
-              <i class="far fa-plus-square" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>
+              {/* <i class="far fa-plus-square" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive}></i>  */} 
+              {/* USER CAN ALREADY SUBMIT PHOTOS/QUOTES */}
             </div>
           </div>
         </Modal>
