@@ -17,8 +17,8 @@ class ComboItem extends Component {
   onCloseModal = () => {
     this.setState({ open: false });
   };
-  toggleStyle = (e) => {
-    e.target.classList.toggle('magnify')
+  toggleStyle = () => {
+    document.getElementById(`combo-id-${this.props.id}`).classList.toggle('magnify')
   }
 
   render() {
@@ -34,6 +34,7 @@ class ComboItem extends Component {
           onMouseEnter={this.toggleStyle}
           onMouseLeave={this.toggleStyle}
           onMouseDown={this.onOpenModal}
+          id={`combo-id-${this.props.id}`}
         />
         <Modal open={open} onClose={this.onCloseModal} center>
           Testing
@@ -42,6 +43,8 @@ class ComboItem extends Component {
           className="quotes-grid-text"
           onMouseEnter={() => this.setState({ modalButtonActive: true })}
           onMouseLeave={() => this.setState({ modalButtonActive: false })}
+          onMouseEnter={this.toggleStyle}
+          onMouseLeave={this.toggleStyle}
         >{this.props.quote}</div>
       </div>
     )

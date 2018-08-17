@@ -48,16 +48,19 @@
 .quotes-grid-text {
   /* display: flex; */
   position: absolute;
-  bottom: 11%;
+  bottom: 15%;
   width: 78%;
   margin-right: auto;
   margin-left: auto;
   text-align: center;
   z-index: 1;
-  color: red;
+  color: white;
+  background: radial-gradient(rgb(0, 0, 0, 0.15), transparent 80%);
+  border-radius: 15px 15px 80px 80px;
 }
 .magnify {
   cursor: zoom-in;
+  opacity: .70;
 }
 /* MEDIA QUERIES */
 
