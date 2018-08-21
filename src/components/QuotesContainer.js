@@ -10,14 +10,20 @@ class QuotesContainer extends Component {
   constructor() {
     super()
     this.state = {
-      randomIds: []
+      randomIds: [],
     }
   }
   getRandomIds = () => {
-    let randomIds = []
-    for (let i = 0; i < 18; i++) { randomIds.push(Math.floor(Math.random() * 99) + 1) };
+    let randoms = []
+    for (let i = 0; i < 18; i) {
+      let randomNum = Math.floor(Math.random() * 99) + 1
+      if (!randoms.includes(randomNum)) {
+        randoms.push(randomNum)
+        i++
+      }
+    };
     this.setState({
-      randomIds: randomIds
+      randomIds: this.state.randomIds
     })
   }
   componentDidMount = () => {

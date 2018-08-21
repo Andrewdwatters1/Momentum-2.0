@@ -45,11 +45,14 @@ module.exports = {
     let db = req.app.get('db')
     db.get_all_combo().then(result => {
       res.status(200).send(result)
-    }).catch(error => console.log('Error originating from qs.getAllCombo', error))
+    }).catch(error => console.log('Error originating from qc.getAllCombo', error))
   },
   commentCombo: (req, res, next) => {
     let db = req.app.get('db')
-    res.send('qc.commentCombo hit')
+    let { content, photo, user } = req.body.comment; // user will come from req.session.user
+    db.comment_combo([content, photo, user]).then(result => {
+      res.status(200).send(result)
+    }).catch(error => console.log('Error, originates from qc.commentCombo', error))
   },
   rateCombo: (req, res, next) => {
     let db = req.app.get('db')

@@ -1,12 +1,12 @@
 import React from 'react';
 import Dropdown from './Dropdown';
-import Weather from './Weather';
+// import Weather from './Weather';
 
 const NavContainer = function() {
   return (
     <div>
       <Dropdown/>
-      <Weather/>
+      {/* <Weather/> */}
     </div>
   )
 }
