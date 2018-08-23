@@ -8,7 +8,7 @@ const session = require('express-session');
 const app = express();
 const serverPort = process.env.SERVER_PORT;
 const controller = require('./controller');
-
+const ac = require('./authCtrl');
 
 massive(process.env.CONNECTION_STRING).then(db => {
   app.set('db', db)
@@ -23,11 +23,16 @@ app.use(session({
 }))
 // app.use(express.static(`${__dirname}/../build`))
 
+app.get('/auth/callback', ac.auth);
+app.get(`/api/currentUser`, ac.currentUser);
+app.get('/api/logout', ac.logout);
+// ^ All Auth endpts
+
 app.get('/api/quotes', controller.getAllQuotes); //
-app.get('/api/photos', controller.getAllPhotos); //
-app.get('/api/quote/:id', controller.getQuote); //
-app.post(`/api/quote`, controller.postQuote); //
-app.get('/api/photo/:id', controller.getPhoto); //
+app.get('/api/photos', controller.getAllPhotos); // need?
+app.get('/api/quote/:id', controller.getQuote); // need?
+app.post(`/api/quote`, controller.postQuote); // need?
+app.get('/api/photo/:id', controller.getPhoto); // need?
 app.post('/api/photo', controller.postPhoto); //
 app.get('/api/combo', controller.getAllCombos);
 app.post('/api/combo', controller.commentCombo);

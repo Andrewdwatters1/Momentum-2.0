@@ -17,3 +17,19 @@ CREATE TABLE quotes (
   liked BOOLEAN,
   admin_approved BOOLEAN
 );
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY, 
+    auth_id TEXT,
+    name VARCHAR,
+    email VARCHAR, 
+    picture TEXT
+);
+
+CREATE TABLE comments (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users,
+  photo_id INTEGER REFERENCES photos,
+  title VARCHAR,
+  content VARCHAR(750)
+);

@@ -24,7 +24,7 @@ class ComboItem extends Component {
   }
   editButtonActive = (e) => {
     e.target.classList.toggle('fas')
-    e.target.disabled = 'false'; 
+    e.target.disabled = 'false';
   }
   commentQuote = () => {
     document.getElementById("modal-user-comment").classList.toggle("modal-comment-active")
@@ -38,10 +38,10 @@ class ComboItem extends Component {
     e.preventDefault();
     let comment = {
       content: this.state.userCommentContent,
-      photo: 13,
+      photo: 13, // change
       user: 1 // will be req.session.user.id
     }
-    axios.post('/api/combo', {comment}).then(result => {
+    axios.post('/api/combo', { comment }).then(result => {
       // toast user w/ "Comment Submitted"
       console.log(result)
     })
@@ -63,11 +63,11 @@ class ComboItem extends Component {
         />
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="modal-image-cont">
-            <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`}/>
+            <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} />
             <div>
               <p>{this.props.quote}</p>
-              <form onSubmit={this.submitComment}>
-                <input display={this.state.userComment} id="modal-user-comment" className="modal-comment" onChange={this.handleCommentInput} value={this.state.userCommentContent}/>
+              <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
+                <input onChange={this.handleCommentInput} value={this.state.userCommentContent} />
                 <button type="submit" onSubmit={this.submitComment}>Submit Comment</button>
               </form>
               <i className="far fa-edit" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive} disabled="disabled" onMouseDown={this.commentQuote}></i>
