@@ -13,8 +13,8 @@ module.exports = {
   },
   commentCombo: (req, res, next) => {
     let db = req.app.get('db')
-    let { content, photo, user } = req.body.comment; // user will come from req.session.user
-    db.comment_combo([content, photo, user]).then(result => {
+    let { content, userId, photoId, quote } = req.body.comment;
+    db.comment_combo([content, userId, photoId, quote]).then(result => {
       res.status(200).send(result)
     }).catch(error => console.log('Error, originates from qc.commentCombo', error))
   },

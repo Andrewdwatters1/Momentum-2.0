@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 class ComboItem extends Component {
   constructor(props) {
@@ -22,12 +23,13 @@ class ComboItem extends Component {
   toggleStyle = () => {
     document.getElementById(`combo-id-${this.props.id}-img`).classList.toggle('magnify')
   }
-  editButtonActive = (e) => {
+  buttonActive = (e) => {
     e.target.classList.toggle('fas')
-    e.target.disabled = 'false';
   }
   commentQuote = () => {
     document.getElementById("modal-user-comment").classList.toggle("modal-comment-active")
+    console.log(this.props.photoId)
+    console.log(this.props)
   }
   handleCommentInput = (e) => {
     this.setState({
@@ -38,13 +40,13 @@ class ComboItem extends Component {
     e.preventDefault();
     let comment = {
       content: this.state.userCommentContent,
-      photo: 13, // change
-      user: 1 // will be req.session.user.id
+      userId: this.props.user.id,
+      photoId: this.props.photoId,
+      quote: this.props.quote
     }
     axios.post('/api/combo', { comment }).then(result => {
-      // toast user w/ "Comment Submitted"
-      console.log(result)
-    })
+      ToastStore.success('Comment Submitted')
+    }).catch(error => ToastStore.error('Sorry, you must be logged in to comment'))
   }
 
   render() {
@@ -71,9 +73,10 @@ class ComboItem extends Component {
                 <input onChange={this.handleCommentInput} value={this.state.userCommentContent} />
                 <button type="submit" onSubmit={this.submitComment}>Submit Comment</button>
               </form>
-              <i className="far fa-edit" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive} disabled="disabled" onMouseDown={this.commentQuote}></i>
-              <i class="far fa-heart" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive} disabled="disabled"></i>
-              <i class="far fa-trash-alt" onMouseEnter={this.editButtonActive} onMouseLeave={this.editButtonActive} disabled="disabled"></i> {/* */}
+              <i className="far fa-edit" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive} onMouseDown={this.commentQuote}></i>
+              <i class="far fa-heart" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive}></i>
+              <i class="far fa-trash-alt" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive}></i>
+              <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
             </div>
           </div>
         </Modal>
@@ -90,4 +93,10 @@ class ComboItem extends Component {
   }
 }
 
-export default ComboItem;
+const mapStateToProps = state => {
+  return {
+    user: state.userInfo
+  }
+}
+
+export default connect(mapStateToProps)(ComboItem);

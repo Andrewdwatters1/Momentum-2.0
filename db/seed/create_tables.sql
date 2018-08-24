@@ -15,7 +15,8 @@ CREATE TABLE quotes (
   author VARCHAR(50),
   category VARCHAR(50),
   liked BOOLEAN,
-  admin_approved BOOLEAN
+  admin_approved BOOLEAN,
+  quote TEXT
 );
 
 CREATE TABLE users (
@@ -30,6 +31,7 @@ CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users,
   photo_id INTEGER REFERENCES photos,
+  quote_id INTEGER REFERENCES quotes,
   title VARCHAR,
   content VARCHAR(750)
 );
