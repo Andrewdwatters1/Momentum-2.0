@@ -4,7 +4,7 @@ const ToDoItem = function (props) {
   return (
     <div>
       {props.text}
-      <text onMouseDown={() => props.removeItem(props.id)}>✅</text>
+      <text onMouseDown={() => props.removeItem(props.id)}>button</text>
     </div>
   )
 }

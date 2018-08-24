@@ -11,17 +11,17 @@ import gmt from '../images/gmt.jpg';
 
 const LandingImage = function (props) {
   if (props.timezone === 'Hawaii') {
-    return <div style={styles.hawaii}> testing </div>
+    return <div style={styles.hawaii}></div>
   } else if (props.timezone === 'Alaska') {
-    return <div style={styles.alaska}> testing </div>
+    return <div style={styles.alaska}></div>
   } else if (props.timezone === 'Pacific') {
-    return <div style={styles.pacific}> testing </div>
+    return <div style={styles.pacific}></div>
   } else if (props.timezone === 'Mountain') {
-    return <div style={styles.mountain}> testing </div>
+    return <div style={styles.mountain}></div>
   } else if (props.timezone === 'Central') {
-    return <div style={styles.central}> testing </div>
+    return <div style={styles.central}></div>
   } else if (props.timezone === 'Eastern') {
-    return <div style={styles.eastern}> testing </div>
+    return <div style={styles.eastern}></div>
   } else return <div style={styles.default}></div>
 }
 

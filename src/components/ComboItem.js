@@ -56,9 +56,9 @@ class ComboItem extends Component {
       userCommentContent: ''
     })
   }
-  // addToFavorites = () => {
-
-  // }
+  addToFavorites = () => {
+    
+  }
 
   render() {
     const { open } = this.state;
@@ -85,7 +85,7 @@ class ComboItem extends Component {
                 <button type="submit" onSubmit={this.submitComment}>Submit Comment</button>
               </form>
               <i className="far fa-edit" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive} onMouseDown={this.commentQuote}></i>
-              <i class="far fa-heart" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive}></i>
+              <i class="far fa-heart" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive} onMouseDown={this.addToFavorites}></i>
               <i class="far fa-trash-alt" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive}></i>
               <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
             </div>

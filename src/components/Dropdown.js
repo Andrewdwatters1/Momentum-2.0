@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 import { changeTimezone, changeTimeformat, logout } from '../redux/reducer';
 
 class Dropdown extends Component {
-  constructor() {
-    super()
-    this.state = {
-      open: false,
-    }
-  }
-
-  handleClick = () => {
-    this.setState({
-      open: !this.state.open
-    });
-  }
 
   handleTimeZoneChange = (e) => {
     this.props.changeTimezone(e.target.value)
@@ -26,31 +14,12 @@ class Dropdown extends Component {
   }
 
   render() {
-    if (this.state.open) {
-      return (
-        <div>
-          <div>
-            Set Timezone: <select name="timezone" onChange={this.handleTimeZoneChange} defaultValue="Mountain" id="timezone-select" className="menu-item" href="/">
-              <option value="Hawaii">Hawaii</option>
-              <option value="Alaska">Alaska</option>
-              <option value="Pacific">Pacific</option>
-              <option value="Mountain" >Mountain</option>
-              <option value="Central">Central</option>
-              <option value="Eastern">Eastern</option>
-              <option value="gmt">GMT</option>
-            </select>
-          </div>
-          <div>
-            Clock format: <select name="timeformat" onChange={this.handleTimeFormatChange} id="timeformat-select" className="menu-item" href="/">
-              <option value="HH:mm:ss - zz">HHH:mm:ss - 24 T</option>
-              <option value="h:mm:ss A - zz">HH:mm:ss - 12 T</option>
-              <option value="HH:mm:ss" selected="selected">HH:mm:ss - 24</option>
-              <option value="h:mm:ss A">HH:mm:ss - 12</option>
-              <option value="HH:mm">HH:mm - 24</option>
-              <option value="h:mm A">HH:mm - 12</option>
-            </select>
-          </div>
-          <div>
+    return (
+      <div>
+        <DropdownButton>
+          <MenuItem eventKey="1">Productivity Mode</MenuItem>
+          <MenuItem eventKey="2">Focus Timer</MenuItem>
+          <MenuItem eventKey="3">
             {
               this.props.user
                 ?
@@ -58,21 +27,33 @@ class Dropdown extends Component {
                 :
                 <Link to=""><button>login</button></Link>
             }
-          </div>
-          <div>
-            Timer Settings
-          </div>
-          <div>
-            Other
-          </div>
-          <div>
-            <button onClick={this.handleClick} className="fas fa-times"></button>
-          </div>
-        </div>
-      )
-    } else {
-      return <button onClick={this.handleClick} className="fas fa-bars"></button>
-    }
+          </MenuItem>
+          <DropdownButton eventKey="4"> Settings
+          <MenuItem>
+              Set Timezone: <select name="timezone" onChange={this.handleTimeZoneChange} defaultValue="Mountain" id="timezone-select" className="menu-item" href="/">
+                <option value="Hawaii">Hawaii</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Pacific">Pacific</option>
+                <option value="Mountain" >Mountain</option>
+                <option value="Central">Central</option>
+                <option value="Eastern">Eastern</option>
+                <option value="gmt">GMT</option>
+              </select>
+            </MenuItem>
+            <MenuItem>
+              Clock format: <select name="timeformat" onChange={this.handleTimeFormatChange} id="timeformat-select" className="menu-item" href="/">
+                <option value="HH:mm:ss - zz">HHH:mm:ss - 24 T</option>
+                <option value="h:mm:ss A - zz">HH:mm:ss - 12 T</option>
+                <option value="HH:mm:ss" selected="selected">HH:mm:ss - 24</option>
+                <option value="h:mm:ss A">HH:mm:ss - 12</option>
+                <option value="HH:mm">HH:mm - 24</option>
+                <option value="h:mm A">HH:mm - 12</option>
+              </select>
+            </MenuItem>
+          </DropdownButton>
+        </DropdownButton>
+      </div>
+    )
   }
 }
 
