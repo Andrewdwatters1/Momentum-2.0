@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './App.css';
 import { getUser } from './redux/reducer';
 import Landing from './components/Landing';
-import NavContainer from './components/NavContainer';
 import QuotesContainer from './components/QuotesContainer';
 
 class App extends Component {
@@ -15,13 +14,12 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <NavContainer/>
+      <HashRouter>
         <Switch>
           <Route exact path="/" component={Landing}/>
           <Route path="/quotes" component={QuotesContainer}/>
         </Switch>
-      </div>
+      </HashRouter>
     );
   }
 }

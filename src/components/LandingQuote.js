@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getAllCombos } from '../redux/reducer';
+import { getLandingQuote } from '../redux/reducer';
 
 class LandingQuote extends Component {
+
+componentDidMount = () => {
+  this.props.getLandingQuote()
+}
+
   render() {
-    let renderedContent = this.props.comboList ? this.props.comboList[Math.floor(Math.random() * 99) + 1] : null
-    if (renderedContent) {
-      return (
-        <h2 class="landing-quote">{renderedContent.quote}</h2>
-      )
-    } else return null
+    return this.props.landingQuote[0]
+    ?
+    <h2 className="landing-quote">{this.props.landingQuote[0].quote}</h2>
+    :
+    null
   }
 }
 
 const mapStateToProps = state => {
   return {
-    comboList: state.comboList
+    landingQuote: state.landingQuote
   }
 }
 
-export default connect(mapStateToProps, { getAllCombos })(LandingQuote);
+export default connect(mapStateToProps, { getLandingQuote })(LandingQuote);

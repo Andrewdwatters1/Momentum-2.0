@@ -46,6 +46,7 @@ class ComboItem extends Component {
       console.log(result)
     })
   }
+
   render() {
     const { open } = this.state;
     return (

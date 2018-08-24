@@ -26,14 +26,9 @@ app.use(session({
 app.get('/auth/callback', ac.auth);
 app.get(`/api/currentUser`, ac.currentUser);
 app.get('/api/logout', ac.logout);
-// ^ All Auth endpts
-
-app.get('/api/quotes', controller.getAllQuotes); //
-app.get('/api/photos', controller.getAllPhotos); // need?
-app.get('/api/quote/:id', controller.getQuote); // need?
-app.post(`/api/quote`, controller.postQuote); // need?
-app.get('/api/photo/:id', controller.getPhoto); // need?
-app.post('/api/photo', controller.postPhoto); //
+app.get('/api/quote', controller.getRandomQuote);
+app.post(`/api/quote`, controller.postQuote);
+app.post('/api/photo', controller.postPhoto);
 app.get('/api/combo', controller.getAllCombos);
 app.post('/api/combo', controller.commentCombo);
 // app.put('/api/combo', qc.rateCombo);
