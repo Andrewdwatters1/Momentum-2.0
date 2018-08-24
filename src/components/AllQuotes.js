@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ToastContainer, ToastStore } from 'react-toasts';
 
 import AddPhoto from './AddPhoto';
 import AddQuote from './AddQuote';

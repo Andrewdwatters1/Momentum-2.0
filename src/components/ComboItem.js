@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { ToastContainer, ToastStore } from 'react-toasts';
 
 class ComboItem extends Component {
   constructor(props) {
@@ -38,16 +39,26 @@ class ComboItem extends Component {
   }
   submitComment = (e) => {
     e.preventDefault();
-    let comment = {
-      content: this.state.userCommentContent,
-      userId: this.props.user.id,
-      photoId: this.props.photoId,
-      quote: this.props.quote
+    if(this.props.user) {
+      let comment = {
+        content: this.state.userCommentContent,
+        userId: this.props.user.id,
+        photoId: this.props.photoId,
+        quote: this.props.quote
+      }
+      axios.post('/api/combo', { comment }).then(result => {
+        ToastStore.success('Comment Submitted')
+      }).catch(error => console.log('error in comment submission', error))
+    } else {
+      ToastStore.error('Please login to comment')
     }
-    axios.post('/api/combo', { comment }).then(result => {
-      ToastStore.success('Comment Submitted')
-    }).catch(error => ToastStore.error('Sorry, you must be logged in to comment'))
+    this.setState({
+      userCommentContent: ''
+    })
   }
+  // addToFavorites = () => {
+
+  // }
 
   render() {
     const { open } = this.state;
