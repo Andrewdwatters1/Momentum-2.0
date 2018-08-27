@@ -11,7 +11,8 @@ class Dropdown extends Component {
     this.state = {
       open: false,
       focusTimer: false,
-      theme: false
+      theme: false,
+      showSettings: false
     }
   }
 
@@ -31,7 +32,12 @@ class Dropdown extends Component {
       theme: !this.state.theme
     });
   }
-  
+  toggleAllSettings = () => {
+    this.setState({
+      showSettings: !this.state.showSettings
+    })
+  }
+
   render() {
     return (
       <div>
@@ -75,7 +81,42 @@ class Dropdown extends Component {
                 />
               </label>
             </div></a>
-          <a className="menu-item">Settings</a>
+
+          <a className="menu-item">
+            <div>
+              <i className="fas fa-cog" onMouseDown={this.toggleAllSettings}>
+              </i>
+            </div>
+          </a>
+
+          {/* ANIMATE HERE IF TIME */}
+          <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
+            <div className="settings-item-spread">
+              Timezone <select name="timezone" onChange={this.handleTimeZoneChange} defaultValue="Mountain" id="timezone-select" className="settings-item-select font-size-minus" href="/">
+                <option value="Hawaii">Hawaii</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Pacific">Pacific</option>
+                <option value="Mountain" >Mountain</option>
+                <option value="Central">Central</option>
+                <option value="Eastern">Eastern</option>
+                <option value="gmt">GMT</option>
+              </select>
+            </div>
+          </a>
+
+          <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
+            <div className="settings-item-spread menu-settings">
+              Format <select name="timeformat" onChange={this.handleTimeFormatChange} defaultValue="HH:mm:ss" id="timeformat-select" className="settings-item-select font-size-minus" href="/">
+                <option value="HH:mm:ss - zz">H:m:s:Z-24</option>
+                <option value="h:mm:ss A - zz">H:m:s:Z</option>
+                <option value="HH:mm:ss" >H:m:s-24</option>
+                <option value="h:mm:ss A">H:m:s</option>
+                <option value="HH:mm">H:m-24</option>
+                <option value="h:mm A">H:m</option>
+              </select>
+            </div>
+          </a>
+
           <a className="menu-item">Logout</a>
         </Menu>
       </div>
@@ -86,25 +127,7 @@ class Dropdown extends Component {
   //   return (
   //     <div>
   //       <div>
-  //         Set Timezone: <select name="timezone" onChange={this.handleTimeZoneChange} defaultValue="Mountain" id="timezone-select" className="menu-item" href="/">
-  //           <option value="Hawaii">Hawaii</option>
-  //           <option value="Alaska">Alaska</option>
-  //           <option value="Pacific">Pacific</option>
-  //           <option value="Mountain" >Mountain</option>
-  //           <option value="Central">Central</option>
-  //           <option value="Eastern">Eastern</option>
-  //           <option value="gmt">GMT</option>
-  //         </select>
-  //       </div>
-  //       <div>
-  //         Clock format: <select name="timeformat" onChange={this.handleTimeFormatChange} id="timeformat-select" className="menu-item" href="/">
-  //           <option value="HH:mm:ss - zz">HHH:mm:ss - 24 T</option>
-  //           <option value="h:mm:ss A - zz">HH:mm:ss - 12 T</option>
-  //           <option value="HH:mm:ss" selected="selected">HH:mm:ss - 24</option>
-  //           <option value="h:mm:ss A">HH:mm:ss - 12</option>
-  //           <option value="HH:mm">HH:mm - 24</option>
-  //           <option value="h:mm A">HH:mm - 12</option>
-  //         </select>
+
   //       </div>
   //       <div>
   //         {

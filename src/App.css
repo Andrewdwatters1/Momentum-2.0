@@ -1,10 +1,20 @@
 /* ALL COMPONENT STYLES */
-.red {
-  z-index: 9999999;
-  height: 50px;
-  width: 50px;
+.font-huge {
+  font-size: 6em;
 }
-
+.font-large {
+  font-size: 3em;
+}
+.font-size {
+  font-size: 1.15em;
+}
+.font-size-minus {
+  font-size: 1em;
+}
+.font-size-plus {
+  font-size: 1.6em;
+  color: white;
+}
 
 /* LOGIN STYLES */
 .login-cont {
@@ -74,6 +84,14 @@
   cursor: pointer;
   padding-bottom: .65em;
 }
+.settings-item-spread {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.settings-item-select {
+  background-color: #4DAAF6;
+}
 
 
 /* LANDING PAGE STYLES */
@@ -95,6 +113,11 @@
   height: 25vh;
   color: white;
   background: linear-gradient(transparent, rgb(10, 10, 10))
+}
+.todo-spread {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 /* QUOTES STYLES */
@@ -194,6 +217,14 @@
   position: absolute;
   bottom: 0;
   right: 0;
+}
+.fa-cog {
+  padding-top: 10px;
+  font-size: 2em;
+  color: #888888;
+}
+.fa-cog:hover {
+  color: #FFFFFF;
 }
 
 /* MEDIA QUERIES */

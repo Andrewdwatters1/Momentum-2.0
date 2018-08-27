@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 const Time = function(props) {
   return (
     <div>
-      <h1><Clock format={props.timeformat} ticking={true} timezone={`US/${props.timezone}`} /></h1>
+      <h1 className="font-huge"><Clock format={props.timeformat} ticking={true} timezone={`US/${props.timezone}`} /></h1>
     </div>
   )
 }
