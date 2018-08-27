@@ -1,5 +1,9 @@
 /* ALL COMPONENT STYLES */
-
+.red {
+  z-index: 9999999;
+  height: 50px;
+  width: 50px;
+}
 
 
 /* LOGIN STYLES */
@@ -68,6 +72,7 @@
 .bm-item {
   display: inline-block;
   cursor: pointer;
+  padding-bottom: .65em;
 }
 
 

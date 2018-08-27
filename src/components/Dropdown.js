@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { stack as Menu } from 'react-burger-menu';
+import Switch from "react-switch";
+
 import { changeTimezone, changeTimeformat, logout } from '../redux/reducer';
 
 class Dropdown extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       open: false,
+      focusTimer: false,
+      theme: false
     }
   }
 
@@ -17,14 +21,60 @@ class Dropdown extends Component {
       open: !this.state.open
     })
   }
-
+  focusChange = () => {
+    this.setState({
+      focusTimer: !this.state.focusTimer
+    });
+  }
+  themeChange = () => {
+    this.setState({
+      theme: !this.state.theme
+    });
+  }
+  
   render() {
     return (
       <div>
-        <Menu bodyClassName={ "dropdown-menu" }>
+        <Menu bodyClassName={"dropdown-menu"}>
           <a onClick={this.showSettings} className="menu-item--small"></a>
-          <a className="menu-item">Productivity Mode</a>
-          <a className="menu-item">Theme</a>
+          <a className="menu-item">Focus Timer
+          <div>
+              <label htmlFor="normal-switch">
+                <Switch
+                  onChange={this.focusChange}
+                  checked={this.state.focusTimer}
+                  onColor="#888888"
+                  onHandleColor="#4DAAF6"
+                  handleDiameter={25}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                  activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                  height={15}
+                  width={40}
+                />
+              </label>
+            </div>
+          </a>
+
+          <a className="menu-item">Theme
+          <div>
+              <label htmlFor="normal-switch">
+                <Switch
+                  onChange={this.themeChange}
+                  checked={this.state.theme}
+                  onColor="#888888"
+                  onHandleColor="#4DAAF6"
+                  handleDiameter={25}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                  activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                  height={15}
+                  width={40}
+                />
+              </label>
+            </div></a>
           <a className="menu-item">Settings</a>
           <a className="menu-item">Logout</a>
         </Menu>

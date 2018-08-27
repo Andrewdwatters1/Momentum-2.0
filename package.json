@@ -20,9 +20,11 @@
     "react-responsive-modal": "^3.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "react-switch": "^3.0.4",
     "react-switch-button": "^2.3.5",
     "react-toastify": "^4.2.0",
     "react-toasts": "^2.0.13",
+    "react-toggle-switch": "^3.0.4",
     "redux": "^4.0.0",
     "redux-promise-middleware": "^5.1.1"
   },
