@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { stack as Menu } from 'react-burger-menu';
 import Switch from "react-switch";
+import { Link } from 'react-router-dom';
 
 import { changeTimezone, changeTimeformat, logout } from '../redux/reducer';
 
@@ -16,7 +17,7 @@ class Dropdown extends Component {
     }
   }
 
-  showSettings = (event) => {
+  dropdownActive = (event) => {
     event.preventDefault();
     this.setState({
       open: !this.state.open
@@ -37,12 +38,18 @@ class Dropdown extends Component {
       showSettings: !this.state.showSettings
     })
   }
+  handleTimeZoneChange = (e) => {
+    this.props.changeTimezone(e.target.value)
+  }
+  handleTimeFormatChange = (e) => {
+    this.props.changeTimeformat(e.target.value)
+  }
 
   render() {
     return (
       <div>
         <Menu bodyClassName={"dropdown-menu"}>
-          <a onClick={this.showSettings} className="menu-item--small"></a>
+          <a onClick={this.dropdownActive} className="menu-item--small"></a>
           <a className="menu-item">Focus Timer
           <div>
               <label htmlFor="normal-switch">
@@ -106,7 +113,7 @@ class Dropdown extends Component {
 
           <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
             <div className="settings-item-spread menu-settings">
-              Format <select name="timeformat" onChange={this.handleTimeFormatChange} defaultValue="HH:mm:ss" id="timeformat-select" className="settings-item-select font-size-minus" href="/">
+              Format <select name="timeformat" onChange={this.handleTimeFormatChange} defaultValue="HH:mm:ss" id="timeformat-select" className="settings-item-select font-size-minus" href="/" selected={this.state.timeformat}>
                 <option value="HH:mm:ss - zz">H:m:s:Z-24</option>
                 <option value="h:mm:ss A - zz">H:m:s:Z</option>
                 <option value="HH:mm:ss" >H:m:s-24</option>
@@ -117,7 +124,11 @@ class Dropdown extends Component {
             </div>
           </a>
 
-          <a className="menu-item">Logout</a>
+          <a className="menu-item">
+            <div>
+              <Link to="/" onClick={this.props.logout}><button className="login-button">Logout</button></Link>
+            </div>
+          </a>
         </Menu>
       </div>
     )
@@ -128,15 +139,6 @@ class Dropdown extends Component {
   //     <div>
   //       <div>
 
-  //       </div>
-  //       <div>
-  //         {
-  //           this.props.user
-  //             ?
-  //             <Link to="/" onClick={this.props.logout}><button>Logout</button></Link>
-  //             :
-  //             <Link to=""><button>login</button></Link>
-  //         }
   //       </div>
   //       <div>
   //         Timer Settings
