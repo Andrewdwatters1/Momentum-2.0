@@ -14,8 +14,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="login-landing">
-        <button onClick={this.login} className="login-landing-buton">Login Here</button>
+      <div className="login-cont">
+        <h1 className="login-greeting">Welcome to Momentum 2.0</h1>
+        <button onClick={this.login} className="login-button">Please Login</button>
       </div>
     )
   }

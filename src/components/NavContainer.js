@@ -4,10 +4,7 @@ import Dropdown from './Dropdown';
 
 const NavContainer = function() {
   return (
-    <div>
       <Dropdown/>
-      {/* <Weather/> */}
-    </div>
   )
 }
 

@@ -1,60 +1,85 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { DropdownButton, MenuItem } from 'react-bootstrap';
+import { stack as Menu } from 'react-burger-menu';
 import { changeTimezone, changeTimeformat, logout } from '../redux/reducer';
 
 class Dropdown extends Component {
-
-  handleTimeZoneChange = (e) => {
-    this.props.changeTimezone(e.target.value)
+  constructor() {
+    super()
+    this.state = {
+      open: false,
+    }
   }
-  handleTimeFormatChange = (e) => {
-    this.props.changeTimeformat(e.target.value)
+
+  showSettings = (event) => {
+    event.preventDefault();
+    this.setState({
+      open: !this.state.open
+    })
   }
 
   render() {
     return (
       <div>
-        <DropdownButton>
-          <MenuItem eventKey="1">Productivity Mode</MenuItem>
-          <MenuItem eventKey="2">Focus Timer</MenuItem>
-          <MenuItem eventKey="3">
-            {
-              this.props.user
-                ?
-                <Link to="/" onClick={this.props.logout}><button>Logout</button></Link>
-                :
-                <Link to=""><button>login</button></Link>
-            }
-          </MenuItem>
-          <DropdownButton eventKey="4"> Settings
-          <MenuItem>
-              Set Timezone: <select name="timezone" onChange={this.handleTimeZoneChange} defaultValue="Mountain" id="timezone-select" className="menu-item" href="/">
-                <option value="Hawaii">Hawaii</option>
-                <option value="Alaska">Alaska</option>
-                <option value="Pacific">Pacific</option>
-                <option value="Mountain" >Mountain</option>
-                <option value="Central">Central</option>
-                <option value="Eastern">Eastern</option>
-                <option value="gmt">GMT</option>
-              </select>
-            </MenuItem>
-            <MenuItem>
-              Clock format: <select name="timeformat" onChange={this.handleTimeFormatChange} id="timeformat-select" className="menu-item" href="/">
-                <option value="HH:mm:ss - zz">HHH:mm:ss - 24 T</option>
-                <option value="h:mm:ss A - zz">HH:mm:ss - 12 T</option>
-                <option value="HH:mm:ss" selected="selected">HH:mm:ss - 24</option>
-                <option value="h:mm:ss A">HH:mm:ss - 12</option>
-                <option value="HH:mm">HH:mm - 24</option>
-                <option value="h:mm A">HH:mm - 12</option>
-              </select>
-            </MenuItem>
-          </DropdownButton>
-        </DropdownButton>
+        <Menu bodyClassName={ "dropdown-menu" }>
+          <a onClick={this.showSettings} className="menu-item--small"></a>
+          <a className="menu-item">Productivity Mode</a>
+          <a className="menu-item">Theme</a>
+          <a className="menu-item">Settings</a>
+          <a className="menu-item">Logout</a>
+        </Menu>
       </div>
     )
   }
+
+  // if (this.state.open) {
+  //   return (
+  //     <div>
+  //       <div>
+  //         Set Timezone: <select name="timezone" onChange={this.handleTimeZoneChange} defaultValue="Mountain" id="timezone-select" className="menu-item" href="/">
+  //           <option value="Hawaii">Hawaii</option>
+  //           <option value="Alaska">Alaska</option>
+  //           <option value="Pacific">Pacific</option>
+  //           <option value="Mountain" >Mountain</option>
+  //           <option value="Central">Central</option>
+  //           <option value="Eastern">Eastern</option>
+  //           <option value="gmt">GMT</option>
+  //         </select>
+  //       </div>
+  //       <div>
+  //         Clock format: <select name="timeformat" onChange={this.handleTimeFormatChange} id="timeformat-select" className="menu-item" href="/">
+  //           <option value="HH:mm:ss - zz">HHH:mm:ss - 24 T</option>
+  //           <option value="h:mm:ss A - zz">HH:mm:ss - 12 T</option>
+  //           <option value="HH:mm:ss" selected="selected">HH:mm:ss - 24</option>
+  //           <option value="h:mm:ss A">HH:mm:ss - 12</option>
+  //           <option value="HH:mm">HH:mm - 24</option>
+  //           <option value="h:mm A">HH:mm - 12</option>
+  //         </select>
+  //       </div>
+  //       <div>
+  //         {
+  //           this.props.user
+  //             ?
+  //             <Link to="/" onClick={this.props.logout}><button>Logout</button></Link>
+  //             :
+  //             <Link to=""><button>login</button></Link>
+  //         }
+  //       </div>
+  //       <div>
+  //         Timer Settings
+  //       </div>
+  //       <div>
+  //         Other
+  //       </div>
+  //       <div>
+  //         <button onClick={this.handleClick} className="fas fa-times"></button>
+  //       </div>
+  //     </div>
+  //   )
+  // } else {
+  //   return <button onClick={this.handleClick} className="fas fa-bars"></button>
+  // }
+
 }
 
 const mapStateToProps = state => {

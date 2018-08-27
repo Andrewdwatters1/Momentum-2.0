@@ -1,17 +1,84 @@
 /* ALL COMPONENT STYLES */
 
 
+
+/* LOGIN STYLES */
+.login-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 150px;
+}
+.login-greeting {
+  font-size: 4em;
+}
+.login-button {
+  font-size: 24px;
+  height: 60px;
+  width: 200px;
+  background-color: #79BFF8;
+  border: solid black 3px;
+  border-radius: 10px;
+}
+.login-button:hover {
+  background-color: #4DAAF6;
+}
+.login-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #44444C;
+  box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
+}
 /* NAVBAR STYLES */
+.bm-menu-wrap {
+  left: 0;
+}
+.bm-overlay {
+  left: 0;
+}
+.bm-burger-button {
+  position: fixed;
+  width: 40px;
+  height: 30px;
+  left: 20px;
+  top: 20px;
+}
+.bm-burger-bars {
+  background: #FFFFFF;
+}
+.bm-cross-button {
+  height: 30px;
+  width: 30px;
+}
+.bm-cross {
+  background: #FFFFFF;
+}
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+.bm-item-list {
+  color: #FFFFFF;
+  padding: 0.8em;
+}
+.bm-item {
+  display: inline-block;
+  cursor: pointer;
+}
 
 
 /* LANDING PAGE STYLES */
-
 .landing-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .landing-quote {
   display: flex;
   justify-content: center;
@@ -22,9 +89,7 @@
   width: 100vw;
   height: 25vh;
   color: white;
-  /* background: radial-gradient(rgba(0, 0, 0, .8), transparent 70%); */
   background: linear-gradient(transparent, rgb(10, 10, 10))
-  /* border-radius: 15px 15px 80px 80px; */
 }
 
 /* QUOTES STYLES */

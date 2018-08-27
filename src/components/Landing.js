@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import NavContainer from './NavContainer';
 import Time from './Time';
@@ -9,8 +10,15 @@ import LandingImage from './LandingImage';
 import LandingQuote from './LandingQuote';
 import Login from './Login';
 
+
 class Landing extends Component {
 
+
+  componentDidMount = () => {
+    axios.get('/api/currentUser').then(res => {
+      console.log(res);
+    })
+  }
   render() {
     return this.props.user
       ?
@@ -26,7 +34,9 @@ class Landing extends Component {
         </div>
       )
       :
-      <Login/>
+      <div className="login-background">
+      <Login/> 
+      </div>
   }
 }
 
