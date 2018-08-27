@@ -15,10 +15,11 @@ class Dropdown extends Component {
       focusTimer: false,
       theme: false,
       showSettings: false,
+      focusPeriod: 25,
       shortBreak: 5,
       longBreak: 30,
-      focusPeriod: 25,
-      numCycles: 4
+      numCycles: 4,
+      timerType: "work"
     }
   }
 
@@ -48,6 +49,26 @@ class Dropdown extends Component {
   }
   handleTimeFormatChange = (e) => {
     this.props.changeTimeformat(e.target.value)
+  }
+  focusIntervalChange = (e) => {
+    this.setState({
+      focusPeriod: +e.target.value
+    })
+  }
+  shortBreakIntervalChange = (e) => {
+    this.setState({
+      shortBreak: +e.target.value
+    })
+  }
+  longBreakIntervalChange = (e) => {
+    this.setState({
+      longBreak: +e.target.value
+    })
+  }
+  numCyclesChange = (e) => {
+    this.setState({
+      numCycles: +e.target.value
+    })
   }
 
   render() {
@@ -131,7 +152,7 @@ class Dropdown extends Component {
 
           <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
             <div className="settings-item-spread">
-              Focus Period <select className="settings-item-select font-size-minus" defaultValue="25"selected={this.state.focusPeriod}>
+              Focus Period <select className="settings-item-select font-size-minus" defaultValue="25" onChange={this.focusIntervalChange}>
                 <option value="30">30 mins</option>
                 <option value="29">29 mins</option>
                 <option value="28">28 mins</option>
@@ -149,7 +170,7 @@ class Dropdown extends Component {
 
           <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
             <div className="settings-item-spread">
-              Short Break <select className="settings-item-select font-size-minus" defaultValue="5" selected={this.state.shortBreak}>
+              Short Break <select className="settings-item-select font-size-minus" defaultValue="5" onChange={this.shortBreakIntervalChange}>
                 <option value="7">7 mins</option>
                 <option value="6">6 mins</option>
                 <option value="5">5 mins</option>
@@ -161,13 +182,13 @@ class Dropdown extends Component {
 
           <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
             <div className="settings-item-spread">
-              Long Break <select className="settings-item-select font-size-minus" defaultValue="30" selected={this.state.longBreak}>
+              Long Break <select className="settings-item-select font-size-minus" defaultValue="30" onChange={this.longBreakIntervalChange}>
                 <option value="45">45 mins</option>
                 <option value="40">40 mins</option>
                 <option value="35">35 mins</option>
                 <option value="30">30 mins</option>
                 <option value="25">25 mins</option>
-                <option value="10">10 mins</option>
+                <option value="20">20 mins</option>
                 <option value="15">15 mins</option>
               </select>
             </div>
@@ -175,7 +196,7 @@ class Dropdown extends Component {
 
           <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
             <div className="settings-item-spread">
-              # Cycles <select className="settings-item-select font-size-minus" defaultValue="4" selected={this.state.numCycles}>
+              # Cycles <select className="settings-item-select font-size-minus" defaultValue="4" onChange={this.numCyclesChange}>
                 <option value="6">6</option>
                 <option value="5">5</option>
                 <option value="4">4</option>
@@ -193,7 +214,7 @@ class Dropdown extends Component {
             </div>
           </a>
         </Menu>
-        <FocusTimer shortBreak={this.state.shortBreak} longBreak={this.state.longBreak} focusPeriod={this.state.focusPeriod} numCycles={this.state.numCycles} />
+        <FocusTimer shortBreak={this.state.shortBreak} longBreak={this.state.longBreak} focusPeriod={this.state.focusPeriod} numCycles={this.state.numCycles} timerType={this.state.timerType}/>
       </div>
     )
   }
