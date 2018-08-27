@@ -5,6 +5,7 @@ import Switch from "react-switch";
 import { Link } from 'react-router-dom';
 
 import { changeTimezone, changeTimeformat, logout } from '../redux/reducer';
+import FocusTimer from './FocusTimer';
 
 class Dropdown extends Component {
   constructor(props) {
@@ -13,7 +14,11 @@ class Dropdown extends Component {
       open: false,
       focusTimer: false,
       theme: false,
-      showSettings: false
+      showSettings: false,
+      shortBreak: 5,
+      longBreak: 30,
+      focusPeriod: 25,
+      numCycles: 4
     }
   }
 
@@ -112,7 +117,7 @@ class Dropdown extends Component {
           </a>
 
           <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
-            <div className="settings-item-spread menu-settings">
+            <div className="settings-item-spread">
               Format <select name="timeformat" onChange={this.handleTimeFormatChange} defaultValue="HH:mm:ss" id="timeformat-select" className="settings-item-select font-size-minus" href="/" selected={this.state.timeformat}>
                 <option value="HH:mm:ss - zz">H:m:s:Z-24</option>
                 <option value="h:mm:ss A - zz">H:m:s:Z</option>
@@ -124,37 +129,74 @@ class Dropdown extends Component {
             </div>
           </a>
 
+          <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
+            <div className="settings-item-spread">
+              Focus Period <select className="settings-item-select font-size-minus" defaultValue="25"selected={this.state.focusPeriod}>
+                <option value="30">30 mins</option>
+                <option value="29">29 mins</option>
+                <option value="28">28 mins</option>
+                <option value="27">27 mins</option>
+                <option value="26">26 mins</option>
+                <option value="25">25 mins</option>
+                <option value="24">24 mins</option>
+                <option value="23">23 mins</option>
+                <option value="22">22 mins</option>
+                <option value="21">21 mins</option>
+                <option value="20">20 mins</option>
+              </select>
+            </div>
+          </a>
+
+          <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
+            <div className="settings-item-spread">
+              Short Break <select className="settings-item-select font-size-minus" defaultValue="5" selected={this.state.shortBreak}>
+                <option value="7">7 mins</option>
+                <option value="6">6 mins</option>
+                <option value="5">5 mins</option>
+                <option value="4">4 mins</option>
+                <option value="3">3 mins</option>
+              </select>
+            </div>
+          </a>
+
+          <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
+            <div className="settings-item-spread">
+              Long Break <select className="settings-item-select font-size-minus" defaultValue="30" selected={this.state.longBreak}>
+                <option value="45">45 mins</option>
+                <option value="40">40 mins</option>
+                <option value="35">35 mins</option>
+                <option value="30">30 mins</option>
+                <option value="25">25 mins</option>
+                <option value="10">10 mins</option>
+                <option value="15">15 mins</option>
+              </select>
+            </div>
+          </a>
+
+          <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
+            <div className="settings-item-spread">
+              # Cycles <select className="settings-item-select font-size-minus" defaultValue="4" selected={this.state.numCycles}>
+                <option value="6">6</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+              </select>
+            </div>
+          </a>
+
+
+
           <a className="menu-item">
             <div>
               <Link to="/" onClick={this.props.logout}><button className="login-button">Logout</button></Link>
             </div>
           </a>
         </Menu>
+        <FocusTimer shortBreak={this.state.shortBreak} longBreak={this.state.longBreak} focusPeriod={this.state.focusPeriod} numCycles={this.state.numCycles} />
       </div>
     )
   }
-
-  // if (this.state.open) {
-  //   return (
-  //     <div>
-  //       <div>
-
-  //       </div>
-  //       <div>
-  //         Timer Settings
-  //       </div>
-  //       <div>
-  //         Other
-  //       </div>
-  //       <div>
-  //         <button onClick={this.handleClick} className="fas fa-times"></button>
-  //       </div>
-  //     </div>
-  //   )
-  // } else {
-  //   return <button onClick={this.handleClick} className="fas fa-bars"></button>
-  // }
-
 }
 
 const mapStateToProps = state => {

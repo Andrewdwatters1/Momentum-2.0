@@ -4,8 +4,10 @@ import FocusTimer from './FocusTimer';
 
 const NavContainer = function() {
   return (
+    <div>
       <Dropdown/>
       <FocusTimer/>
+    </div>
   )
 }
 

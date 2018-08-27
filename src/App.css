@@ -31,12 +31,12 @@
   font-size: 24px;
   height: 60px;
   width: 200px;
-  background-color: #79BFF8;
+  background-color: #4DAAF6;
   border: solid black 3px;
   border-radius: 10px;
 }
 .login-button:hover {
-  background-color: #4DAAF6;
+  background-color: #79BFF8;
 }
 .login-background {
   display: flex;
@@ -91,6 +91,10 @@
 }
 .settings-item-select {
   background-color: #4DAAF6;
+}
+.settings-item-select:hover {
+  background-color: #79BFF8;
+  cursor: pointer;
 }
 
 
