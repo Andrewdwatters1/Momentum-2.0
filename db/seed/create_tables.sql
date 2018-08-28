@@ -1,11 +1,11 @@
 CREATE TABLE photos (
   id SERIAL PRIMARY KEY,
-  unsplash_id VARCHAR(100), -- CAN DROP
+  unsplash_id VARCHAR(100),
   url TEXT,
   photographer VARCHAR(100), 
-  portfolio VARCHAR(200), -- CAN DROP
+  portfolio VARCHAR(200),
   location VARCHAR(100), 
-  views INTEGER, -- CAN DROP
+  views INTEGER,
   liked BOOLEAN,
   admin_approved BOOLEAN
 );
@@ -33,3 +33,13 @@ CREATE TABLE comments ( -- good
   photo_id INTEGER REFERENCES photos,
   content VARCHAR(750)
 );
+
+
+
+-- command to delete duplicates from photos table -> will need to drop comments first
+DELETE 
+FROM 
+photos p
+WHERE EXISTS 
+    (SELECT 1 FROM photos
+    WHERE p.id > id AND p.url = url)

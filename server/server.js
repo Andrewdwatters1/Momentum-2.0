@@ -33,7 +33,7 @@ app.get('/api/combo', controller.getAllCombos); //
 app.get('/api/comments', controller.getAllComments); //
 app.post('/api/comment', controller.commentCombo); //
 // app.put('/api/combo', qc.rateCombo);
-// app.delete('/api/combo', qc.deleteCombo);
+app.delete('/api/combo', controller.deleteCombo);
 
 // app.get('/api/weather', wc.getWeather);
 

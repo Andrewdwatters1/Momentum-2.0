@@ -1,5 +1,10 @@
 /* ALL COMPONENT STYLES */
 
+.red-top {
+  color: red;
+  z-index: 1;
+}
+
 .font-huge {
   font-size: 6em;
 }

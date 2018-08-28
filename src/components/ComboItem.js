@@ -4,6 +4,8 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { ToastContainer, ToastStore } from 'react-toasts';
 
+import SingleComment from './SingleComments';
+
 class ComboItem extends Component {
   constructor(props) {
     super(props)
@@ -74,13 +76,22 @@ class ComboItem extends Component {
       console.log(error)
     })
   }
+
   addToFavorites = () => {
 
   }
 
   render() {
-    console.log(this.state.comments)
+    console.log(this.props.deleteItem) // cont, name, pic
     const { open } = this.state;
+    let allComments = this.state.comments.map((e) => {
+      return (
+        <SingleComment
+          content={e[0]}
+          name={e[1]}
+          picture={e[2]} />
+      )
+    })
     return (
       <div className="quotes-grid-item">
         <img
@@ -99,13 +110,14 @@ class ComboItem extends Component {
             <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} />
             <div>
               <p>{this.props.quote}</p>
+              {allComments}
               <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
                 <input onChange={this.handleCommentInput} value={this.state.userCommentContent} />
                 <button type="submit" onSubmit={this.submitComment}>Submit Comment</button>
               </form>
               <i className="far fa-edit" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive} onMouseDown={this.commentQuote}></i>
               <i class="far fa-heart" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive} onMouseDown={this.addToFavorites}></i>
-              <i class="far fa-trash-alt" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive}></i>
+              <i class="far fa-trash-alt" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive} onMouseDown={this.deleteItem}></i>
               <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
             </div>
           </div>

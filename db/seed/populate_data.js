@@ -18,7 +18,7 @@ axios.get('https://talaikis.com/api/quotes/').then(result => {
 
 // Submit Photo => gets random photos per search query and puts into DB
 
-let search = 'beach'
+let search = 'sunset'
 axios.get(`https://api.unsplash.com/photos/random?client_id=5ed61707f778d0b6915e1cb34046b4a57e1c445bc003d5d11218f347770c3ae4&query=${search}&orientation=squarish&count=30`).then(result => {
   setTimeout(function () {
     for (let i = 0; i < result.data.length; i++) {
