@@ -34,18 +34,37 @@ class AddPhoto extends Component {
       location: e.target.value
     })
   }
+  // submitPhoto = (e) => { 
+  //   e.preventDefault();
+  //   let photoObj = {
+  //     url: this.state.url,
+  //     photographer: this.state.photographer,
+  //     portfolio: this.state.portfolio,
+  //     location: this.state.location,
+  //     // user
+  //   }
+  //   axios.post(`/api/photo`, { photoObj }).then(result => {
+  //     ToastStore.success('Thank you for your submission!  Your quote is under review')
+  //   }).catch(error => ToastStore.error('Oops... something went wrong. :( Our team has been notified.'))
+  // }
   submitPhoto = (e) => {
     e.preventDefault();
-    let photoObj = {
-      url: this.state.url,
-      photographer: this.state.photographer,
-      portfolio: this.state.portfolio,
-      location: this.state.location,
-      // user
-    }
-    axios.post(`/api/photo`, { photoObj }).then(result => {
-      ToastStore.success('Thank you for your submission!  Your quote is under review')
-    }).catch(error => ToastStore.error('Oops... something went wrong. :( Our team has been notified.'))
+    let search = 'sports car'
+    axios.get(`https://api.unsplash.com/photos/random?client_id=5ed61707f778d0b6915e1cb34046b4a57e1c445bc003d5d11218f347770c3ae4&query=${search}&orientation=squarish&count=30`).then(result => {
+      setTimeout(function () {
+        for (let i = 0; i < result.data.length; i++) {
+          let photoObj = {
+            url: result.data[i].urls.regular,
+            photographer: result.data[i].user.name,
+            portfolio: result.data[i].user.portfolio_url,
+            location: result.data[i].location.title 
+          }
+          axios.post('/api/photo', { photoObj }).then(result => {
+            console.log('added to db', result.data)
+          })
+        }
+      }, 300)
+    })
   }
 
 
