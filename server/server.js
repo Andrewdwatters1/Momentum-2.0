@@ -26,11 +26,12 @@ app.use(session({
 app.get('/auth/callback', ac.auth);
 app.get(`/api/currentUser`, ac.currentUser);
 app.get('/api/logout', ac.logout);
-app.get('/api/quote', controller.getRandomQuote);
+app.get('/api/quote', controller.getRandomQuote); //
 app.post(`/api/quote`, controller.postQuote);
 app.post('/api/photo', controller.postPhoto);
-app.get('/api/combo', controller.getAllCombos);
-app.post('/api/combo', controller.commentCombo);
+app.get('/api/combo', controller.getAllCombos); //
+app.get('/api/comments', controller.getAllComments); //
+app.post('/api/comment', controller.commentCombo); //
 // app.put('/api/combo', qc.rateCombo);
 // app.delete('/api/combo', qc.deleteCombo);
 

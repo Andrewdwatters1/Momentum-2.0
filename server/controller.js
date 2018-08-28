@@ -13,10 +13,17 @@ module.exports = {
   },
   commentCombo: (req, res, next) => {
     let db = req.app.get('db')
-    let { content, userId, photoId, quote } = req.body.comment;
-    db.comment_combo([content, userId, photoId, quote]).then(result => {
+    let { content, userId, photoId } = req.body.comment;
+    db.comment_combo([content, userId, photoId]).then(result => {
       res.status(200).send(result)
     }).catch(error => console.log('Error, originates from qc.commentCombo', error))
+  },
+  getAllComments: (req, res, next) => {
+    let db = req.app.get('db')
+    let { photoId } = req.query;
+    db.get_all_comments(photoId).then(result => {
+      res.status(200).send(result)
+    }).catch(error => console.log("Error, originates from controller.getAllComments", error))
   },
   rateCombo: (req, res, next) => {
     let db = req.app.get('db')

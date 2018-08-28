@@ -12,11 +12,13 @@ class ComboItem extends Component {
       modalButtonActive: false,
       cursorSelect: false,
       userCommentContent: '',
+      comments: []
     }
   }
 
   onOpenModal = () => {
     this.setState({ open: true });
+    this.getAllComments();
   };
   onCloseModal = () => {
     this.setState({ open: false });
@@ -29,8 +31,6 @@ class ComboItem extends Component {
   }
   commentQuote = () => {
     document.getElementById("modal-user-comment").classList.toggle("modal-comment-active")
-    console.log(this.props.photoId)
-    console.log(this.props)
   }
   handleCommentInput = (e) => {
     this.setState({
@@ -39,28 +39,47 @@ class ComboItem extends Component {
   }
   submitComment = (e) => {
     e.preventDefault();
-    if(this.props.user) {
+    if (this.props.user) {
       let comment = {
         content: this.state.userCommentContent,
         userId: this.props.user.id,
         photoId: this.props.photoId,
-        quote: this.props.quote
       }
-      axios.post('/api/combo', { comment }).then(result => {
-        ToastStore.success('Comment Submitted')
-      }).catch(error => console.log('error in comment submission', error))
+      axios.post('/api/comment', { comment }).then(result => {
+        ToastStore.success('Thanks! Comment submitted! 😎')
+      }).catch(error => {
+        ToastStore.error('Oops... something went wrong. Our team is on it! 😢')
+        console.log(error)
+      })
     } else {
-      ToastStore.error('Please login to comment')
+      ToastStore.error('Please login to comment. 😜')
     }
     this.setState({
       userCommentContent: ''
     })
+    this.getAllComments();
+  }
+  getAllComments = () => {
+    let photoId = this.props.photoId
+    axios.get(`/api/comments?photoId=${photoId}`).then(result => {
+      let newStateComments = []
+      for (let i = 0; i < result.data.length; i++) {
+        newStateComments.push([result.data[i].content, result.data[i].name, result.data[i].picture])
+      }
+      this.setState({
+        comments: newStateComments
+      })
+    }).catch(error => {
+      ToastStore.error("Sorry, couldn't load comments. 😢")
+      console.log(error)
+    })
   }
   addToFavorites = () => {
-    
+
   }
 
   render() {
+    console.log(this.state.comments)
     const { open } = this.state;
     return (
       <div className="quotes-grid-item">

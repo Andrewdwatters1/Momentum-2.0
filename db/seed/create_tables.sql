@@ -1,19 +1,19 @@
 CREATE TABLE photos (
   id SERIAL PRIMARY KEY,
-  unsplash_id VARCHAR(100),
+  unsplash_id VARCHAR(100), -- CAN DROP
   url TEXT,
-  photographer VARCHAR(100),
-  portfolio VARCHAR(200),
-  location VARCHAR(100),
-  views INTEGER,
+  photographer VARCHAR(100), 
+  portfolio VARCHAR(200), -- CAN DROP
+  location VARCHAR(100), 
+  views INTEGER, -- CAN DROP
   liked BOOLEAN,
   admin_approved BOOLEAN
 );
 
 CREATE TABLE quotes (
   id SERIAL PRIMARY KEY,
-  author VARCHAR(50),
-  category VARCHAR(50),
+  author VARCHAR(50), 
+  category VARCHAR(50), 
   liked BOOLEAN,
   admin_approved BOOLEAN,
   quote TEXT
@@ -27,11 +27,9 @@ CREATE TABLE users (
     picture TEXT
 );
 
-CREATE TABLE comments (
+CREATE TABLE comments ( -- good
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users,
   photo_id INTEGER REFERENCES photos,
-  quote_id INTEGER REFERENCES quotes,
-  title VARCHAR,
   content VARCHAR(750)
 );
