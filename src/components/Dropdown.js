@@ -15,11 +15,10 @@ class Dropdown extends Component {
       focusTimer: false,
       theme: false,
       showSettings: false,
-      focusPeriod: 25,
-      shortBreak: 5,
-      longBreak: 30,
-      numCycles: 4,
-      timerType: "work"
+      focusPeriod: 10, // 25
+      shortBreak: 2, // 5
+      longBreak: 4, // 30
+      numCycles: 2 // 4
     }
   }
 
@@ -164,6 +163,7 @@ class Dropdown extends Component {
                 <option value="22">22 mins</option>
                 <option value="21">21 mins</option>
                 <option value="20">20 mins</option>
+                <option value="1">1 min</option> {/* DEMO ONLY */}
               </select>
             </div>
           </a>
@@ -176,6 +176,7 @@ class Dropdown extends Component {
                 <option value="5">5 mins</option>
                 <option value="4">4 mins</option>
                 <option value="3">3 mins</option>
+                <option value="2">2 min</option> {/* DEMO ONLY */}
               </select>
             </div>
           </a>
@@ -214,7 +215,7 @@ class Dropdown extends Component {
             </div>
           </a>
         </Menu>
-        <FocusTimer shortBreak={this.state.shortBreak} longBreak={this.state.longBreak} focusPeriod={this.state.focusPeriod} numCycles={this.state.numCycles} timerType={this.state.timerType}/>
+        <FocusTimer shortBreak={this.state.shortBreak} longBreak={this.state.longBreak} focusPeriod={this.state.focusPeriod} numCycles={this.state.numCycles}/>
       </div>
     )
   }

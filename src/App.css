@@ -96,6 +96,9 @@
   background-color: #79BFF8;
   cursor: pointer;
 }
+.hide-timer {
+  display: none;
+}
 
 
 /* LANDING PAGE STYLES */
