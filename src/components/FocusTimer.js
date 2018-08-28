@@ -52,21 +52,24 @@ class FocusTimer extends Component {
     let longBreakTimer = <Timer startTime={Date.parse(new Date()) + ((this.props.longBreak * 1000) + 499)} countDown />; // this should be 60,000
 
     return (
-      <div>
+      <div className="focus-timer-container">
         {
           this.state.timerType === "focus"
             ?
-            <div id="focus-timer">
+            <div className="focus-timer">
+              Focus
               {FocusPeriodTimer}
             </div>
             :
             this.state.timerType === "short"
               ?
-              <div id="short-break-timer">
+              <div className="short-break-timer">
+                Break
                 {shortBreakTimer}
               </div>
               :
-              <div id="short-break-timer">
+              <div className="short-break-timer">
+                Break
                 {longBreakTimer}
               </div>
         }

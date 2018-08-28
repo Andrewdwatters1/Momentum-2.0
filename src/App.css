@@ -1,4 +1,5 @@
 /* ALL COMPONENT STYLES */
+
 .font-huge {
   font-size: 6em;
 }
@@ -46,6 +47,7 @@
   background-color: #44444C;
   box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
 }
+
 /* NAVBAR STYLES */
 .bm-menu-wrap {
   left: 0;
@@ -99,6 +101,23 @@
 .hide-timer {
   display: none;
 }
+.focus-timer-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  top: 0;
+  right: 0;
+  margin: 12px;
+  height: 60px;
+  width: 70px;
+  border: solid black 6px;
+  border-radius: 10px;
+  background-color: #373A47;
+  color: #FFFFFF;
+}
+
 
 
 /* LANDING PAGE STYLES */
@@ -107,19 +126,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white
 }
 
 .landing-quote {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   position: absolute;
+  padding: 100px;
   bottom: 0;
   margin-bottom: 0;
   width: 100vw;
-  height: 25vh;
+  height: 100vh;
   color: white;
-  background: linear-gradient(transparent, rgb(10, 10, 10))
+  background: linear-gradient(rgba(10, 10, 10, 0.20), transparent, rgba(10, 10, 10, 0.20));
+  z-index: -1;
 }
 .todo-spread {
   display: flex;

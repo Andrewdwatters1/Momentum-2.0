@@ -215,7 +215,14 @@ class Dropdown extends Component {
             </div>
           </a>
         </Menu>
-        <FocusTimer shortBreak={this.state.shortBreak} longBreak={this.state.longBreak} focusPeriod={this.state.focusPeriod} numCycles={this.state.numCycles}/>
+        {
+          this.state.focusTimer === true
+            ?
+
+            <FocusTimer active={this.state.focusTimer} shortBreak={this.state.shortBreak} longBreak={this.state.longBreak} focusPeriod={this.state.focusPeriod} numCycles={this.state.numCycles} />
+            :
+            null
+        }
       </div>
     )
   }
