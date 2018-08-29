@@ -14,7 +14,7 @@ class ComboItem extends Component {
       modalButtonActive: false,
       cursorSelect: false,
       userCommentContent: '',
-      comments: [],
+      comments: []
     }
   }
 
@@ -66,55 +66,53 @@ class ComboItem extends Component {
     axios.get(`/api/comments?photoId=${photoId}`).then(result => {
       let newStateComments = []
       for (let i = 0; i < result.data.length; i++) {
-        newStateComments.push([result.data[i].content, result.data[i].name, result.data[i].picture, result.data[i].id, true])
+        newStateComments.push({ commentContent: result.data[i].content, userName: result.data[i].name, userPicture: result.data[i].picture, id: result.data[i].id, photoId: result.data[i].photo_id, renderMe: true })
       }
-      this.setState({
-        comments: newStateComments
+      this.setState(state => {
+        if (state.comments.length < newStateComments.length) {
+          state.comments = newStateComments
+          return state
+        }
+        else {
+          return state;
+        }
       })
     }).catch(error => console.log(error))
   }
-  deleteChildComment = (id) => {
+  deleteComment = (commentId, photoId) => {
     let newState = [...this.state.comments]
-    for (let i = 0; i < this.state.comments.length; i++) {
-      if (newState[i][3] === id) {
-        newState[i][4] = false
+    for (let i = 0; i < newState.length; i++) {
+      if (newState[i].id === commentId) {
+        newState[i].renderMe = false
       }
     }
     this.setState({
-      comments: [...newState]
+      comments: newState
     })
+    axios.delete(`/api/comment?commendId=${commentId}&photoId=${photoId}`).then(() => {
+    }).catch(error => console.log(error))
   }
-  // if(this.state.comments[id][3] === id) {
-  //   this.setState({
-  //     renderChildComment: false
-  //   })
-  // }
-  // }
+
   addToFavorites = () => {
 
   }
   render() {
     const { open } = this.state;
-
-
-    console.log(this.state.comments) 
-    // this.state.comments is an array of objects, something goes wrong in this map
-    // find a way to pass these values to child component
-    let allComments = this.state.comments.map((e, i) => {
+    let filteredComments = this.state.comments.filter((e) => e.renderMe);
+    let allComments = filteredComments.map((e, i) => {
       return (
-        <SingleComment 
-          content={e[0]}
-          name={e[1]}
-          picture={e[2]}
-          id={this.state.comments[i][3]}
-          renderMe={e[i][4]}
-          photoId={this.props.photoId}
+        <SingleComment
+          content={e.commentContent}
+          name={e.userName}
+          picture={e.userPicture}
+          id={e.id}
+          renderMe={e.renderMe}
+          photoId={e.photoId}
           buttonActive={this.buttonActive}
-          deleteComment={this.deleteChildComment}
+          deleteMe={this.deleteComment}
         />
       )
     })
-
 
     return (
       <div className="quotes-grid-item">

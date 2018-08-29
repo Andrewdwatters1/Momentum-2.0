@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class SingleComment extends Component {
   constructor(props) {
     super(props)
-  }
-  
-  deleteComment = () => {
-    axios.delete(`/api/comment?commendId=${this.props.id}&photoId=${this.props.photoId}`).then(result => {
-      this.props.deleteComment(this.props.id)
-    })
   }
 
   render() {
@@ -22,7 +15,7 @@ class SingleComment extends Component {
           className="far fa-trash-alt"
           onMouseEnter={this.props.buttonActive}
           onMouseLeave={this.props.buttonActive}
-          onMouseDown={this.deleteComment}
+          onMouseDown={() => this.props.deleteMe(this.props.id, this.props.photoId)}
         ></i>
       </div>
     )
