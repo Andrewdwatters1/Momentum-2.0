@@ -213,27 +213,28 @@
   border: solid black 5px;
   border-radius: 80px;
 }
-.modal-quote {
+.modal-cover-image {
   position: absolute;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   text-align: center;
-  margin: 0;
-  right: 0;
   left: 0;
+  right: 0;
   top: 0;
   bottom: 0;
   margin-right: auto;
   margin-left: auto;
   width: 90%;
-  height: 100%;
-  font-size: 1.9em;
+  height: 99%;
+  margin-top: 0.5%;
   border-radius: 80px;
+}
+.modal-quote {
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 1.9em;
   background: linear-gradient(rgba(10, 10, 10, 0.20), transparent, rgba(10, 10, 10, 0.20));
   background-size: cover;
   color: white;
-  overflow: auto;
 }
 .modal-comment {
   display: none;
@@ -246,18 +247,15 @@
 
 /********** FONT-AWESOME BUTTONS **********/
 
-.far {
-  font-size: 3em;
-  color: blue;
+.fa-heart {
+  justify-content: center;
+  align-items: center;
+  font-size: 9em;
+  color: transparent;
 }
 .fas {
-  font-size: 3em;
+  font-size: 9em;
   color: red;
-}
-.fa-heart {
-  position: absolute;
-  top: 0;
-  right: 0;
 }
 .fa-plus-square {
   position: absolute;

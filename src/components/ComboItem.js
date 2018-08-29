@@ -14,7 +14,8 @@ class ComboItem extends Component {
       modalButtonActive: false,
       cursorSelect: false,
       userCommentContent: '',
-      comments: []
+      comments: [],
+      likeActive: []
     }
   }
 
@@ -28,7 +29,7 @@ class ComboItem extends Component {
   toggleStyle = () => {
     document.getElementById(`combo-id-${this.props.id}-img`).classList.toggle('magnify')
   }
-  buttonActive = (e) => {
+  heartButtonActive = (e) => {
     e.target.classList.toggle('fas')
   }
   commentQuote = () => {
@@ -93,11 +94,34 @@ class ComboItem extends Component {
     }).catch(error => console.log(error))
   }
 
-  addToFavorites = () => {
-    console.log(this.props)
-    axios.put(`/api/favorite?photoId=${this.props.photoId}`).then(result => {
-      console.log(result)
+  addToFavorites = (e) => {
+    let tgt = e.target;
+    let active = [];
+    active.push(e)
+    this.setState({
+      likeActive: active
     })
+    setTimeout(() => {
+      if(this.state.likeActive.length > 0) {
+       let newState = [ ...this.state.likeActive]
+       newState.pop()
+        this.setState({
+          likeActive: newState
+        })
+      }
+    }, 250)
+    console.log(this.state.likeActive.length);
+    if(this.state.likeActive.length) {
+      tgt.classList.toggle("fas")
+      // axios.put(`/api/favorite?photoId=${this.props.photoId}`).then(result => {
+      //   console.log(result)
+      // })
+    }
+    if(tgt.classList.contains("fas")) {
+      setTimeout(() => {
+        tgt.classList.toggle("fas")
+      }, 750)
+    }
   }
   render() {
     const { open } = this.state;
@@ -133,7 +157,7 @@ class ComboItem extends Component {
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="modal-image-cont">
             <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} />
-              <p className="modal-quote">{this.props.quote}<br/><br/><br/><br/></p>
+              <p className="modal-quote modal-cover-image">{this.props.quote}<br/><br/><br/><br/></p>
             <div>
               {
                 allComments
@@ -149,9 +173,7 @@ class ComboItem extends Component {
                 onMouseDown={this.commentQuote}
               ></i>
               <i
-                className="far fa-heart"
-                onMouseEnter={this.buttonActive}
-                onMouseLeave={this.buttonActive}
+                className="fa-heart modal-cover-image"
                 onMouseDown={this.addToFavorites}
               ></i>
               <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
