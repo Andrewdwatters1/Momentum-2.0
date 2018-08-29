@@ -27,16 +27,19 @@ module.exports = {
   },
   addToFavorites: (req, res, next) => {
     let db = req.app.get('db')
-    let { photoId } = req.query;
-    db.add_to_favorites(photoId).then(result => {
-      res.status(200).send(result)
-    }).catch(error => console.log("Error, originates from controller.addToFavorites", error))
-    res.send('qc.rateCombo hit')
+    let { userId, photoId, quote } = req.query;
+    db.get_quote_id(quote).then(result => {
+      console.log(result[0].id)
+      db.add_to_favorites([userId, photoId, result[0].id]).then(result => {
+        console.log('result', result)
+        res.status(200).send(result)
+      }).catch(error => console.log("Error, originates from controller.addToFavorites, add_to_favorites.sql", error))
+    }).catch(error => console.log("Error, originates from controller.addToFavorites, get_quote_id.sql", error))
   },
   deleteComment: (req, res, next) => {
     let db = req.app.get('db')
     let { commentId, photoId } = req.query;
-    db.delete_comment([ commentId, photoId]).then(result => {
+    db.delete_comment([commentId, photoId]).then(result => {
       res.status(200).send(result)
     }).catch(error => console.log("Error, originates from controller.deleteCombo", error))
   },

@@ -250,12 +250,13 @@
 .fa-heart {
   justify-content: center;
   align-items: center;
-  font-size: 9em;
+  font-size: 3em;
   color: transparent;
 }
 .fas {
   font-size: 9em;
   color: red;
+  transition: color 400ms linear 0s;
 }
 .fa-plus-square {
   position: absolute;

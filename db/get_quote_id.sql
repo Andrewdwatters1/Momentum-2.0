@@ -1,0 +1,1 @@
+SELECT id FROM quotes WHERE quote like $1;

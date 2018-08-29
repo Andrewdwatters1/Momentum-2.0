@@ -113,14 +113,17 @@ class ComboItem extends Component {
     console.log(this.state.likeActive.length);
     if(this.state.likeActive.length) {
       tgt.classList.toggle("fas")
-      // axios.put(`/api/favorite?photoId=${this.props.photoId}`).then(result => {
-      //   console.log(result)
-      // })
+      console.log(this.props.photoId) //yes
+      console.log(this.props.user.id) //yes
+      console.log(this.props.quote)
+      axios.put(`/api/favorite?userId=${this.props.user.id}&photoId=${this.props.photoId}&quote=${this.props.quote}`).then(result => {
+        console.log(result)
+      })
     }
     if(tgt.classList.contains("fas")) {
       setTimeout(() => {
         tgt.classList.toggle("fas")
-      }, 750)
+      }, 500)
     }
   }
   render() {
