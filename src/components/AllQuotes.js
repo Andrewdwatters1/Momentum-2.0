@@ -62,15 +62,15 @@ class AllQuotes extends Component {
       for (let i = start; i < end; i++) {
         result.push(
           <ComboItem
-            imgsrc={response.value.data[i].url}
-            quote={response.value.data[i].quote}
-            photoId={response.value.data[i].id}
+            imgsrc={response.value[i].url}
+            quote={response.value[i].quote}
+            photoId={response.value[i].id}
             id={i}
             allCombos={this.state.allCombos} />
         )
       }
       this.setState({
-        allCombos: response.value.data,
+        allCombos: response.value,
         pageCombos: result,
       })
     })

@@ -25,8 +25,12 @@ module.exports = {
       res.status(200).send(result)
     }).catch(error => console.log("Error, originates from controller.getAllComments", error))
   },
-  rateCombo: (req, res, next) => {
+  addToFavorites: (req, res, next) => {
     let db = req.app.get('db')
+    let { photoId } = req.query;
+    db.add_to_favorites(photoId).then(result => {
+      res.status(200).send(result)
+    }).catch(error => console.log("Error, originates from controller.addToFavorites", error))
     res.send('qc.rateCombo hit')
   },
   deleteComment: (req, res, next) => {

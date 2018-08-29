@@ -50,7 +50,7 @@ class ComboItem extends Component {
       axios.post('/api/comment', { comment }).then(result => {
         ToastStore.success('Thanks! Comment submitted! 😎')
       }).catch(error => {
-        ToastStore.error('Oops... something went wrong. Our team is on it! 😢')
+        ToastStore.error("Oops... something went wrong. We're on it! 😢")
         console.log(error)
       })
     } else {
@@ -94,7 +94,10 @@ class ComboItem extends Component {
   }
 
   addToFavorites = () => {
-
+    console.log(this.props)
+    axios.put(`/api/favorite?photoId=${this.props.photoId}`).then(result => {
+      console.log(result)
+    })
   }
   render() {
     const { open } = this.state;
@@ -130,8 +133,8 @@ class ComboItem extends Component {
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="modal-image-cont">
             <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} />
+              <p className="modal-quote">{this.props.quote}<br/><br/><br/><br/></p>
             <div>
-              <p>{this.props.quote}</p>
               {
                 allComments
               }
@@ -156,7 +159,7 @@ class ComboItem extends Component {
           </div>
         </Modal>
         <div
-          className="quotes-grid-text"
+          className="quotes-grid-text font-size-plus"
           onMouseEnter={() => this.setState({ modalButtonActive: true })}
           onMouseLeave={() => this.setState({ modalButtonActive: false })}
           onMouseEnter={this.toggleStyle}

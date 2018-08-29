@@ -32,8 +32,8 @@ app.post('/api/photo', controller.postPhoto);
 app.get('/api/combo', controller.getAllCombos); //
 app.get('/api/comments', controller.getAllComments); //
 app.post('/api/comment', controller.commentCombo); //
-// app.put('/api/combo', qc.rateCombo);
-app.delete('/api/comment', controller.deleteComment);
+app.put('/api/favorite', controller.addToFavorites); //////////////////////
+app.delete('/api/comment', controller.deleteComment); // 
 
 // app.get('/api/weather', wc.getWeather);
 

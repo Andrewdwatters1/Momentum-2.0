@@ -34,7 +34,12 @@ CREATE TABLE comments ( -- good
   content VARCHAR(750)
 );
 
-
+CREATE TABLE favorites (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users,
+  photo_id INTEGER REFERENCES photos,
+  quote_id INTEGER REFERENCES quotes
+);
 
 -- command to delete duplicates from photos table -> will need to drop comments first
 DELETE 
