@@ -29,10 +29,10 @@ module.exports = {
     let db = req.app.get('db')
     res.send('qc.rateCombo hit')
   },
-  deleteCombo: (req, res, next) => {
+  deleteComment: (req, res, next) => {
     let db = req.app.get('db')
-    let { photoId } = req.query;
-    db.delete_combo(photoId).then(result => {
+    let { commentId, photoId } = req.query;
+    db.delete_comment([ commentId, photoId]).then(result => {
       res.status(200).send(result)
     }).catch(error => console.log("Error, originates from controller.deleteCombo", error))
   },

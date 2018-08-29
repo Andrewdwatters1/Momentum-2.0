@@ -23,9 +23,9 @@ app.use(session({
 }))
 // app.use(express.static(`${__dirname}/../build`))
 
-app.get('/auth/callback', ac.auth);
-app.get(`/api/currentUser`, ac.currentUser);
-app.get('/api/logout', ac.logout);
+app.get('/auth/callback', ac.auth); //
+app.get(`/api/currentUser`, ac.currentUser); //
+app.get('/api/logout', ac.logout); //
 app.get('/api/quote', controller.getRandomQuote); //
 app.post(`/api/quote`, controller.postQuote);
 app.post('/api/photo', controller.postPhoto);
@@ -33,7 +33,7 @@ app.get('/api/combo', controller.getAllCombos); //
 app.get('/api/comments', controller.getAllComments); //
 app.post('/api/comment', controller.commentCombo); //
 // app.put('/api/combo', qc.rateCombo);
-app.delete('/api/combo', controller.deleteCombo);
+app.delete('/api/comment', controller.deleteComment);
 
 // app.get('/api/weather', wc.getWeather);
 

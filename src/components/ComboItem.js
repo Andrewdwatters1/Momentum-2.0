@@ -14,7 +14,7 @@ class ComboItem extends Component {
       modalButtonActive: false,
       cursorSelect: false,
       userCommentContent: '',
-      comments: []
+      comments: [],
     }
   }
 
@@ -66,32 +66,56 @@ class ComboItem extends Component {
     axios.get(`/api/comments?photoId=${photoId}`).then(result => {
       let newStateComments = []
       for (let i = 0; i < result.data.length; i++) {
-        newStateComments.push([result.data[i].content, result.data[i].name, result.data[i].picture])
+        newStateComments.push([result.data[i].content, result.data[i].name, result.data[i].picture, result.data[i].id, true])
       }
       this.setState({
         comments: newStateComments
       })
-    }).catch(error => {
-      ToastStore.error("Sorry, couldn't load comments. 😢")
-      console.log(error)
+    }).catch(error => console.log(error))
+  }
+  deleteChildComment = (id) => {
+    let newState = [...this.state.comments]
+    for (let i = 0; i < this.state.comments.length; i++) {
+      if (newState[i][3] === id) {
+        newState[i][4] = false
+      }
+    }
+    this.setState({
+      comments: [...newState]
     })
   }
-
+  // if(this.state.comments[id][3] === id) {
+  //   this.setState({
+  //     renderChildComment: false
+  //   })
+  // }
+  // }
   addToFavorites = () => {
 
   }
-
   render() {
-    console.log(this.props.deleteItem) // cont, name, pic
     const { open } = this.state;
-    let allComments = this.state.comments.map((e) => {
+
+
+    console.log(this.state.comments) 
+    // this.state.comments is an array of objects, something goes wrong in this map
+    // find a way to pass these values to child component
+    let allComments = this.state.comments.map((e, i) => {
       return (
-        <SingleComment
+        <SingleComment 
           content={e[0]}
           name={e[1]}
-          picture={e[2]} />
+          picture={e[2]}
+          id={this.state.comments[i][3]}
+          renderMe={e[i][4]}
+          photoId={this.props.photoId}
+          buttonActive={this.buttonActive}
+          deleteComment={this.deleteChildComment}
+        />
       )
     })
+
+
     return (
       <div className="quotes-grid-item">
         <img
@@ -110,14 +134,25 @@ class ComboItem extends Component {
             <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} />
             <div>
               <p>{this.props.quote}</p>
-              {allComments}
+              {
+                allComments
+              }
               <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
                 <input onChange={this.handleCommentInput} value={this.state.userCommentContent} />
                 <button type="submit" onSubmit={this.submitComment}>Submit Comment</button>
               </form>
-              <i className="far fa-edit" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive} onMouseDown={this.commentQuote}></i>
-              <i class="far fa-heart" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive} onMouseDown={this.addToFavorites}></i>
-              <i class="far fa-trash-alt" onMouseEnter={this.buttonActive} onMouseLeave={this.buttonActive} onMouseDown={this.deleteItem}></i>
+              <i
+                className="far fa-edit"
+                onMouseEnter={this.buttonActive}
+                onMouseLeave={this.buttonActive}
+                onMouseDown={this.commentQuote}
+              ></i>
+              <i
+                className="far fa-heart"
+                onMouseEnter={this.buttonActive}
+                onMouseLeave={this.buttonActive}
+                onMouseDown={this.addToFavorites}
+              ></i>
               <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
             </div>
           </div>
