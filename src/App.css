@@ -150,6 +150,10 @@
 }
 
 /* QUOTES STYLES */
+.quotes-container-background {
+  background-color: bisque;
+  background-size: cover;
+}
 
 .quotes-grid-container {
   display: flex;

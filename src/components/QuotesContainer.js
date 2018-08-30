@@ -6,7 +6,7 @@ import AllQuotes from './AllQuotes';
 class QuotesContainer extends Component {
   render() {
     return (
-      <div>
+    <div className="quotes-container-background">
         <Link to="/"><button>Home</button></Link>
         <AllQuotes/>
       </div>

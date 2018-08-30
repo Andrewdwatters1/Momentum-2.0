@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const massive = require('massive');
 require('dotenv').config();
 const session = require('express-session');
-// const path = require('path')
+const path = require('path')
 
 const app = express();
 const serverPort = process.env.SERVER_PORT;
@@ -21,7 +21,7 @@ app.use(session({
   saveUninitialized: false,
   resave: false
 }))
-// app.use(express.static(`${__dirname}/../build`))
+app.use(express.static(`${__dirname}/../build`))
 
 app.get('/auth/callback', ac.auth); //
 app.get(`/api/currentUser`, ac.currentUser); //
@@ -35,20 +35,10 @@ app.post('/api/comment', controller.commentCombo); //
 app.put('/api/favorite', controller.addToFavorites); //////////////////////
 app.delete('/api/comment', controller.deleteComment); // 
 
-// app.get('/api/weather', wc.getWeather);
-
-// DEFINE ENDPTS
-
-
-// app.get('/*', function(req, res) { // ******This is only used w/ express static
-//   res.sendFile(path.join(__dirname, '../build/index.html'), function(err) {
-//     if (err) {
-//       res.status(500).send(err)
-//     }
-//   })
-// })
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.listen(serverPort, () => {
   console.log('We are live boys and girls! Port: ', serverPort);
 })
-// LISTEN ON DEFINED PORT => RUN NODE/NODEMON TO SERVE UP FROM BACKEND
