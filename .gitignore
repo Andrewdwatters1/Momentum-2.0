@@ -12,6 +12,7 @@
 # misc
 .env
 .env.prod
+hosting.txt
 .DS_Store
 .env.local
 .env.development.local

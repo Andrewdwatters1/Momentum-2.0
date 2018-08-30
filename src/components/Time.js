@@ -6,7 +6,7 @@ const Time = function(props) {
   if(props.timezone && props.timezone) {
     return (
       <div>
-        <h1 className="font-huge"><Clock format={props.timeformat} ticking={true} timezone={`US/${props.timezone}`} /></h1>
+        <h1 className="font-huge-light"><Clock format={props.timeformat} ticking={true} timezone={`US/${props.timezone}`} /></h1>
       </div>
     )
   } else {

@@ -39,8 +39,8 @@ class ToDo extends Component {
         {itemsList}
         <div>
           <form onSubmit={this.addItem}>
-            <input placeholder="what's next?" onChange={this.handleInput} value={this.state.userInput}  className="font-size"></input>
-            <button type="submit" onSubmit={this.addItem}  className="font-size">button</button>
+            <input placeholder="what's next?" onChange={this.handleInput} value={this.state.userInput}  className="font-size-light"></input>
+            <button type="submit" onSubmit={this.addItem}  className="font-size-light">button</button>
           </form>
         </div>
       </div>

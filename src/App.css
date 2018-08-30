@@ -1,20 +1,32 @@
 /* ALL COMPONENT STYLES */
 
-.font-huge {
-  font-size: 6em;
+.font-huge-light {
+  font-size: 7em;
 }
-.font-large {
+.font-large-light {
   font-size: 3em;
 }
-.font-size {
+.font-size-light {
   font-size: 1.15em;
 }
-.font-size-minus {
+.font-size-minus-light {
   font-size: 1em;
 }
-.font-size-plus {
+.font-size-plus-light {
   font-size: 1.6em;
-  color: white;
+}
+.button-light {
+  background-color: #4DAAF6;
+  border: solid black 3px;
+  border-radius: 10px;
+}
+.button-light:hover {
+  background-color: #79BFF8;
+  cursor: pointer;
+}
+.cursor-select {
+  cursor: pointer;
+  opacity: .70; 
 }
 
 /* LOGIN STYLES */
@@ -33,13 +45,8 @@
   font-size: 24px;
   height: 60px;
   width: 200px;
-  background-color: #4DAAF6;
-  border: solid black 3px;
-  border-radius: 10px;
 }
-.login-button:hover {
-  background-color: #79BFF8;
-}
+
 .login-background {
   display: flex;
   align-items: center;
@@ -85,7 +92,6 @@
 }
 .bm-item {
   display: inline-block;
-  cursor: pointer;
   padding-bottom: .65em;
 }
 .settings-item-spread {
@@ -95,10 +101,6 @@
 }
 .settings-item-select {
   background-color: #4DAAF6;
-}
-.settings-item-select:hover {
-  background-color: #79BFF8;
-  cursor: pointer;
 }
 .hide-timer {
   display: none;
@@ -134,7 +136,7 @@
   justify-content: center;
   align-items: flex-end;
   position: absolute;
-  padding: 100px;
+  padding: 75px;
   bottom: 0;
   margin-bottom: 0;
   width: 100vw;
@@ -148,14 +150,37 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.get-inspired {
+  height: 80px;
+  width: 289px;
+  font-size: 2em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin-bottom: 16vh;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 /* QUOTES STYLES */
+.home-button-center {
+  display: flex;
+  justify-content: center;
+  width: 55px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #4DAAF6;
+  border: solid black 3px;
+  border-radius: 15px;
+}
 .quotes-container-background {
   background-color: bisque;
   background-size: cover;
 }
-
 .quotes-grid-container {
+  
   display: flex;
   flex-wrap: wrap;
   max-width: 95vw;   /* flex-wrap causing this to show 2 images wide when window width compressed */
@@ -193,11 +218,6 @@
   color: white;
   background: radial-gradient(rgb(0, 0, 0, 0.15), transparent 80%);
   border-radius: 15px 15px 80px 80px;
-}
-.magnify {
-  cursor: zoom-in;
-  opacity: .70; 
-  /* would like to add vignette or gradient to black at bottom here */
 }
 
 /***********   MODAL STYLES ***********/
@@ -251,27 +271,7 @@
 
 /********** FONT-AWESOME BUTTONS **********/
 
-.fa-heart {
-  justify-content: center;
-  align-items: center;
-  font-size: 3em;
-  color: transparent;
-}
-.fas {
-  font-size: 9em;
-  color: red;
-  transition: color 400ms linear 0s;
-}
-.fa-plus-square {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-.fa-edit {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
+
 .fa-cog {
   padding-top: 10px;
   font-size: 2em;
@@ -279,6 +279,26 @@
 }
 .fa-cog:hover {
   color: #FFFFFF;
+}
+.fa-home {
+  font-size: 3em;
+  color: black;
+}
+.fa-heart {
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  color: transparent;
+}
+.fa-heart-beat {
+  font-size: 9em;
+  color: rgb(255, 54, 74);
+  transition: color 400ms linear 0s;
+}
+.fa-edit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 /* MEDIA QUERIES */

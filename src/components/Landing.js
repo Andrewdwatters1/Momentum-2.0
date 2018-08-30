@@ -23,10 +23,10 @@ class Landing extends Component {
       (
         <div className="landing-main">
           <NavContainer/>
-          <h1 className="font-large"> Welcome {this.props.user.name}</h1>
+          <h1 className="font-large-light"> Welcome {this.props.user.name}</h1>
           <Time />
           <ToDo />
-          <Link to="/quotes"><button> Get Inspired</button></Link>
+          <Link to="/quotes"><button className="button-light get-inspired"> Get Inspired</button></Link>
           <LandingImage />
           <LandingQuote />
         </div>

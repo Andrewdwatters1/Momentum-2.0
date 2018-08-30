@@ -12,7 +12,7 @@ componentDidMount = () => {
   render() {
     return this.props.landingQuote[0]
     ?
-    <h2 className="landing-quote font-size-plus">{this.props.landingQuote[0].quote}</h2>
+    <h2 className="landing-quote font-size-plus-light">{this.props.landingQuote[0].quote}</h2>
     :
     null
   }

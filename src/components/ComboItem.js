@@ -27,7 +27,7 @@ class ComboItem extends Component {
     this.setState({ open: false });
   };
   toggleStyle = () => {
-    document.getElementById(`combo-id-${this.props.id}-img`).classList.toggle('magnify')
+    document.getElementById(`combo-id-${this.props.id}-img`).classList.toggle('cursor-select')
   }
   heartButtonActive = (e) => {
     e.target.classList.toggle('fas')
@@ -112,7 +112,7 @@ class ComboItem extends Component {
     }, 250)
     console.log(this.state.likeActive.length);
     if(this.state.likeActive.length) {
-      tgt.classList.toggle("fas")
+      tgt.classList.toggle("fa-heart-beat")
       console.log(this.props.photoId) //yes
       console.log(this.props.user.id) //yes
       console.log(this.props.quote)
@@ -120,9 +120,9 @@ class ComboItem extends Component {
         console.log(result)
       })
     }
-    if(tgt.classList.contains("fas")) {
+    if(tgt.classList.contains("fa-heart-beat")) {
       setTimeout(() => {
-        tgt.classList.toggle("fas")
+        tgt.classList.toggle("fa-heart-beat")
       }, 500)
     }
   }
@@ -176,7 +176,7 @@ class ComboItem extends Component {
                 onMouseDown={this.commentQuote}
               ></i>
               <i
-                className="fa-heart modal-cover-image"
+                className="fas fa-heart modal-cover-image"
                 onMouseDown={this.addToFavorites}
               ></i>
               <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
@@ -184,7 +184,7 @@ class ComboItem extends Component {
           </div>
         </Modal>
         <div
-          className="quotes-grid-text font-size-plus"
+          className="quotes-grid-text font-size-plus-light"
           onMouseEnter={() => this.setState({ modalButtonActive: true })}
           onMouseLeave={() => this.setState({ modalButtonActive: false })}
           onMouseEnter={this.toggleStyle}
