@@ -105,7 +105,7 @@
 .hide-timer {
   display: none;
 }
-.focus-timer-container {
+.focus-timer-container {  /* Theme */
   position: absolute;
   display: flex;
   justify-content: center;
@@ -124,14 +124,14 @@
 
 /* LANDING PAGE STYLES */
 
-.landing-main {
+.landing-main { /* theme */ 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white
 }
-.landing-quote {
+.landing-quote { /* theme */
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -176,15 +176,20 @@
   border-radius: 15px;
 }
 .quotes-container-background {
-  background-color: bisque;
+  background-color: #44444C;
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
+  overflow: auto;
+  box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
 }
 .quotes-grid-container {
-  
   display: flex;
   flex-wrap: wrap;
   max-width: 95vw;   /* flex-wrap causing this to show 2 images wide when window width compressed */
-  height: 60vh; /* CHANGE THIS IF NAVBAR/HEADER */
+  /* max-height: 25vh; CHANGE THIS IF NAVBAR/HEADER */
   margin-left: auto;
   margin-right: auto;
 }
@@ -207,7 +212,7 @@
   border: solid black 5px;
   border-radius: 80px;
 }
-.quotes-grid-text {
+.quotes-grid-text { /* theme */
   position: absolute;
   bottom: 15%;
   width: 78%;
@@ -216,28 +221,30 @@
   text-align: center;
   z-index: 1;
   color: white;
-  background: radial-gradient(rgb(0, 0, 0, 0.15), transparent 80%);
-  border-radius: 15px 15px 80px 80px;
 }
 
 /***********   MODAL STYLES ***********/
+.styles_modal__gNwvD { /* PARENT MODAL CONTAINER */
+  background-color: transparent;
+  max-width: 1200px;
+}
 
 .modal-image-cont {
   display: block;
-  max-height: 100vh;
+  height: 95vh;
   position: relative;
 }
 .modal-image {
   display: flex;
-  height: 90%;
-  width: 90%;
+  max-width: 100%;
+  max-height: 100%;
   margin-right: auto;
   margin-left: auto;
   position: relative;
   border: solid black 5px;
   border-radius: 80px;
 }
-.modal-cover-image {
+/* .modal-cover-image {
   position: absolute;
   display: flex;
   text-align: center;
@@ -251,15 +258,15 @@
   height: 99%;
   margin-top: 0.5%;
   border-radius: 80px;
-}
-.modal-quote {
+} */
+/* .modal-quote { 
   flex-direction: column;
   justify-content: flex-end;
   font-size: 1.9em;
   background: linear-gradient(rgba(10, 10, 10, 0.20), transparent, rgba(10, 10, 10, 0.20));
   background-size: cover;
   color: white;
-}
+} */
 .modal-comment {
   display: none;
 }
@@ -272,7 +279,7 @@
 /********** FONT-AWESOME BUTTONS **********/
 
 
-.fa-cog {
+.fa-cog { /* theme */
   padding-top: 10px;
   font-size: 2em;
   color: #888888;

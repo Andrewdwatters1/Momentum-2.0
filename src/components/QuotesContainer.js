@@ -10,7 +10,9 @@ class QuotesContainer extends Component {
         <div className="home-button-center">
           <Link to="/"><i class="fas fa-home"></i></Link>
         </div>
+        <div>
         <AllQuotes />
+        </div>
       </div>
     )
   }

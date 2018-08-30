@@ -11,14 +11,14 @@ class AllQuotes extends Component {
   constructor() {
     super()
     this.state = {
-      resultsPerPage: 9,
+      resultsPerPage: 15,
       page: 0,
       allCombos: [],
       pageCombos: [],
     }
   }
 
-  pageLeft = () => {
+  pageLeft = () => { // maybe this goes away
     let result = [];
     let start = (this.state.page - 1) * this.state.resultsPerPage;
     let end = ((this.state.page - 1) * this.state.resultsPerPage) + this.state.resultsPerPage;
@@ -36,7 +36,7 @@ class AllQuotes extends Component {
       page: this.state.page - 1
     })
   }
-  pageRight = () => {
+  pageRight = () => { // maybe this goes away
     let result = [];
     let start = (this.state.page + 1) * this.state.resultsPerPage;
     let end = ((this.state.page + 1) * this.state.resultsPerPage) + this.state.resultsPerPage;
@@ -80,8 +80,10 @@ class AllQuotes extends Component {
     let { pageCombos } = this.state;
     return this.state.pageCombos[0] ?
       (
-        <div className="quotes-grid-container">
-          {pageCombos}
+        <div>
+          <div className="quotes-grid-container">
+            {pageCombos}
+          </div>
           <AddPhoto />
           <AddQuote />
           <i class="fas fa-arrow-circle-left" onMouseDown={this.pageLeft} style={{ display: this.state.page ? 'block' : 'none' }}></i>
