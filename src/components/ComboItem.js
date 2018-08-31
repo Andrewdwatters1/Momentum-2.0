@@ -15,7 +15,9 @@ class ComboItem extends Component {
       cursorSelect: false,
       userCommentContent: '',
       comments: [],
-      likeActive: []
+      likeActive: [],
+      // imageModalActive: false,
+      // commentModalActive: false
     }
   }
 
@@ -26,6 +28,12 @@ class ComboItem extends Component {
   onCloseModal = () => {
     this.setState({ open: false });
   };
+  // activateImageModal = () => {
+  //   this.setState({ imageModalActive: !this.state.imageModalActive})
+  // }
+  // activateCommentModal = () => {
+  //   this.setState({ commentModalActive: !this.state.commentModalActive})
+  // }
   toggleStyle = () => {
     document.getElementById(`combo-id-${this.props.id}-img`).classList.toggle('cursor-select')
   }
@@ -34,6 +42,7 @@ class ComboItem extends Component {
   }
   commentQuote = () => {
     document.getElementById("modal-user-comment").classList.toggle("modal-comment-active")
+    // document.getElementById('comment-modal').classList.toggle('comment-modal-right-content-active')
   }
   handleCommentInput = (e) => {
     this.setState({
@@ -102,25 +111,21 @@ class ComboItem extends Component {
       likeActive: active
     })
     setTimeout(() => {
-      if(this.state.likeActive.length > 0) {
-       let newState = [ ...this.state.likeActive]
-       newState.pop()
+      if (this.state.likeActive.length > 0) {
+        let newState = [...this.state.likeActive]
+        newState.pop()
         this.setState({
           likeActive: newState
         })
       }
     }, 250)
-    console.log(this.state.likeActive.length);
-    if(this.state.likeActive.length) {
+    if (this.state.likeActive.length) {
       tgt.classList.toggle("fa-heart-beat")
-      console.log(this.props.photoId) //yes
-      console.log(this.props.user.id) //yes
-      console.log(this.props.quote)
       axios.put(`/api/favorite?userId=${this.props.user.id}&photoId=${this.props.photoId}&quote=${this.props.quote}`).then(result => {
         console.log(result)
       })
     }
-    if(tgt.classList.contains("fa-heart-beat")) {
+    if (tgt.classList.contains("fa-heart-beat")) {
       setTimeout(() => {
         tgt.classList.toggle("fa-heart-beat")
       }, 500)
@@ -143,6 +148,12 @@ class ComboItem extends Component {
         />
       )
     })
+    const commentModalStyles = {
+      modal: "comment-modal-right-content"
+    }
+    const imageModalStyles = {
+      overlay: "image-modal-center-overlay"
+    }
 
     return (
       <div className="quotes-grid-item">
@@ -157,30 +168,67 @@ class ComboItem extends Component {
           onMouseDown={this.onOpenModal}
           id={`combo-id-${this.props.id}-img`}
         />
-        <Modal open={open} onClose={this.onCloseModal} center>
-          <div className="modal-image-cont">
+        <Modal
+          open={open}
+          onClose={this.onCloseModal}
+          closeOnEsc
+          center="false"
+          // // onMouseEnter={this.activateCommentModal}
+          // // onMouseLeave={this.activateCommentModal}
+          // // disabled={this.state.commentModalActive}
+          classNames={commentModalStyles}
+        >
+          {
+            allComments.length
+              ?
+              <div className="modal-comment-cont">
+                {
+                  allComments
+                }
+                <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
+                  <input id="comment-input" onChange={this.handleCommentInput} value={this.state.userCommentContent} />
+                  <button type="submit" onSubmit={this.submitComment}>Submit Comment</button>
+                </form>
+              </div>
+              :
+              <div>
+                <p className="font-size-light no-comments">No comments yet... 🤔<br /> Be the first!</p>
+                <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
+                  <input id="comment-input" onChange={this.handleCommentInput} value={this.state.userCommentContent} />
+                  <button type="submit" onSubmit={this.submitComment}>Submit Comment</button>
+                </form>
+              </div>
+
+          }
+        </Modal>
+
+        <Modal
+          open={open}
+          onClose={this.onCloseModal}
+          center="true"
+          closeOnEsc
+          classNames={imageModalStyles}
+        // onMouseEnter={this.activateImageModal}
+        // onMouseLeave={this.activateImageModal}
+        // disabled={this.state.imageModalActive}
+        >
+          <div className="modal-image-cont" onClick={e => {
+            console.log('somethign')
+            e.stopPropagation()
+          }}>
             <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} />
             <p className="modal-quote">{this.props.quote}</p>
-            <div>
-              {
-                allComments
-              }
-              <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
-                <input onChange={this.handleCommentInput} value={this.state.userCommentContent} />
-                <button type="submit" onSubmit={this.submitComment}>Submit Comment</button>
-              </form>
-              </div>
-              <i
-                className="far fa-edit"
-                onMouseEnter={this.buttonActive}
-                onMouseLeave={this.buttonActive}
-                onMouseDown={this.commentQuote}
-              ></i>
-              <i
-                className="fas fa-heart"
-                onMouseDown={this.addToFavorites}
-              ></i>
-              <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
+            <i
+              className="far fa-edit"
+              onMouseEnter={this.buttonActive}
+              onMouseLeave={this.buttonActive}
+              onMouseDown={this.commentQuote}
+            ></i>
+            <i
+              className="fas fa-heart"
+              onMouseDown={this.addToFavorites}
+            ></i>
+            <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
           </div>
         </Modal>
         <div
@@ -204,13 +252,13 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps)(ComboItem);
 
-// import React, { Component } from 'react';
-// import Modal from 'react-responsive-modal';
-// import axios from 'axios';
-// import { connect } from 'react-redux';
-// import { ToastContainer, ToastStore } from 'react-toasts';
+// import React, {Component} from 'react';
+        // import Modal from 'react-responsive-modal';
+        // import axios from 'axios';
+// import {connect} from 'react-redux';
+// import {ToastContainer, ToastStore } from 'react-toasts';
 
-// import SingleComment from './SingleComments';
+        // import SingleComment from './SingleComments';
 
 // class ComboItem extends Component {
 //   constructor(props) {
