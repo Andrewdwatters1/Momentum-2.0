@@ -6,6 +6,7 @@ class SingleComment extends Component {
   }
 
   render() {
+    console.log('single comment', this.props)
     return (
       <div className="red-top">
         <p>{this.props.content}</p>
@@ -20,8 +21,6 @@ class SingleComment extends Component {
       </div>
     )
   }
-  // componentWillUnmount() {
-  // }
 }
 
 export default SingleComment;

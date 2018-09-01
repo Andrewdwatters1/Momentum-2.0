@@ -1,2 +1,2 @@
 DELETE FROM comments
-WHERE $1 = id AND $2 = photo_id;
+WHERE id = $1 AND photo_id = $2;

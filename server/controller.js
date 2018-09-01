@@ -29,9 +29,7 @@ module.exports = {
     let db = req.app.get('db')
     let { userId, photoId, quote } = req.query;
     db.get_quote_id(quote).then(result => {
-      console.log(result[0].id)
       db.add_to_favorites([userId, photoId, result[0].id]).then(result => {
-        console.log('result', result)
         res.status(200).send(result)
       }).catch(error => console.log("Error, originates from controller.addToFavorites, add_to_favorites.sql", error))
     }).catch(error => console.log("Error, originates from controller.addToFavorites, get_quote_id.sql", error))
@@ -39,9 +37,11 @@ module.exports = {
   deleteComment: (req, res, next) => {
     let db = req.app.get('db')
     let { commentId, photoId } = req.query;
+    console.log('commentid', commentId)
+    console.log('photoid', photoId)
     db.delete_comment([commentId, photoId]).then(result => {
       res.status(200).send(result)
-    }).catch(error => console.log("Error, originates from controller.deleteCombo", error))
+    }).catch(error => console.log("Error, originates from controller.deleteComment", error))
   },
   postQuote: (req, res, next) => {
     let db = req.app.get('db')

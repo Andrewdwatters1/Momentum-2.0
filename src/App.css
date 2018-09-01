@@ -231,8 +231,7 @@
 .quotes-grid-container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 95vw;   /* flex-wrap causing this to show 2 images wide when window width compressed */
-  /* max-height: 25vh; CHANGE THIS IF NAVBAR/HEADER */
+  max-width: 95vw;
   margin-left: auto;
   margin-right: auto;
 }
@@ -278,7 +277,71 @@
 
 /***********   MODAL STYLES ***********/
 
+.styles_modal__gNwvD {
+  background-color: transparent;
+  box-shadow: none;
+}
+.image-modal-center-close {
+  margin-right: 37px;
+  margin-top: 14px;
+  background-color: #4DAAF6;
+  border: solid black 3px;
+  border-radius: 50px;
+  height: 70px;
+  width: 70px;
+  background-color: #4DAAF6;
+  border: solid black 3px;
+  border-radius: 33px;
+  height: 60px;
+  width: 60px;
+}
+.image-modal-center-close:hover {
+  cursor: pointer;
+  background-color: #79BFF8;
+}
+/* Image Content */
+.image-modal-center-overlay {
+  z-index: 999;
+  box-shadow: 0 0 200px rgba(0,0,0,0.09) inset;
+}
+.modal-image-cont {
+  display: block;
+  max-height: 98vh;
+  min-height: 75vh;
+  position: relative;
+}
+.modal-image {
+  display: flex;
+  width: 93%;
+  height: 90vh;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  border: solid black 5px;
+  border-radius: 40px;
+}
+.modal-quote-light {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 160px;
+  color: white;
+}
 /* Comment Content */
+.comment-modal-right-overlay {
+  background-color: transparent;
+}
 .comment-modal-right-content {
   position: absolute;
   right: 0;
@@ -290,68 +353,21 @@
   background-repeat: no-repeat;
   background-size: cover;
   overflow: auto;
-  background-color: #44444C;
-  box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
-  border-radius: 25px;
+  border-radius: 20px;
 }
-
-.modal-comment-cont {
-
+.modal-comment {
+  position: relative;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+.modal-comment-input {
+  height: 65px;
+  border-radius: 5px;
 }
 .no-comments {
   text-align: center;
-}
-/* Image Content */
-.image-modal-center-overlay {
-  background-color: transparent;
-  justify-content: flex-end;
-  width: 70.75vw;
-}
-.modal-image-cont {
-  display: block;
-  height: 95vh;
-  position: relative;
-}
-.modal-image {
-  display: flex;
-  max-width: 100%;
-  max-height: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  position: relative;
-  border: solid black 5px;
-  border-radius: 80px;
-}
-/* .modal-cover-image {
-  position: absolute;
-  display: flex;
-  text-align: center;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin-right: auto;
-  margin-left: auto;
-  width: 90%;
-  height: 99%;
-  margin-top: 0.5%;
-  border-radius: 80px;
-} */
-/* .modal-quote { 
-  flex-direction: column;
-  justify-content: flex-end;
-  font-size: 1.9em;
-  background: linear-gradient(rgba(10, 10, 10, 0.20), transparent, rgba(10, 10, 10, 0.20));
-  background-size: cover;
   color: white;
-} */
-.modal-comment {
-  display: none;
-}
-.modal-comment-active {
-  position: relative;
-  right: 0;
-  display: block;
 }
 
 /********** FONT-AWESOME BUTTONS **********/
@@ -380,10 +396,25 @@
   color: rgb(255, 54, 74);
   transition: color 400ms linear 0s;
 }
-.fa-edit {
+.fa-pen {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   bottom: 0;
   right: 0;
+  margin-right: 33px;
+  margin-bottom: 57px;
+  font-size: 2em;
+  background-color: #4DAAF6;
+  border: solid black 3px;
+  border-radius: 33px;
+  height: 60px;
+  width: 60px;
+}
+.fa-pen:hover {
+  cursor: pointer;
+  background-color: #79BFF8;
 }
 
 /* MEDIA QUERIES */
