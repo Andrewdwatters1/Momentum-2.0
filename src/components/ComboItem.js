@@ -17,6 +17,7 @@ class ComboItem extends Component {
       userCommentContent: '',
       comments: [],
       likeActive: [],
+      commentInputRows: 1
     }
   }
 
@@ -48,6 +49,11 @@ class ComboItem extends Component {
       commentOpen: !this.state.commentOpen
     })
   }
+  changeCommentRows = () => {
+    this.setState({
+      commentInputRows: 3
+    })
+  }
   handleCommentInput = (e) => {
     if (e.which === 13 && !e.shiftKey) {
       e.target.form.dispatchEvent(new Event("submit", { cancelable: true }))
@@ -77,7 +83,8 @@ class ComboItem extends Component {
       ToastStore.error('Please login to comment. 😜')
     }
     this.setState({
-      userCommentContent: ''
+      userCommentContent: '',
+      commentInputRows: 1
     })
   }
   getAllComments = () => {
@@ -114,7 +121,7 @@ class ComboItem extends Component {
       this.getAllComments()
     }).catch(error => console.log(error))
   }
-  addToFavorites = (e) => {
+  likeCombo = (e) => {
     let tgt = e.target;
     let active = [];
     active.push(e)
@@ -133,7 +140,6 @@ class ComboItem extends Component {
     if (this.state.likeActive.length) {
       tgt.classList.toggle("fa-heart-beat")
       axios.put(`/api/favorite?userId=${this.props.user.id}&photoId=${this.props.photoId}&quote=${this.props.quote}`).then(result => {
-        console.log(result)
       })
     }
     if (tgt.classList.contains("fa-heart-beat")) {
@@ -171,28 +177,27 @@ class ComboItem extends Component {
     }
 
     return (
-      <div className="quotes-grid-item">
-        <img
-          src={this.props.imgsrc}
-          alt={"Oops, something went wrong :("}
-          className="quotes-grid-image"
-          onMouseEnter={() => this.setState({ modalButtonActive: true })}
-          onMouseLeave={() => this.setState({ modalButtonActive: false })}
-          onMouseEnter={this.toggleStyle}
-          onMouseLeave={this.toggleStyle}
-          onMouseDown={this.onOpenModal}
-          id={`combo-id-${this.props.id}-img`}
-        />
-
+        <div className="quotes-grid-item">
+          <img
+            src={this.props.imgsrc}
+            alt={"Oops, something went wrong :("}
+            className="quotes-grid-image"
+            onMouseEnter={() => this.setState({ modalButtonActive: true })}
+            onMouseLeave={() => this.setState({ modalButtonActive: false })}
+            onMouseEnter={this.toggleStyle}
+            onMouseLeave={this.toggleStyle}
+            onMouseDown={this.onOpenModal}
+            id={`combo-id-${this.props.id}-img`}
+          />
         <Modal
           open={open}
           onClose={this.onCloseModal}
           center="true"
           closeOnEsc
           classNames={imageModalStyles}
-        >
+          >
           <div className="modal-image-cont" onClick={e => e.stopPropagation()}>
-            <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} icon="comment-icon"/>
+            <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} icon="comment-icon" />
             <p className="modal-quote-light font-size-plus-light">{this.props.quote}</p>
             <i
               id="comment-icon"
@@ -200,10 +205,10 @@ class ComboItem extends Component {
               onMouseEnter={this.buttonActive}
               onMouseLeave={this.buttonActive}
               onMouseDown={this.commentQuote}
-            ></i>
+              ></i>
             <i
               className="fas fa-heart"
-              onMouseDown={this.addToFavorites}
+              onMouseDown={this.likeCombo}
             ></i>
             <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
           </div>
@@ -214,16 +219,16 @@ class ComboItem extends Component {
           closeOnEsc
           center="false"
           classNames={commentModalStyles}
-        >
+          >
           {
             allComments.length
-              ?
-              <div classNamee="modal-comment-cont" onClick={e => e.stopPropagation()}>
+            ?
+            <div classNamee="modal-comment-cont" onClick={e => e.stopPropagation()}>
                 {
                   allComments
                 }
                 <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
-                  <textarea rows="5" cols="30" id="user-comment" className="modal-comment-input font-size-light" onChange={this.handleCommentInput} value={this.state.userCommentContent}><input /></textarea>
+                  <textarea rows={this.state.commentInputRows} cols="30" id="user-comment" className="modal-comment-input font-size-light" onChange={this.handleCommentInput} value={this.state.userCommentContent} onMouseDown={this.changeCommentRows}><input /></textarea>
                   <button type="submit" onSubmit={this.submitComment}>Submit</button>
                 </form>
               </div>
@@ -231,7 +236,7 @@ class ComboItem extends Component {
               <div>
                 <p className="font-size-plus-light no-comments">No comments yet... 🤔<br /> Be the first!</p>
                 <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
-                  <textarea rows="5" cols="30" id="user-comment" className="modal-comment-input font-size-light" onChange={this.handleCommentInput} value={this.state.userCommentContent}><input /></textarea>
+                  <textarea rows={this.state.commentInputRows} cols="30" id="user-comment" className="modal-comment-input font-size-light" onChange={this.handleCommentInput} value={this.state.userCommentContent} onMouseDown={this.changeCommentRows}><input /></textarea>
                   <button type="submit" onSubmit={this.submitComment}>Submit</button>
                 </form>
               </div>
