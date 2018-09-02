@@ -32,6 +32,7 @@ app.post('/api/photo', controller.postPhoto);
 app.get('/api/combo', controller.getAllCombos); //
 app.get('/api/comments', controller.getAllComments); //
 app.post('/api/comment', controller.commentCombo); //
+app.get('/api/favorite', controller.getAllFavorites); // 
 app.put('/api/favorite', controller.addToFavorites); //////////////////////
 app.delete('/api/comment', controller.deleteComment); // 
 

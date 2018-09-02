@@ -8,12 +8,15 @@ const GET_LANDING_QUOTE = "GET_LANDING_QUOTE";
 const GET_LANDING_QUOTE_FULFILLED = "GET_LANDING_QUOTE_FULFILLED";
 const GET_ALL_COMBOS = "GET_ALL_COMBOS";
 const GET_ALL_COMBOS_FULFILLED = "GET_ALL_COMBOS_FULFILLED";
+const GET_ALL_FAVORITES = "GET_ALL_FAVORITES"
+const GET_ALL_FAVORITES_FULFILLED = "GET_ALL_FAVORITES_FULFILLED";
 const CHANGE_TIMEZONE = "CHANGE_TIMAEZONE";
 const CHANGE_TIME_FORMAT = "CHANGE_TIME_FORMAT";
 
 let initialState = {
   landingQuote: {},
   comboList: {},
+  favoritesList: {},
   timezone: 'Mountain',
   timeformat: 'HH:mm:ss',
   userInfo: null,
@@ -29,6 +32,8 @@ export default function reducer(state = initialState, action) {
       return { ...state, landingQuote: action.payload.data }
     case GET_ALL_COMBOS_FULFILLED:
       return { ...state, comboList: action.payload.data }
+    case GET_ALL_FAVORITES_FULFILLED:
+      return { ...state, favoritesList: action.payload.data }
     case CHANGE_TIMEZONE:
       return { ...state, timezone: action.payload }
     case CHANGE_TIME_FORMAT:
@@ -71,6 +76,12 @@ export function getAllCombos() {
       }
       return uniqueResult;
     })
+  }
+}
+export function getAllFavorites(userId) {
+  return {
+    type: GET_ALL_FAVORITES,
+    payload: axios.get(`/api/favorite?userId=${userId}`)
   }
 }
 export function changeTimezone(val) {

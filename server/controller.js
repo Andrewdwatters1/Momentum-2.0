@@ -25,6 +25,13 @@ module.exports = {
       res.status(200).send(result)
     }).catch(error => console.log("Error, originates from controller.getAllComments", error))
   },
+  getAllFavorites: (req, res, next) => {
+    let db = req.app.get('db')
+    let { userId } = req.query;
+      db.get_all_favorites(userId).then(result => {
+        res.status(200).send(result)
+      }).catch(error => console.log('Error, originates from controller.getAllFavorites', error))
+  },
   addToFavorites: (req, res, next) => {
     let db = req.app.get('db')
     let { userId, photoId, quote } = req.query;
