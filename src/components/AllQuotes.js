@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ToastContainer, ToastStore } from 'react-toasts';
 
-// import AddPhoto from './AddPhoto';
-// import AddQuote from './AddQuote';
 import ComboItem from './ComboItem';
 import { getAllCombos, getAllFavorites } from '../redux/reducer';
 
@@ -97,7 +95,7 @@ class AllQuotes extends Component {
           />
         )
       }
-      if(initial) {
+      if (initial) {
         this.setState({
           allCombos: response.value,
           pageCombos: result,
@@ -124,6 +122,7 @@ class AllQuotes extends Component {
         <div>
           <div className="quotes-grid-container">
             {pageCombos}
+            <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
           </div>
           {
             this.state.faves

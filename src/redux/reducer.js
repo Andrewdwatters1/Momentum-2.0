@@ -67,10 +67,10 @@ export function getAllCombos() {
     type: GET_ALL_COMBOS,
     payload: axios.get('/api/combo').then(response => {
       let uniqueResponse = Array.from(new Set(response.data))
-      let uniqueResult =[];
-      for(let i = 0; i < uniqueResponse.length; i++) {
+      let uniqueResult = [];
+      for (let i = 0; i < uniqueResponse.length; i++) {
         let val = uniqueResponse[i];
-        if(uniqueResult.findIndex((e) => e.id === val.id) === -1) {
+        if (uniqueResult.findIndex((e) => e.id === val.id) === -1) {
           uniqueResult.push(val)
         }
       }
