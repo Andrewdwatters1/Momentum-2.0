@@ -56,19 +56,19 @@ class FocusTimer extends Component {
         {
           this.state.timerType === "focus"
             ?
-            <div className="focus-timer">
+            <div className="break-timer">
               Focus
               {FocusPeriodTimer}
             </div>
             :
             this.state.timerType === "short"
               ?
-              <div className="short-break-timer">
+              <div className="break-timer">
                 Break
                 {shortBreakTimer}
               </div>
               :
-              <div className="short-break-timer">
+              <div className="break-timer">
                 Break
                 {longBreakTimer}
               </div>

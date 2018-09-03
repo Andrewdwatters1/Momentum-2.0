@@ -73,17 +73,18 @@
 .focus-timer-container {
   position: absolute;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   top: 0;
   right: 0;
   margin: 12px;
-  height: 60px;
-  width: 70px;
+  height: 50px;
+  width: 60px;
+  background-color: #4DAAF6;
   border: solid black 3px;
   border-radius: 10px;
-  background-color: #4DAAF6;
   color: black;
   font-weight: bold;
   opacity: .85;
@@ -91,6 +92,11 @@
 .focus-timer-container:hover {
   opacity: 1;
   cursor: pointer;
+}
+.break-timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 /* Landing Page */
 .landing-main {  
@@ -187,6 +193,7 @@
   max-width: 95vw;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 25px;
 }
 .quotes-grid-item {
   display: flex;
@@ -535,6 +542,19 @@
   opacity: .70; 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Media Queries */
 @media (max-width: 1450px) {
   .comment-modal-right-content {
@@ -555,6 +575,22 @@
   }
   .font-size-plus-dark {
     font-size: 1.3em;
+  }
+  .font-large-light {
+    margin-top: 10vh;
+  }
+  .font-large-dark {
+    margin-top: 10vh;
+  }
+  .font-huge-light {
+    margin-bottom: 15vh;
+  }
+  .font-huge-dark {
+    margin-bottom: 15vh;
+  }
+  .focus-timer {
+    width: 45px;
+    height: 45px;
   }
   .fa-heartbeat {
     width: 45px;
@@ -589,6 +625,18 @@
   .image-modal-center-overlay {
     padding-right: 15vw;
   }
+  .font-large-light {
+    margin-top: 10vh;
+  }
+  .font-large-dark {
+    margin-top: 10vh;
+  }
+  .font-huge-light {
+    margin-bottom: 15vh;
+  }
+  .font-huge-dark {
+    margin-bottom: 15vh;
+  }
   .font-size-plus-light {
     font-size: 1.2em;
   }
@@ -605,43 +653,217 @@
 @media (max-width: 1050px) {
   .image-modal-center-overlay {
     padding-right: 20vw;
+    top: 0;
   }
   .get-inspired {
     margin-bottom: 15vh;
   }
+  .font-huge-light {
+    margin-bottom: 0;
+  }
+  .todo-container {
+    max-height: 136px;
+  }
 }
 @media (max-width: 970px) {
+  .image-modal-center-overlay {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .modal-image {
+    width: 600px;
+    height: 600px;
+  }
+  .image-modal-center-close {
+    margin-right: 15px;
+  }
+  .fa-pen {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+  .login-greeting {
+    font-size: 1.75em;
+  }
   .font-large-light {
     font-size: 2.5em;
   }
   .quotes-grid-item {
     width: 50%;
   }
-}
-
-
-
-
-
-
-/* Device specific media queries */
-/* Ipad Pro */
-@media only screen 
-  and (min-device-width: 1024px) 
-  and (max-device-width: 1366px) 
-  and (-webkit-min-device-pixel-ratio: 1.5) {
-  .landing-app {
-    max-width: 85vw;
-    padding: 17px;
-    margin-right: 12vw;
+  .todo-container {
+    max-height: 136px;
   }
-  .image-grid-app {
-    max-width: 85vw;
-    padding: 17px;
-    margin-right: 12vw;
+}
+@media (max-width: 840px) {
+  .image-modal-center-overlay {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .modal-image {
+    width: 438px;
+    height: 438px;
+  }
+  .image-modal-center-close {
+    margin-right: 15px;
+  }
+  .fa-pen {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+}
+@media (max-width: 650px) {
+  .image-modal-center-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 95%;
+  }
+  .modal-image {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    height: auto;
+  }
+  .image-modal-center-close {
+    margin-right: 4px;
+  }
+  .fa-pen {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+  .font-large-light {
+    font-size: 2em;
+  }
+  .font-huge-light {
+    font-size: 5em;
+  }
+  .quotes-grid-text {
+    font-size: .85em;
+  }
+  .todo-container {
+    max-height: 136px;
+  }
+  .quotes-grid-image {
+    border-radius: 70px;
+  }
+}
+@media (max-width: 525px) {
+  .image-modal-center-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 90%;
+  }
+  .modal-image {
+    margin-right: auto;
+    margin-left: auto;
+    height: auto;
+  }
+  .quotes-grid-container {
+    margin-top: 50px;
   }
   .quotes-grid-item {
-    width: 50%;
+    width: 100%;
+  }
+  .focus-timer-container {
+    margin: 0px;
+    height: 50px;
+    font-size: 1em;
+  }
+  .fa-heartbeat {
+    width: 60px;
+    height: 60px;
+    font-size: 3em;
+  }
+  .fa-home {
+    font-size: 3em;
+  }
+  .home-button-center {
+    width: 60px;
+    height: 60px;
+  }
+  .fa-arrow-alt-circle-down {
+    width: 60px;
+    height: 60px;
+    font-size: 3em;
+  }
+  .fa-camera {
+    width: 60px;
+    height: 60px;
+    font-size: 3em;
+  }
+  .font-large-light {
+    font-size: 1.7em;
+  }
+  .font-huge-light {
+    font-size: 4em;
+  }
+  .font-size-plus-light {
+    font-size: 1.2em;  
+  }
+  .font-size-plus-dark {
+    font-size: 1.2em;
+  }
+  .todo-container {
+    max-height: 136px;
+  }
+  .get-inspired {
+    width: 220px;
+    height: 70px;
+  }
+  #landing-quote {
+    padding-bottom: 40px;
   }
 }
 
+@media (max-width: 400px) {
+  .image-modal-center-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 80%;
+  }
+  .modal-image {
+    margin-right: auto;
+    margin-left: auto;
+    height: auto;
+  }
+  
+  .quotes-grid-image {
+    border-radius: 50px;
+  }
+  .focus-timer {
+    top: 0;
+    width: 30px;
+    height: 30px;
+  }
+  .get-inspired {
+    height: 50px;
+    width: 190px;
+    margin-bottom: 16vh;
+    font-size: 1.4em;
+  }
+  .font-large-light {
+    font-size: 1.25em;
+  }
+  .font-huge-light {
+    margin-bottom: 4vh;
+  }
+  #landing-quote {
+    font-size: 1em;
+    padding-bottom: 30px;
+  }
+  .todo-input-field {
+    width: 120px;
+  }
+}
+
+.fa-pen {
+
+}
+.image-modal-center-close {
+
+}
