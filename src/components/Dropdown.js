@@ -95,7 +95,7 @@ class Dropdown extends Component {
             </div>
           </a>
 
-          <a className="menu-item">Theme
+          {/* <a className="menu-item">Theme
           <div>
               <label htmlFor="normal-switch">
                 <Switch
@@ -112,7 +112,7 @@ class Dropdown extends Component {
                   width={40}
                 />
               </label>
-            </div></a>
+            </div></a> */}
 
           <a className="menu-item">
             <div>
