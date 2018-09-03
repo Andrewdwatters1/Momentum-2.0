@@ -3,6 +3,8 @@ import Modal from 'react-responsive-modal';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { ToastContainer, ToastStore } from 'react-toasts';
+import Switch from "react-switch";
+
 
 import SingleComment from './SingleComments';
 
@@ -17,7 +19,8 @@ class ComboItem extends Component {
       userCommentContent: '',
       comments: [],
       likeActive: [],
-      commentInputRows: 1
+      commentInputRows: 1,
+      theme: false
     }
   }
 
@@ -52,6 +55,11 @@ class ComboItem extends Component {
   changeCommentRows = () => {
     this.setState({
       commentInputRows: 3
+    })
+  }
+  themeChange = () => {
+    this.setState({
+      theme: !this.state.theme
     })
   }
   handleCommentInput = (e) => {
@@ -106,7 +114,6 @@ class ComboItem extends Component {
     }).catch(error => console.log(error))
   }
   deleteComment = (commentId, photoId) => {
-    console.log('delete comment', commentId)
     let newState = [...this.state.comments]
     for (let i = 0; i < newState.length; i++) {
       if (newState[i].id === commentId) {
@@ -117,7 +124,6 @@ class ComboItem extends Component {
       comments: newState
     })
     axios.delete(`/api/comment?commentId=${commentId}&photoId=${photoId}`).then((result) => {
-      console.log(result)
       this.getAllComments()
     }).catch(error => console.log(error))
   }
@@ -139,7 +145,7 @@ class ComboItem extends Component {
     }, 250)
     if (this.state.likeActive.length) {
       tgt.classList.toggle("fa-heart-beat")
-      axios.put(`/api/favorite?userId=${this.props.user.id}&photoId=${this.props.photoId}&quote=${this.props.quote}`).then(result => {
+      axios.put(`/api/favorite?userId=${this.props.user.id}&photoId=${this.props.photoId}&quote=${this.props.quote}&theme=${this.state.theme}`).then(result => {
       })
     }
     if (tgt.classList.contains("fa-heart-beat")) {
@@ -177,35 +183,66 @@ class ComboItem extends Component {
     }
 
     return (
-        <div className="quotes-grid-item">
-          <img
-            src={this.props.imgsrc}
-            alt={"Oops, something went wrong :("}
-            className="quotes-grid-image"
-            onMouseEnter={() => this.setState({ modalButtonActive: true })}
-            onMouseLeave={() => this.setState({ modalButtonActive: false })}
-            onMouseEnter={this.toggleStyle}
-            onMouseLeave={this.toggleStyle}
-            onMouseDown={this.onOpenModal}
-            id={`combo-id-${this.props.id}-img`}
-          />
+      <div className="quotes-grid-item">
+        <img
+          src={this.props.imgsrc}
+          alt={"Oops, something went wrong :("}
+          className="quotes-grid-image"
+          onMouseEnter={() => this.setState({ modalButtonActive: true })}
+          onMouseLeave={() => this.setState({ modalButtonActive: false })}
+          onMouseEnter={this.toggleStyle}
+          onMouseLeave={this.toggleStyle}
+          onMouseDown={this.onOpenModal}
+          id={`combo-id-${this.props.id}-img`}
+        />
         <Modal
           open={open}
           onClose={this.onCloseModal}
           center="true"
           closeOnEsc
           classNames={imageModalStyles}
-          >
+        >
           <div className="modal-image-cont" onClick={e => e.stopPropagation()}>
             <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} icon="comment-icon" />
-            <p className="modal-quote-light font-size-plus-light">{this.props.quote}</p>
+            <div className="modal-quote-light">
+              <p
+                className=
+                {
+                  this.state.theme
+                    ?
+                    "font-size-plus-dark"
+                    :
+                    "font-size-plus-light"
+                }>
+                {this.props.quote}
+              </p>
+              {
+                this.props.favorites
+                ?
+                null
+                :
+              <Switch
+                onChange={this.themeChange}
+                checked={this.state.theme}
+                className="modal-theme-switch"
+                onColor="#888888"
+                onHandleColor="#4DAAF6"
+                handleDiameter={25}
+                uncheckedIcon={false}
+                checkedIcon={false}
+                boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                height={15}
+                width={40} />
+              }
+            </div>
             <i
               id="comment-icon"
               className="fas fa-pen"
               onMouseEnter={this.buttonActive}
               onMouseLeave={this.buttonActive}
               onMouseDown={this.commentQuote}
-              ></i>
+            ></i>
             <i
               className="fas fa-heart"
               onMouseDown={this.likeCombo}
@@ -219,11 +256,11 @@ class ComboItem extends Component {
           closeOnEsc
           center="false"
           classNames={commentModalStyles}
-          >
+        >
           {
             allComments.length
-            ?
-            <div classNamee="modal-comment-cont" onClick={e => e.stopPropagation()}>
+              ?
+              <div classNamee="modal-comment-cont" onClick={e => e.stopPropagation()}>
                 {
                   allComments
                 }

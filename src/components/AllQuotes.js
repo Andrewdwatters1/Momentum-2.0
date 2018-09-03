@@ -61,6 +61,8 @@ class AllQuotes extends Component {
               <ComboItem
                 imgsrc={faves[i].url}
                 quote={faves[i].quote}
+                theme={faves[i].theme}
+                favorites={true}
               />
             )
           }
@@ -92,6 +94,7 @@ class AllQuotes extends Component {
             photoId={response.value[i].id}
             id={i}
             allCombos={this.state.allCombos}
+            favorites={false}
           />
         )
       }
@@ -115,7 +118,6 @@ class AllQuotes extends Component {
   }
 
   render() {
-    console.log(this.state)
     let { pageCombos } = this.state;
     return this.state.pageCombos[0] ?
       (

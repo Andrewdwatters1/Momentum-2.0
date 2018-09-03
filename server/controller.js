@@ -34,9 +34,10 @@ module.exports = {
   },
   addToFavorites: (req, res, next) => {
     let db = req.app.get('db')
-    let { userId, photoId, quote } = req.query;
+    let { userId, photoId, quote, theme } = req.query;
+    console.log(req.query);
     db.get_quote_id(quote).then(result => {
-      db.add_to_favorites([userId, photoId, result[0].id]).then(result => {
+      db.add_to_favorites([userId, photoId, result[0].id, theme]).then(result => {
         res.status(200).send(result)
       }).catch(error => console.log("Error, originates from controller.addToFavorites, add_to_favorites.sql", error))
     }).catch(error => console.log("Error, originates from controller.addToFavorites, get_quote_id.sql", error))

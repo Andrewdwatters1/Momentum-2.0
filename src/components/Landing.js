@@ -22,7 +22,7 @@ class Landing extends Component {
       ?
       (
         <div className="landing-main">
-          <NavContainer/>
+          <NavContainer />
           <h1 className="font-large-light"> Welcome {this.props.user.name}</h1>
           <Time />
           <ToDo />
@@ -33,7 +33,7 @@ class Landing extends Component {
       )
       :
       <div className="login-background">
-      <Login/> 
+        <Login />
       </div>
   }
 }
