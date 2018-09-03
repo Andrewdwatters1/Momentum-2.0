@@ -108,7 +108,7 @@
   padding: 75px;
   bottom: 0;
   margin-bottom: 0;
-  width: 100vw;
+  width: 90vw;
   height: 100vh;
   background: linear-gradient(rgba(10, 10, 10, 0.20), transparent, rgba(10, 10, 10, 0.20));
   z-index: -1;
@@ -144,7 +144,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin-bottom: 13vh;
+  margin-bottom: 13.5vh;
   margin-right: auto;
   margin-left: auto;
   display: flex;
@@ -171,7 +171,6 @@
   opacity: 1;
   cursor: pointer;
 }
-
 .quotes-container-background {
   background-color: #44444C;
   height: 100vh;
@@ -287,10 +286,6 @@
 .comment-modal-right-overlay {
   background-color: transparent;
 }
-
-
-
-
 .comment-modal-right-content {
   position: absolute;
   right: 0;
@@ -307,11 +302,6 @@
   overflow: auto;
   border-radius: 20px;
 }
-
-
-
-
-
 .modal-comment-cont {
   width: 100%;
 }
@@ -551,13 +541,11 @@
     width: 18.5vw;
   }
 }
-
 @media (max-width: 1350px) {
   .image-modal-center-overlay {
     padding-right: 5vw
   }
 }
-
 @media (max-width: 1298px) {
   .image-modal-center-overlay {
     padding-right: 10vw
@@ -618,9 +606,42 @@
   .image-modal-center-overlay {
     padding-right: 20vw;
   }
+  .get-inspired {
+    margin-bottom: 15vh;
+  }
 }
 @media (max-width: 970px) {
   .font-large-light {
     font-size: 2.5em;
   }
+  .quotes-grid-item {
+    width: 50%;
+  }
 }
+
+
+
+
+
+
+/* Device specific media queries */
+/* Ipad Pro */
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+  .landing-app {
+    max-width: 85vw;
+    padding: 17px;
+    margin-right: 12vw;
+  }
+  .image-grid-app {
+    max-width: 85vw;
+    padding: 17px;
+    margin-right: 12vw;
+  }
+  .quotes-grid-item {
+    width: 50%;
+  }
+}
+

@@ -21,7 +21,7 @@ class Landing extends Component {
     return this.props.user
       ?
       (
-        <div className="landing-main">
+        <div className="landing-main landing-app">
           <NavContainer />
           <h1 className="font-large-light"> Welcome {this.props.user.name}</h1>
           <Time />
