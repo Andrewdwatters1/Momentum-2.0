@@ -111,7 +111,7 @@
   align-items: flex-end;
   text-align: center;
   position: absolute;
-  padding: 75px;
+  padding: 40px;
   bottom: 0;
   margin-bottom: 0;
   width: 90vw;
@@ -143,14 +143,14 @@
   opacity: 1;
 }
 .get-inspired {
-  height: 80px;
+  height: 70px;
   width: 289px;
   font-size: 2em;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  margin-bottom: 13.5vh;
+  margin-bottom: 14.5vh;
   margin-right: auto;
   margin-left: auto;
   display: flex;
@@ -279,12 +279,16 @@
   width: 70%;
   margin-left: auto;
   margin-right: auto;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  -ms-flex-direction: column;
+  flex-direction: column-reverse;
+  -ms-flex-pack: end;
+  justify-content: flex-start;
+  -ms-flex-align: center;
   align-items: center;
   text-align: center;
-  padding-bottom: 120px;
+  padding-bottom: 40px;
 }
 .modal-theme-switch {
   z-index: 1;
@@ -510,11 +514,13 @@
 .font-huge-light {
   font-size: 7em;
   color: white;
+  margin-top: 0;
 }
 .font-large-light {
   font-size: 3em;
   font-weight: bold;
   color: white;
+  margin-top: 0;
 }
 .font-size-light {
   font-size: 1.15em;
@@ -573,6 +579,9 @@
   .image-modal-center-overlay {
     padding-right: 5vw
   }
+  .todo-container {
+    max-height: 136px;
+  }
 }
 @media (max-width: 1298px) {
   .image-modal-center-overlay {
@@ -585,16 +594,16 @@
     font-size: 1.3em;
   }
   .font-large-light {
-    margin-top: 10vh;
+    margin-top: 5vh;
   }
   .font-large-dark {
-    margin-top: 10vh;
+    margin-top: 5vh;
   }
   .font-huge-light {
-    margin-bottom: 15vh;
+    margin-bottom: 7vh;
   }
   .font-huge-dark {
-    margin-bottom: 15vh;
+    margin-bottom: 7vh;
   }
   .focus-timer {
     width: 45px;
@@ -632,18 +641,6 @@
 @media (max-width: 1125px) {
   .image-modal-center-overlay {
     padding-right: 15vw;
-  }
-  .font-large-light {
-    margin-top: 10vh;
-  }
-  .font-large-dark {
-    margin-top: 10vh;
-  }
-  .font-huge-light {
-    margin-bottom: 15vh;
-  }
-  .font-huge-dark {
-    margin-bottom: 15vh;
   }
   .font-size-plus-light {
     font-size: 1.2em;
@@ -698,9 +695,6 @@
   .quotes-grid-item {
     width: 50%;
   }
-  .todo-container {
-    max-height: 136px;
-  }
 }
 @media (max-width: 840px) {
   .image-modal-center-overlay {
@@ -717,6 +711,9 @@
   .fa-pen {
     margin-right: 8px;
     margin-bottom: 8px;
+  }
+  .font-large-light {
+    margin-top: 10vh;
   }
 }
 @media (max-width: 650px) {
@@ -751,11 +748,12 @@
   .quotes-grid-text {
     font-size: .85em;
   }
-  .todo-container {
-    max-height: 136px;
-  }
   .quotes-grid-image {
     border-radius: 70px;
+  }
+  .get-inspired {
+    height: 50px;
+    margin-bottom: 17vh
   }
 }
 @media (max-width: 525px) {
@@ -804,10 +802,10 @@
     font-size: 3em;
   }
   .font-large-light {
-    font-size: 1.7em;
+    font-size: 1.4em;
   }
   .font-huge-light {
-    font-size: 4em;
+    font-size: 3.5em;
   }
   .font-size-plus-light {
     font-size: 1.2em;  
@@ -815,15 +813,11 @@
   .font-size-plus-dark {
     font-size: 1.2em;
   }
-  .todo-container {
-    max-height: 136px;
-  }
   .get-inspired {
     width: 220px;
-    height: 70px;
   }
   #landing-quote {
-    padding-bottom: 40px;
+    padding-bottom: 30px;
   }
 }
 
@@ -862,7 +856,7 @@
   }
   #landing-quote {
     font-size: 1em;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
   }
   .todo-input-field {
     width: 120px;
