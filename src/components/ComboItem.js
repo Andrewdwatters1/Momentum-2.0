@@ -204,38 +204,50 @@ class ComboItem extends Component {
         >
           <div className="modal-image-cont" onClick={e => e.stopPropagation()}>
             <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} icon="comment-icon" />
-            <div className="modal-quote-light">
-              <p
-                className=
-                {
-                  this.state.theme
-                    ?
-                    "font-size-plus-dark"
-                    :
-                    "font-size-plus-light"
-                }>
-                {this.props.quote}
-              </p>
-              {
-                this.props.favorites
+            {
+              this.props.favorites
                 ?
-                null
+                <div className="modal-quote-light">
+                  <p
+                    className=
+                    {
+                      this.props.theme
+                        ?
+                        "font-size-plus-dark"
+                        :
+                        "font-size-plus-light"
+                    }>
+                    {this.props.quote}
+                  </p>
+                </div>
                 :
-              <Switch
-                onChange={this.themeChange}
-                checked={this.state.theme}
-                className="modal-theme-switch"
-                onColor="#888888"
-                onHandleColor="#4DAAF6"
-                handleDiameter={25}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-                activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-                height={15}
-                width={40} />
-              }
-            </div>
+                <div className="modal-quote-light">
+                  <p
+                    className=
+                    {
+                      this.state.theme
+                        ?
+                        "font-size-plus-dark"
+                        :
+                        "font-size-plus-light"
+                    }>
+                    {this.props.quote}
+                  </p>
+                  <Switch
+                    onChange={this.themeChange}
+                    checked={this.state.theme}
+                    className="modal-theme-switch"
+                    onColor="#888888"
+                    onHandleColor="#4DAAF6"
+                    handleDiameter={25}
+                    uncheckedIcon={false}
+                    checkedIcon={false}
+                    boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                    activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                    height={15}
+                    width={40} />
+                </div>
+            }
             <i
               id="comment-icon"
               className="fas fa-pen"
@@ -271,7 +283,7 @@ class ComboItem extends Component {
               </div>
               :
               <div>
-                <p className="font-size-plus-light no-comments">No comments yet... 🤔<br /> Be the first!</p>
+                <p className="font-size-plus-dark no-comments">No comments yet... 🤔<br /> Be the first!</p>
                 <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
                   <textarea rows={this.state.commentInputRows} cols="30" id="user-comment" className="modal-comment-input font-size-light" onChange={this.handleCommentInput} value={this.state.userCommentContent} onMouseDown={this.changeCommentRows}><input /></textarea>
                   <button type="submit" onSubmit={this.submitComment}>Submit</button>

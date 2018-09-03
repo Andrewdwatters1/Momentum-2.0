@@ -169,6 +169,8 @@
   top: 0;
 }
 .todo-input-field {
+  color: black;
+  font-size: 1.15em;
   border-radius: 5px;
   opacity: .75;
 }
@@ -375,9 +377,11 @@
 }
 .modal-comment-input {
   border-radius: 5px;
+  color: black !important;
 }
 .no-comments {
   text-align: center;
+  color: black
 }
 .modal-comment-content-cont {
   margin-left: 5px;
