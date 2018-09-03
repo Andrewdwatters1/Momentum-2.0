@@ -13,10 +13,10 @@ import Login from './Login';
 
 class Landing extends Component {
 
-
   componentDidMount = () => {
     axios.get('/api/currentUser')
   }
+
   render() {
     return this.props.user
       ?

@@ -32,18 +32,17 @@ class ToDo extends Component {
   }
 
   render() {
-    let itemsList = this.state.allItems.map((e, i) => <ToDoItem key={i} id={i} text={e} removeItem={this.removeItem}/>)
-
+    let itemsList = this.state.allItems.map((e, i) => <ToDoItem key={i} id={i} text={e} removeItem={this.removeItem} />)
     return (
       <div>
         <div>
           <form onSubmit={this.addItem} className="todo-input">
-            <input placeholder="what's next?" onChange={this.handleInput} value={this.state.userInput}  className="todo-input-field"></input>
-            <button type="submit" onSubmit={this.addItem}  className="font-size-light button-light">Add to list!</button>
+            <input placeholder="what's next?" onChange={this.handleInput} value={this.state.userInput} className="todo-input-field"></input>
+            <button type="submit" onSubmit={this.addItem} className="font-size-light button-light">Add to list!</button>
           </form>
         </div>
         <div className="todo-container">
-        {itemsList}
+          {itemsList}
         </div>
       </div>
     )

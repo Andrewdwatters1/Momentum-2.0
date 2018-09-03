@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { ToastContainer, ToastStore } from 'react-toasts';
 
-
 class AddPhoto extends Component {
   constructor() {
     super()
@@ -34,20 +33,7 @@ class AddPhoto extends Component {
       location: e.target.value
     })
   }
-  // submitPhoto = (e) => { 
-  //   e.preventDefault();
-  //   let photoObj = {
-  //     url: this.state.url,
-  //     photographer: this.state.photographer,
-  //     portfolio: this.state.portfolio,
-  //     location: this.state.location,
-  //     // user
-  //   }
-  //   axios.post(`/api/photo`, { photoObj }).then(result => {
-  //     ToastStore.success('Thank you for your submission!  Your quote is under review')
-  //   }).catch(error => ToastStore.error('Oops... something went wrong. :( Our team has been notified.'))
-  // }
-  submitPhoto = (e) => {
+  submitPhoto = (e) => { // 
     e.preventDefault();
     let search = 'sports car'
     axios.get(`https://api.unsplash.com/photos/random?client_id=5ed61707f778d0b6915e1cb34046b4a57e1c445bc003d5d11218f347770c3ae4&query=${search}&orientation=squarish&count=30`).then(result => {
@@ -66,7 +52,6 @@ class AddPhoto extends Component {
       }, 300)
     })
   }
-
 
   render() {
     return (

@@ -4,7 +4,7 @@ import Timer from 'simple-react-timer';
 class FocusTimer extends Component {
   constructor(props) {
     super(props)
-    this.state = { // hit
+    this.state = {
       cycle: 1,
       timerType: "focus"
     }
@@ -18,14 +18,14 @@ class FocusTimer extends Component {
           timerType: "long",
           cycle: 0
         })
-      }, (this.props.focusPeriod * 1000))
+      }, (this.props.focusPeriod * 60000))
     } else if (this.state.timerType === "focus" && this.state.cycle !== this.props.numCycles) {
       console.log('focus => short')
       setTimeout(() => {
         this.setState({
           timerType: "short",
         })
-      }, (this.props.focusPeriod * 1000))
+      }, (this.props.focusPeriod * 60000))
     } else if (this.state.timerType === "short") {
       console.log('short => focus')
       setTimeout(() => {
@@ -33,7 +33,7 @@ class FocusTimer extends Component {
           timerType: "focus",
           cycle: this.state.cycle + 1
         })
-      }, (this.props.shortBreak * 1000))
+      }, (this.props.shortBreak * 60000))
     } else if (this.state.timerType === "long") {
       console.log('long => focus')
       setTimeout(() => {
@@ -41,15 +41,12 @@ class FocusTimer extends Component {
           timerType: "focus",
           cycle: 1
         })
-      }, (this.props.longBreak * 1000))
+      }, (this.props.longBreak * 60000))
     }
 
-    //   // document.getElementById("focus-timer").classList.toggle("hide-timer"
-    console.log('state is now', this.state)
-
-    let FocusPeriodTimer = <Timer startTime={Date.parse(new Date()) + ((this.props.focusPeriod * 1000) + 499)} countDown />; // this should be 60,000
-    let shortBreakTimer = <Timer startTime={Date.parse(new Date()) + ((this.props.shortBreak * 1000) + 499)} countDown />; // this should be 60,000
-    let longBreakTimer = <Timer startTime={Date.parse(new Date()) + ((this.props.longBreak * 1000) + 499)} countDown />; // this should be 60,000
+    let FocusPeriodTimer = <Timer startTime={Date.parse(new Date()) + ((this.props.focusPeriod * 60000) + 499)} countDown />;
+    let shortBreakTimer = <Timer startTime={Date.parse(new Date()) + ((this.props.shortBreak * 60000) + 499)} countDown />;
+    let longBreakTimer = <Timer startTime={Date.parse(new Date()) + ((this.props.longBreak * 60000) + 499)} countDown />;
 
     return (
       <div className="focus-timer-container">

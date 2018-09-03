@@ -23,18 +23,18 @@ app.use(session({
 }))
 app.use(express.static(`${__dirname}/../build`))
 
-app.get('/auth/callback', ac.auth); //
-app.get(`/api/currentUser`, ac.currentUser); //
-app.get('/api/logout', ac.logout); //
-app.get('/api/quote', controller.getRandomQuote); //
-app.post(`/api/quote`, controller.postQuote);
-app.post('/api/photo', controller.postPhoto);
-app.get('/api/combo', controller.getAllCombos); //
-app.get('/api/comments', controller.getAllComments); //
-app.post('/api/comment', controller.commentCombo); //
-app.get('/api/favorite', controller.getAllFavorites); // 
-app.put('/api/favorite', controller.addToFavorites); //////////////////////
-app.delete('/api/comment', controller.deleteComment); // 
+app.get('/auth/callback', ac.auth);
+app.get(`/api/currentUser`, ac.currentUser);
+app.get('/api/logout', ac.logout);
+app.get('/api/quote', controller.getRandomQuote);
+app.post(`/api/quote`, controller.postQuote); //
+app.post('/api/photo', controller.postPhoto); // 
+app.get('/api/combo', controller.getAllCombos);
+app.get('/api/comments', controller.getAllComments);
+app.post('/api/comment', controller.commentCombo);
+app.get('/api/favorite', controller.getAllFavorites); 
+app.put('/api/favorite', controller.addToFavorites);
+app.delete('/api/comment', controller.deleteComment); 
 
 app.get('*', (req, res)=>{
   res.sendFile(path.join(__dirname, '../build/index.html'));

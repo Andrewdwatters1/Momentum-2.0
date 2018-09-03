@@ -27,7 +27,7 @@ CREATE TABLE users (
     picture TEXT
 );
 
-CREATE TABLE comments ( -- good
+CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users,
   photo_id INTEGER REFERENCES photos,
@@ -41,11 +41,3 @@ CREATE TABLE favorites (
   quote_id INTEGER REFERENCES quotes,
   theme BOOLEAN
 );
-
--- command to delete duplicates from photos table -> will need to drop comments first
-DELETE 
-FROM 
-photos p
-WHERE EXISTS 
-    (SELECT 1 FROM photos
-    WHERE p.id > id AND p.url = url)

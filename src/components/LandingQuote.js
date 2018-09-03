@@ -5,16 +5,16 @@ import { getLandingQuote } from '../redux/reducer';
 
 class LandingQuote extends Component {
 
-componentDidMount = () => {
-  this.props.getLandingQuote()
-}
+  componentDidMount = () => {
+    this.props.getLandingQuote()
+  }
 
   render() {
     return this.props.landingQuote[0]
-    ?
+      ?
       <h2 id="landing-quote" className="landing-quote font-size-plus-light">{this.props.landingQuote[0].quote}</h2>
-    :
-    null
+      :
+      null
   }
 }
 

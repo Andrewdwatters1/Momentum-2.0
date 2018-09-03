@@ -27,19 +27,7 @@ class AddQuote extends Component {
       category: e.target.value
     })
   }
-  // submitQuote = (e) => {
-  //   e.preventDefault();
-  //   let quoteObj = {
-  //     author: this.state.author,
-  //     quote: this.state.quoteContent,
-  //     category: this.state.category
-  //   }
-  //   axios.post('/api/quote', { quoteObj }).then(result => {
-  //     ToastStore.success('Thank you for your submission!  Your quote is under review')
-  //   }).catch(error => ToastStore.error('Oops... something went wrong. :( Our team has been notified.'))
-  //   // Toast them thanking them for the submission
-  // }
-  submitQuote = (e) => {
+  submitQuote = (e) => { // 
     e.preventDefault();
     axios.get('https://talaikis.com/api/quotes/').then(result => {
       console.log(result)
@@ -57,7 +45,6 @@ class AddQuote extends Component {
       }, 10)
     })
   }
-
 
   render() {
     return (

@@ -15,10 +15,10 @@ class Dropdown extends Component {
       focusTimer: false,
       theme: false,
       showSettings: false,
-      focusPeriod: 10, // 25
-      shortBreak: 2, // 5
-      longBreak: 4, // 30
-      numCycles: 2 // 4
+      focusPeriod: 25,
+      shortBreak: 5,
+      longBreak: 30,
+      numCycles: 4
     }
   }
 
@@ -121,7 +121,6 @@ class Dropdown extends Component {
             </div>
           </a>
 
-          {/* ANIMATE HERE IF TIME */}
           <a style={{ display: this.state.showSettings ? "block" : "none" }} className="menu-item">
             <div className="settings-item-spread">
               Timezone <select name="timezone" onChange={this.handleTimeZoneChange} defaultValue="Mountain" id="timezone-select" className="button-light font-size-minus-light">
@@ -206,8 +205,6 @@ class Dropdown extends Component {
               </select>
             </div>
           </a>
-
-
 
           <a className="menu-item">
             <div>

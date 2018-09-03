@@ -1,10 +1,10 @@
 import React from 'react';
 import Dropdown from './Dropdown';
 
-const NavContainer = function() {
+const NavContainer = function () {
   return (
     <div>
-      <Dropdown/>
+      <Dropdown />
     </div>
   )
 }

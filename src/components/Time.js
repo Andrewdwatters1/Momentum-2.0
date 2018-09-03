@@ -2,8 +2,8 @@ import React from 'react';
 import Clock from 'react-live-clock';
 import { connect } from 'react-redux';
 
-const Time = function(props) {
-  if(props.timezone && props.timezone) {
+const Time = function (props) {
+  if (props.timezone && props.timezone) {
     return (
       <div>
         <h1 className="font-huge-light"><Clock format={props.timeformat} ticking={true} timezone={`US/${props.timezone}`} /></h1>

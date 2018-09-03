@@ -16,8 +16,8 @@ class App extends Component {
     return (
       <HashRouter>
         <Switch>
-          <Route exact path="/" component={Landing}/>
-          <Route path="/quotes" component={QuotesContainer}/>
+          <Route exact path="/" component={Landing} />
+          <Route path="/quotes" component={QuotesContainer} />
         </Switch>
       </HashRouter>
     );

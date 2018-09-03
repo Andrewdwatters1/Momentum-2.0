@@ -11,7 +11,7 @@ class QuotesContainer extends Component {
           <Link to="/"><i class="fas fa-home"></i></Link>
         </div>
         <div>
-        <AllQuotes />
+          <AllQuotes />
         </div>
       </div>
     )

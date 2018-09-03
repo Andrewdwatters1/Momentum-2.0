@@ -194,7 +194,6 @@ class ComboItem extends Component {
           onMouseEnter={this.toggleStyle}
           onMouseLeave={this.toggleStyle}
           onMouseDown={window.innerWidth > 500 ? this.onOpenModal : this.likeCombo}
-          // onTouchStart={window.innerWidth > 500 ? this.onOpenModal : this.likeCombo}
           id={`combo-id-${this.props.id}-img`}
         />
         {
@@ -282,9 +281,9 @@ class ComboItem extends Component {
                           :
                           "font-size-plus-light"
                       }>
-                      <i 
-                      className="fas fa-heart cover"
-                      onMouseDown={this.likeCombo}
+                      <i
+                        className="fas fa-heart cover"
+                        onMouseDown={this.likeCombo}
                       ></i>
                       {this.props.quote}
                     </p>
@@ -300,9 +299,9 @@ class ComboItem extends Component {
                           :
                           "font-size-plus-light"
                       }>
-                      <i 
-                      className="fas fa-heart cover"
-                      onMouseDown={this.likeCombo}
+                      <i
+                        className="fas fa-heart cover"
+                        onMouseDown={this.likeCombo}
                       ></i>
                       {this.props.quote}
                     </p>
