@@ -382,6 +382,14 @@
   margin-left: 96px;
   border-radius: 33px;
 }
+.cover {
+  z-index: 1;
+  height: 90%;
+  margin-left: -48px;
+  margin-top: 24px;
+  width: 86vw;
+  border-radius: 65px
+}
 .fa-heart-beat {
   display: flex;
   justify-content: center;
