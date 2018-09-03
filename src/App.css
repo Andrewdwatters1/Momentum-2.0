@@ -1,19 +1,4 @@
-/* ALL COMPONENT STYLES */
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* LOGIN STYLES */
-
+/* Login Page */
 .login-cont {
   display: flex;
   flex-direction: column;
@@ -29,7 +14,6 @@
   height: 60px;
   width: 200px;
 }
-
 .login-background {
   display: flex;
   align-items: center;
@@ -38,19 +22,7 @@
   background-color: #44444C;
   box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
 }
-
-
-
-
-
-
-
-
-
-
-
-/* NAVBAR STYLES */
-
+/* Navbar */
 .bm-menu-wrap {
   left: 0;
 }
@@ -98,7 +70,7 @@
 .hide-timer {
   display: none;
 }
-.focus-timer-container {  /* Theme */
+.focus-timer-container {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -120,27 +92,14 @@
   opacity: 1;
   cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/* LANDING PAGE STYLES */
-
-.landing-main { /* theme */ 
+/* Landing Page */
+.landing-main {  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.landing-quote { /* theme */
+.landing-quote { 
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -156,7 +115,7 @@
 }
 .todo-container {
   margin-top: 15px;
-  max-height: 250px;
+  max-height: 228px;
   overflow: scroll;
 }
 .todo-spread {
@@ -181,28 +140,17 @@
   height: 80px;
   width: 289px;
   font-size: 2em;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  margin-bottom: 16vh;
+  margin-bottom: 13vh;
   margin-right: auto;
   margin-left: auto;
+  display: flex;
+  justify-content: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* QUOTES STYLES */
+/* Image Grid */
 .home-button-center {
   position: absolute;
   display: flex;
@@ -250,7 +198,6 @@
   width: 33%;
   margin-left: auto;
   margin-right: auto;
-  border: solid black 2px; /* remove */
   position: relative;
 }
 .quotes-grid-image {
@@ -260,7 +207,7 @@
   border: solid black 5px;
   border-radius: 80px;
 }
-.quotes-grid-text { /* theme */
+.quotes-grid-text {
   position: absolute;
   bottom: 15%;
   width: 78%;
@@ -269,25 +216,14 @@
   text-align: center;
   z-index: 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-/***********   MODAL STYLES ***********/
-
+/* Modal Styles */
 .styles_modal__gNwvD {
+  display: flex;
   background-color: transparent;
   box-shadow: none;
 }
 .image-modal-center-close {
-  margin-right: 107px;
+  margin-right: 48px;
   margin-top: 13px;
   background-color: #4DAAF6;
   border: solid black 3px;
@@ -305,8 +241,9 @@
   cursor: pointer;
   opacity: 1;
 }
-/* Image Content */
+/* Image Modal */
 .image-modal-center-overlay {
+  display: flex;
   z-index: 999;
   box-shadow: 0 0 200px rgba(0,0,0,0.09) inset;
 }
@@ -318,7 +255,7 @@
 }
 .modal-image {
   display: flex;
-  width: 75%;
+  width: 90%;
   height: 95vh;
   margin-right: auto;
   margin-left: auto;
@@ -341,20 +278,25 @@
   justify-content: flex-end;
   align-items: center;
   text-align: center;
-  padding-bottom: 160px;
+  padding-bottom: 120px;
 }
 .modal-theme-switch {
   z-index: 1;
 }
-/* Comment Content */
+/* Comment Modal  */
 .comment-modal-right-overlay {
   background-color: transparent;
 }
+
+
+
+
 .comment-modal-right-content {
   position: absolute;
   right: 0;
+  margin-right: 1vw;
   max-height: 60vh;
-  width: 25vw;
+  width: 20vw;
   background-color: #4DAAF6;
   border: solid black 3px;
   box-shadow: 0 0 80px rgb(0,0,0) inset;
@@ -365,9 +307,13 @@
   overflow: auto;
   border-radius: 20px;
 }
-.modal-comment-container {
+
+
+
+
+
+.modal-comment-cont {
   width: 100%;
-  display: flex;
 }
 .modal-comment {
   position: relative;
@@ -412,11 +358,8 @@
   opacity: 1;
   cursor: pointer;
 }
-
-/********** FONT-AWESOME BUTTONS **********/
-
-
-.fa-cog { /* theme */
+/* FA Buttons */
+.fa-cog { 
   padding-top: 10px;
   font-size: 2em;
   color: #888888;
@@ -497,8 +440,8 @@
   align-items: center;
   bottom: 0;
   right: 0;
-  margin-right: 103px;
-  margin-bottom: 18px;
+  margin-right: 43px;
+  margin-bottom: 8px;
   font-size: 2em;
   background-color: #4DAAF6;
   border: solid black 3px;
@@ -558,9 +501,7 @@
   opacity: 1;
   cursor: pointer;
 }
-
-/* ALL APP STYLES */
-
+/* All App and Theme */
 .font-huge-light {
   font-size: 7em;
   color: white;
@@ -579,12 +520,12 @@
   color: white;
 }
 .font-size-plus-light {
-  font-size: 1.6em;
+  font-size: 1.5em;
   font-weight: bold;
   color: white;
 }
 .font-size-plus-dark {
-  font-size: 1.6em;
+  font-size: 1.5em;
   font-weight: bold;
   color: black;
 }
@@ -602,4 +543,84 @@
 .cursor-select {
   cursor: pointer;
   opacity: .70; 
+}
+
+/* Media Queries */
+@media (max-width: 1450px) {
+  .comment-modal-right-content {
+    width: 18.5vw;
+  }
+}
+
+@media (max-width: 1350px) {
+  .image-modal-center-overlay {
+    padding-right: 5vw
+  }
+}
+
+@media (max-width: 1298px) {
+  .image-modal-center-overlay {
+    padding-right: 10vw
+  }
+  .font-size-plus-light {
+    font-size: 1.3em;
+  }
+  .font-size-plus-dark {
+    font-size: 1.3em;
+  }
+  .fa-heartbeat {
+    width: 45px;
+    height: 45px;
+    font-size: 2.25em;
+  }
+  .fa-home {
+    font-size: 2.25em;
+  }
+  .home-button-center {
+    width: 45px;
+    height: 45px;
+  }
+  .fa-arrow-alt-circle-down {
+    width: 50px;
+    height: 50px;
+    font-size: 2.5em;
+  }
+  .fa-camera {
+    width: 45px;
+    height: 45px;
+    font-size: 2.25em;
+  }
+}
+@media (max-width: 1210px) {
+  .comment-modal-right-content {
+    margin-right: 0;
+    width: 18vw;
+  }
+}
+@media (max-width: 1125px) {
+  .image-modal-center-overlay {
+    padding-right: 15vw;
+  }
+  .font-size-plus-light {
+    font-size: 1.2em;
+  }
+  .font-size-plus-dark {
+    font-size: 1.2em;
+  }
+  .font-huge-light {
+    font-size: 6em;
+  }
+  .font-huge-dark {
+    font-size: 6em;
+  }
+}
+@media (max-width: 1050px) {
+  .image-modal-center-overlay {
+    padding-right: 20vw;
+  }
+}
+@media (max-width: 970px) {
+  .font-large-light {
+    font-size: 2.5em;
+  }
 }

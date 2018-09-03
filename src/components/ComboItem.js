@@ -238,7 +238,7 @@ class ComboItem extends Component {
                     checked={this.state.theme}
                     className="modal-theme-switch"
                     onColor="#888888"
-                    onHandleColor="#4DAAF6"
+                    onHandleColor="#111111"
                     handleDiameter={25}
                     uncheckedIcon={false}
                     checkedIcon={false}
@@ -272,18 +272,19 @@ class ComboItem extends Component {
           {
             allComments.length
               ?
-              <div classNamee="modal-comment-cont" onClick={e => e.stopPropagation()}>
-                {
-                  allComments
-                }
+              <div className="modal-comment-cont" onClick={e => e.stopPropagation()}>
+
+                  {
+                    allComments
+                  }
                 <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
                   <textarea rows={this.state.commentInputRows} cols="30" id="user-comment" className="modal-comment-input font-size-light" onChange={this.handleCommentInput} value={this.state.userCommentContent} onMouseDown={this.changeCommentRows}><input /></textarea>
                   <button type="submit" onSubmit={this.submitComment}>Submit</button>
                 </form>
               </div>
               :
-              <div>
-                <p className="font-size-plus-dark no-comments">No comments yet... 🤔<br /> Be the first!</p>
+              <div className="modal-comment-cont" onClick={e => e.stopPropagation()}>
+                <p className="font-size-plus-dark no-comments">No comments yet. 🤔<br /> Be the first!</p>
                 <form id="modal-user-comment" className="modal-comment" onSubmit={this.submitComment}>
                   <textarea rows={this.state.commentInputRows} cols="30" id="user-comment" className="modal-comment-input font-size-light" onChange={this.handleCommentInput} value={this.state.userCommentContent} onMouseDown={this.changeCommentRows}><input /></textarea>
                   <button type="submit" onSubmit={this.submitComment}>Submit</button>
