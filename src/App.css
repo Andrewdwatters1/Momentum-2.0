@@ -141,6 +141,7 @@
 }
 .todo-input-field:hover {
   opacity: 1;
+  cursor: pointer;
 }
 .get-inspired {
   height: 70px;
@@ -212,6 +213,7 @@
   height: 90%;
   border: solid black 5px;
   border-radius: 80px;
+  cursor: pointer;
 }
 .quotes-grid-text {
   position: absolute;
@@ -242,6 +244,7 @@
   height: 60px;
   width: 60px;
   opacity: .25;
+  cursor: pointer;
 }
 .image-modal-center-close:hover {
   cursor: pointer;
@@ -268,6 +271,7 @@
   position: relative;
   border: solid black 5px;
   border-radius: 40px;
+  cursor: pointer;
 }
 .modal-quote-light {
   position: absolute;
@@ -367,6 +371,7 @@
 }
 .fa-cog:hover {
   color: #FFFFFF;
+  cursor: pointer;
 }
 .fa-home {
   font-size: 3em;
@@ -861,11 +866,4 @@
   .todo-input-field {
     width: 120px;
   }
-}
-
-.fa-pen {
-
-}
-.image-modal-center-close {
-
 }
