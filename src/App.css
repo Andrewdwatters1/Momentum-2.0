@@ -1,3 +1,4 @@
+/* Login Page  */
 .login-cont {
   display:flex;
   flex-direction:column;
@@ -21,6 +22,7 @@
   background-color:#44444C;
   box-shadow:0 0 200px rgba(0,0,0,.9) inset;
 } 
+/* Navbar */
 .bm-burger-bars,.bm-cross {
   background:#FFF;
 }
@@ -59,6 +61,7 @@
   flex-direction:row;
   justify-content:space-between;
 }  
+/* Pomodoro */
 .hide-timer {
   display:none;
 }  
@@ -88,7 +91,8 @@
   display:flex;
   flex-direction:column;
   justify-content:center;
-}  
+} 
+/* Landing Page  */
 .landing-main {
   display:flex;
   flex-direction:column;
@@ -106,7 +110,7 @@
   position:absolute;
   padding:40px;
   margin-bottom:0;
-  width:90vw;
+  width:100vw;
   height:100vh;
   background:linear-gradient(rgba(10,10,10,.2),transparent,rgba(10,10,10,.2));
   z-index:-1;
@@ -156,6 +160,7 @@
   right:0;
   margin-bottom:14.5vh;
 }  
+/* Image Grid  */
 .home-button-center {
   justify-content:center;
   align-items:center;
@@ -213,6 +218,7 @@
   text-align:center;
   z-index:1;
 }  
+/* Modal */
 .styles_modal__gNwvD {
   display:flex;
   background-color:transparent;
@@ -333,6 +339,7 @@
   overflow:scroll;
   margin-top:0;
 }  
+/* FA buttons/other */
 .fa-heart,.fa-heart-beat {
   display:flex;
   justify-content:center;
@@ -467,6 +474,7 @@
 .fa-trash-alt:hover{opacity:1;
   cursor:pointer;
 }  
+/* Fonts/All App */
 .font-huge-light{font-size:7em;
   color:#fff;
   margin-top:0;
@@ -510,7 +518,6 @@
     width:18.5vw;
   }
 }
-  
 @media (max-width:1350px) {
   .image-modal-center-overlay {
     padding-right:5vw;
@@ -519,7 +526,6 @@
     max-height:136px;
   }
 }
-
 @media (max-width:1298px) {
   .fa-heartbeat,.focus-timer,.home-button-center {
     width:45px;
@@ -551,14 +557,12 @@
     font-size:2.25em;
   }
 }
-
 @media (max-width:1210px) {
   .comment-modal-right-content {
     margin-right:0;
     width:18vw;
   }
-}
-    
+}   
 @media (max-width:1125px) {
   .image-modal-center-overlay {
     padding-right:15vw;
@@ -569,8 +573,7 @@
   .font-huge-dark,.font-huge-light {
     font-size:6em;
   }
-}
-    
+}   
 @media (max-width:1050px) {
   .image-modal-center-overlay {
     padding-right:20vw;
@@ -585,8 +588,7 @@
   .todo-container {
     max-height:136px;
   }
-}
-    
+}   
 @media (max-width:970px) {
   .image-modal-center-overlay {
     display:flex;
@@ -612,8 +614,7 @@
   .quotes-grid-item {
     width:50%
   }
-}
-  
+} 
 @media (max-width:840px) {
   .image-modal-center-overlay {
     display:flex;
@@ -634,7 +635,6 @@
     margin-top:10vh;
   }
 }
-
 @media (max-width:650px) {
   .image-modal-center-overlay {
     display:flex;
@@ -674,8 +674,7 @@
     height:50px;
     margin-bottom:17vh;
   }
-}
-    
+}   
 @media (max-width:525px) {
   .image-modal-center-overlay {
     display:flex;

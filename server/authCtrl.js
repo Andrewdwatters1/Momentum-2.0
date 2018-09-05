@@ -17,7 +17,7 @@ module.exports = {
         client_secret: process.env.AUTHO_CLIENT_SECRET,
         code,
         grant_type: 'authorization_code',
-        redirect_uri: `http://${req.headers.host}/auth/callback`
+        redirect_uri: `https://${req.headers.host}/auth/callback`
       }
       let auth0domain = `https://${process.env.REACT_APP_AUTH0_DOMAIN}`
       let accessTokenResponse = await axios.post(`${auth0domain}/oauth/token`, payload);
