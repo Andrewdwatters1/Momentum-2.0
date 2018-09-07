@@ -41,7 +41,7 @@ class AllQuotes extends Component {
           )
         }).catch(error => {
           console.log('error propigating favorites', error)
-          ToastStore.error("Oops... there was an issue 😬 We're on it!")
+          ToastStore.error("Oops... there was an issue 😬 We're on it!", null, 'toast-error')
         })
       }
       this.setState({
@@ -71,14 +71,14 @@ class AllQuotes extends Component {
             faves: !this.state.faves
           })
         } else {
-          ToastStore.error("Looks like you don't have any favorites yet 🤔")
+          ToastStore.error("Looks like you don't have any favorites yet 🤔", null, 'toast-error')
         }
       }).catch(error => {
-        ToastStore.error("Hmm... weren't able to display favorites 😥 ")
+        ToastStore.error("Hmm... weren't able to display favorites 😥 ", null, 'toast-error')
         console.log('error displaying favorites', error)
       })
     } else {
-      ToastStore.error("Please login to view your favorites 😜")
+      ToastStore.error("Please login to view your favorites 😜", null, 'toast-error')
     }
   }
   displayMainPhotos = (initial) => {
@@ -115,6 +115,11 @@ class AllQuotes extends Component {
 
   componentDidMount = () => {
     this.displayMainPhotos(false);
+    setTimeout(() => {
+      if(window.innerWidth < 500) {
+        ToastStore.success('Double tap to like! 😍', null, "toast-success")
+      }
+    }, 6000)
   }
 
   render() {
@@ -124,7 +129,7 @@ class AllQuotes extends Component {
         <div>
           <div className="quotes-grid-container">
             {pageCombos}
-            <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
+            <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT}/>
           </div>
           {
             this.state.faves

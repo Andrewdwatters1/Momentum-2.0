@@ -1,3 +1,6 @@
+/* #08A9C5 */
+/* #09C5A5 */
+
 /* Login Page  */
 .login-cont {
   display:flex;
@@ -46,7 +49,7 @@
   font-size:1.15em;
 } 
 .focus-timer-container,.settings-item-select {
-  background-color:#4DAAF6;
+  background-image: linear-gradient(top right, #08A9C5, #09C5A5);
 }  
 .bm-item-list {
   color:#FFF;
@@ -77,7 +80,7 @@
   margin:12px;
   height:50px;
   width:60px;
-  border:3px solid #000;
+  border: 5px solid #000;
   border-radius:10px;
   color:#000;
   font-weight:700;
@@ -166,8 +169,8 @@
   align-items:center;
   height:60px;
   width:60px;
-  background-color:#4DAAF6;
-  border:3px solid #000;
+  background-image: linear-gradient(top right, #08A9C5, #09C5A5);
+  border: 5px solid #000;
   border-radius:15px;
   opacity:.25;
   z-index:2;
@@ -207,7 +210,7 @@
   border:5px solid #000;
   border-radius:80px;
   cursor:pointer;
-  touch-action:manipulation;
+  touch-action: manipulation;
 }  
 .quotes-grid-text {
   position:absolute;
@@ -227,8 +230,8 @@
 .image-modal-center-close {
   margin-right:48px;
   margin-top:13px;
-  background-color:#4DAAF6;
-  border:3px solid #000;
+  background-image: linear-gradient(top right, #08A9C5, #09C5A5);
+  border: 5px solid #000;
   border-radius:33px;
   height:60px;
   width:60px;
@@ -263,6 +266,7 @@
   border:5px solid #000;
   border-radius:40px;
   cursor:pointer;
+  touch-action: manipulation;
 } 
 .modal-quote-light {
   position:absolute;
@@ -292,8 +296,8 @@
   margin-right:1vw;
   max-height:60vh;
   width:20vw;
-  background-color:#4DAAF6;
-  border:3px solid #000;
+  background-image: linear-gradient(top right, #08A9C5, #09C5A5);
+  border: 5px solid #000;
   box-shadow:0 0 80px #000 inset;
   border-radius:20px;
 }  
@@ -323,7 +327,7 @@
 .modal-comment-image {
   height:50px;
   width:50px;
-  border:3px solid #000;
+  border: 5px solid #000;
   border-radius:33px;
   opacity:.9;
 }  
@@ -340,9 +344,20 @@
   margin-top:0;
 }  
 /* FA buttons/other */
+.toast-success {
+  background-image: linear-gradient(top right, #08A9C5, #09C5A5);
+  border: 2px solid black;
+  border-radius: 30px;
+}
+.toast-error {
+  background-image: linear-gradient(top right, rgb(255, 58, 222), rgb(255, 162, 41));
+  border: 2px solid black;
+  border-radius: 30px;
+}
 .fa-heart,.fa-heart-beat {
   display:flex;
   justify-content:center;
+  touch-action: manipulation;
 }  
 .modal-comment-image:hover {
   opacity:1;
@@ -383,14 +398,14 @@
 .fa-heart-beat {
   align-items:center;
   font-size:8em;
-  color:#4DAAF6;
+  color: #09C5A5;
   transition:color .5s linear 0s;
 }  
 .fa-camera,.fa-heartbeat {
   display:flex;
   justify-content:center;
   top:0;
-  border:3px solid #000;
+  border: 5px solid #000;
   z-index:1;
   position:absolute;
   right:0;
@@ -398,7 +413,7 @@
 .fa-heartbeat {
   align-items:center;
   font-size:3.3em;
-  background-color:#4DAAF6;
+  background-image: linear-gradient(top right, #08A9C5, #09C5A5);
   border-radius:15px;
   height:60px;
   width:60px;
@@ -411,7 +426,7 @@
 .fa-camera {
   align-items:center;
   font-size:2.9em;
-  background-color:#4DAAF6;
+  background-image: linear-gradient(top right, #08A9C5, #09C5A5);
   border-radius:15px;
   height:60px;
   width:60px;
@@ -421,7 +436,7 @@
   justify-content:center;
   height:60px;
   width:60px;
-  background-color:#4DAAF6;
+  background-image: linear-gradient(top right, #08A9C5, #09C5A5);
   display:flex;
 }  
 .fa-camera:hover {
@@ -435,7 +450,7 @@
   margin-right:43px;
   margin-bottom:8px;
   font-size:2em;
-  border:3px solid #000;
+  border: 5px solid #000;
   border-radius:33px;
   opacity:.25;
   z-index:1;
@@ -448,10 +463,10 @@
   align-items:center;
   font-size:3em;
   border-radius:33px;
-  border:3px solid #000;
+  border: 5px solid #000;
   opacity:.25;
 }  
-.fa-arrow-alt-circle-down:hover,.fa-check:hover{background-color:#79BFF8;
+.fa-arrow-alt-circle-down:hover,.fa-check:hover{
   opacity:1;
   cursor:pointer;
 }  
@@ -498,9 +513,10 @@
   font-weight:700;
   color:#000;
 }  
-.button-light{background-color:#4DAAF6;
+.button-light{
+  background-image: linear-gradient(top right, #08A9C5, #09C5A5);
   color:#000;
-  border:3px solid #000;
+  border:  5px solid #000;
   border-radius:10px;
   opacity:.35;
 }  

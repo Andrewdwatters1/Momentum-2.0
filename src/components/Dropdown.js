@@ -82,7 +82,7 @@ class Dropdown extends Component {
                   onChange={this.focusChange}
                   checked={this.state.focusTimer}
                   onColor="#888888"
-                  onHandleColor="#4DAAF6"
+                  onHandleColor="#09C5A5"
                   handleDiameter={25}
                   uncheckedIcon={false}
                   checkedIcon={false}

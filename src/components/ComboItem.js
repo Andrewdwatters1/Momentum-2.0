@@ -30,11 +30,13 @@ class ComboItem extends Component {
       commentOpen: false
     });
     this.getAllComments();
+    ToastStore.success('Double tap to like! 😍', null, 'toast-success')
   };
   onCloseModal = () => {
     this.setState({
       open: false
     });
+
   };
   onCloseCommentModal = () => {
     this.setState({
@@ -82,13 +84,13 @@ class ComboItem extends Component {
       }
       axios.post('/api/comment', { comment }).then(result => {
         this.getAllComments();
-        ToastStore.success('Thanks! Comment submitted! 😎')
+        ToastStore.success('Thanks! Comment submitted! 😎', null, 'toast-success')
       }).catch(error => {
-        ToastStore.error("Oops... something went wrong. We're on it! 😢")
+        ToastStore.error("Oops... something went wrong. We're on it! 😢", null, 'toast-error')
         console.log(error)
       })
     } else {
-      ToastStore.error('Please login to comment. 😜')
+      ToastStore.error('Please login to comment. 😜', null, 'toast-error')
     }
     this.setState({
       userCommentContent: '',
@@ -156,6 +158,12 @@ class ComboItem extends Component {
     }
   }
 
+  componentDidMount = () => {
+    document.getElementById(`combo-id-${this.props.id}-img`).addEventListener('touchmove', function (event) {
+      event.preventDefault();      
+    }, false);
+  }
+
   render() {
     const { open } = this.state;
     const { commentOpen } = this.state;
@@ -187,7 +195,7 @@ class ComboItem extends Component {
       <div className="quotes-grid-item">
         <img
           src={this.props.imgsrc}
-          alt={"Oops, something went wrong :("}
+          alt={"Oops, something went wrong :("} 
           className="quotes-grid-image"
           onMouseEnter={() => this.setState({ modalButtonActive: true })}
           onMouseLeave={() => this.setState({ modalButtonActive: false })}
@@ -206,12 +214,13 @@ class ComboItem extends Component {
               closeOnEsc
               classNames={imageModalStyles}
             >
+            <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
               <div className="modal-image-cont" onClick={e => e.stopPropagation()}>
                 <img src={this.props.imgsrc} className="modal-image" id={`combo-id-${this.props.id}-img`} icon="comment-icon" />
                 {
                   this.props.favorites
                     ?
-                    <div className="modal-quote-light">
+                    <div className="modal-quote-light m-quote">
                       <p
                         className=
                         {
@@ -225,7 +234,7 @@ class ComboItem extends Component {
                       </p>
                     </div>
                     :
-                    <div className="modal-quote-light">
+                    <div className="modal-quote-light m-quote">
                       <p
                         className=
                         {
@@ -263,15 +272,15 @@ class ComboItem extends Component {
                   className="fas fa-heart"
                   onMouseDown={this.likeCombo}
                 ></i>
-                <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
               </div>
             </Modal>
             :
             <div>
+            <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
               {
                 this.props.favorites
                   ?
-                  <div className="modal-quote-light">
+                  <div className="modal-quote-light m-quote">
                     <p
                       className=
                       {
@@ -289,7 +298,7 @@ class ComboItem extends Component {
                     </p>
                   </div>
                   :
-                  <div className="modal-quote-light">
+                  <div className="modal-quote-light m-quote">
                     <p
                       className=
                       {
@@ -329,6 +338,7 @@ class ComboItem extends Component {
           center="false"
           classNames={commentModalStyles}
         >
+        <ToastContainer store={ToastStore} position={ToastContainer.POSITION.BOTTOM_RIGHT} />
           {
             allComments.length
               ?
